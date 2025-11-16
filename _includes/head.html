@@ -93,6 +93,7 @@ otherwise fall back to global defaults from _config.yml
 <link rel="stylesheet" href="{{ '/assets/css/contrast.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/theme.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/pattern-showcase.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/loading-screen.css' | relative_url }}">
 
 {% if page.styles %}
   {% for href in page.styles %}
@@ -111,3 +112,6 @@ otherwise fall back to global defaults from _config.yml
 
 <!-- Tillerstead proprietary theme (do not remove) -->
 <link rel="stylesheet" href="{{ '/assets/css/ts-theme.v1.0.0.css' | relative_url }}" />
+
+<!-- Loading screen: inline for immediate execution -->
+<script src="{{ '/assets/js/loading-screen.js' | relative_url }}?v={{ site.version | default: site.github.build_revision | default: '10' }}"></script>
