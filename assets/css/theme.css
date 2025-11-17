@@ -602,6 +602,7 @@ html.light .site-header {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 999;
   background: var(--ts-surface-elevated);
   border-top: 1px solid rgba(148, 163, 184, 0.18);
   padding: var(--ts-space-5) clamp(1.25rem, 4vw, 2rem);
@@ -622,6 +623,8 @@ html.light .site-header {
   visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
+  min-height: 100vh;
+  height: auto;
 }
 
 /* Mobile menu items */
