@@ -335,18 +335,7 @@ label {
   outline-offset: 2px;
 }
 
-@media (prefers-contrast: high) {
-  .btn,
-  input,
-  textarea,
-  select {
-    border-width: 2px;
-  }
-
-  .hero-eyebrow {
-    border-left-width: 2px;
-  }
-}
+/* High contrast adjustments removed */
 
 @media (prefers-reduced-motion: reduce) {
   * {

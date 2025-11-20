@@ -119,33 +119,7 @@ main.site-main {
 }
 
 .section-cta .cta-note,
-.cta-note {
-  font-size: 0.9rem;
-  color: var(--ts-text-subtle);
-}
-
-.section-cta .btn {
-  margin-right: var(--ts-space-2);
-}
-
-.section-cta a {
-  font-weight: 600;
-}
-
-.section-cta a:hover,
-.section-cta a:focus-visible {
-  text-decoration: underline;
-}
-
-.page-content.section {
-  position: relative;
-}
-
-.page-content .container {
-  position: relative;
-  z-index: 1;
-}
-
+/* contrast-toggle removed */
 /* Section grids */
 .section-grid,
 .grid {

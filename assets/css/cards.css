@@ -318,12 +318,4 @@
   outline: 3px solid var(--color-primary);
 }
 
-@media (prefers-contrast: high) {
-  .card {
-    border-width: 2px;
-  }
-
-  .card--review {
-    border-left-width: 2px;
-  }
-}
+/* High contrast card border adjustments removed */

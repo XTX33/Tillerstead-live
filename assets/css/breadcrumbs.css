@@ -70,21 +70,7 @@
   outline-offset: 2px;
 }
 
-@media (prefers-contrast: high) {
-  .breadcrumbs {
-    border-bottom-width: 2px;
-  }
-
-  .breadcrumb-link {
-    padding: 0.35rem 0.6rem;
-    border: 1px solid transparent;
-  }
-
-  .breadcrumb-link:hover,
-  .breadcrumb-link:focus-visible {
-    border: 1px solid var(--color-primary);
-  }
-}
+/* High contrast breadcrumb adjustments removed */
 
 /* ============================================
    RESPONSIVE

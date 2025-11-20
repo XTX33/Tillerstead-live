@@ -31,9 +31,9 @@
   
   /* Text Colors - Dark text on light background (superior contrast) */
   --color-heading: #1a1a1a;           /* Dark for headings */
-  --color-text: #2d2d2d;              /* Dark gray for body text */
-  --color-text-muted: #5a5a5a;        /* Medium gray for secondary text */
-  --color-text-subtle: #8a8a8a;       /* Light gray for hints */
+   --color-text: #1f2323;              /* High-contrast body text */
+   --color-text-muted: #1f2323;        /* Match body for readability */
+   --color-text-subtle: #374139;       /* Slightly softened but still readable */
 
   /* Border Colors - Subtle on parchment */
   --color-border: rgba(26, 26, 26, 0.08);
@@ -177,9 +177,9 @@ html.light {
   --color-surface-muted: #f1f5f9;
   --color-surface-highlight: #e2e8f0;
   --color-heading: #0b1220;
-  --color-text: #0b1220;
-  --color-text-muted: #1f2937;
-  --color-text-subtle: #475569;
+   --color-text: #0b1220;
+   --color-text-muted: #0b1220; /* unify for contrast */
+   --color-text-subtle: #334155; /* retain gentle hierarchy */
   --color-border: rgba(15, 23, 42, 0.12);
   --color-border-strong: rgba(15, 23, 42, 0.2);
   --color-divider: rgba(15, 23, 42, 0.12);

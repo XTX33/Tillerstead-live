@@ -323,16 +323,8 @@ All animations respect `prefers-reduced-motion: reduce`. Provides instant transi
 }
 ```
 
-### High Contrast Mode
-Supports `prefers-contrast: high` with enhanced borders and visibility:
-
-```css
-@media (prefers-contrast: high) {
-  .btn, .card, input {
-    border-width: 2px;
-  }
-}
-```
+### Focus Visibility
+Focus outlines use a consistent emerald 3px outline with `outline-offset:2px`. No separate high contrast mode is maintained; design tokens ensure baseline readability.
 
 ### Keyboard Navigation
 - All interactive elements are keyboard accessible
@@ -349,23 +341,11 @@ document.documentElement.classList.toggle('dark-mode');
 localStorage.setItem('ts:theme', 'dark');
 ```
 
-### High Contrast Mode
-Accessible via Alt+Shift+C or theme toggle:
+### Deprecated Features (Historical)
+Previously supported: high contrast mode, automated contrast scripts. Both have been removed for simplicity and performance.
 
-```javascript
-document.documentElement.classList.toggle('high-contrast');
-localStorage.setItem('ts:high-contrast', 'true');
-```
-
-### Auto-Contrast System
-`auto-contrast.js` automatically corrects contrast issues in semantic text using brand colors:
-
-```javascript
-window.autoContrast({
-  attemptBrandColors: true,
-  recordMetadata: true
-});
-```
+### Color & Contrast
+All contrast handled statically via tokens (`styles/tokens.css`). Ensure new colors meet WCAG 2.1 AA (4.5:1 normal, 3:1 large). Use manual checks (WebAIM Contrast Checker).
 
 ## Development Workflow
 
@@ -375,7 +355,7 @@ window.autoContrast({
 2. **Component Styling** → Update relevant CSS file (components, cards, gallery)
 3. **Test Accessibility** → Run dev audit overlay (Alt+Shift+A) or PowerShell script
 4. **Mobile Responsive** → Test on mobile, tablet, desktop with Chrome DevTools
-5. **High Contrast** → Toggle high contrast mode (Alt+Shift+C) and verify visibility
+5. **Contrast Review** → Manually verify new token colors meet ratios
 6. **Animations** → Test with `prefers-reduced-motion: reduce` enabled
 
 ### Adding New Components
@@ -452,8 +432,8 @@ assets/
 │   └── tokens.css               — Design tokens (SINGLE SOURCE OF TRUTH)
 └── js/
     ├── main.js                  — Navigation, theme toggle
-    ├── auto-contrast.js         — Brand-aware contrast correction
-    ├── contrast.js              — Mix-based contrast precision
+    ├── auto-contrast.js         — (deprecated, retained as stub)
+    ├── contrast.js              — (deprecated, retained as stub)
     └── dev-overlay.js           — Dev audit panel
 ```
 

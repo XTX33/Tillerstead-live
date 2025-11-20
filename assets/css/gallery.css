@@ -441,14 +441,4 @@
   outline: 3px solid var(--color-primary);
 }
 
-@media (prefers-contrast: high) {
-  .photo-grid,
-  .trend-card,
-  .doc-item {
-    border-width: 2px;
-  }
-
-  .trend-card {
-    border-width: 2px;
-  }
-}
+/* High contrast gallery adjustments removed */

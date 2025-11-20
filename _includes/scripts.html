@@ -12,15 +12,7 @@
   IMPORTANT: Each script loaded only ONCE to prevent conflicts.
 {%- endcomment -%}
 
-<!-- Brand auto contrast correction (runs first so main.js theme toggle can call it) -->
-<script defer
-  src="{{ '/assets/js/auto-contrast.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
-  crossorigin="anonymous"></script>
-
-<!-- Dynamic contrast adjustments (WCAG color ratios via mix system) -->
-<script defer
-  src="{{ '/assets/js/contrast.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
-  crossorigin="anonymous"></script>
+<!-- Contrast scripts removed: auto-contrast.js & contrast.js deprecated -->
 
 <!-- Main site behaviors (navigation, theme, form handling) -->
 <script defer

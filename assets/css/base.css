@@ -372,30 +372,9 @@ select:focus-visible {
    High Contrast Mode Support
    ============================================ */
 
-@media (prefers-contrast: high) {
-  :root {
-    --ts-border: rgba(255, 255, 255, 0.5);
-    --ts-border-strong: rgba(255, 255, 255, 0.8);
-  }
-
-  a {
-    text-decoration: underline;
-  }
-
-  .btn,
-  button {
-    border: 2px solid currentColor;
-  }
-}
 
 /* ============================================
    Reduced Transparency for Better Readability
    ============================================ */
 
-@media (prefers-contrast: more) {
-  :root {
-    --ts-surface-elevated: #1a2942;
-    --ts-text-muted: #f0f4f8;
-    --ts-text-subtle: #e2e8f0;
-  }
-}
+/* High contrast media queries removed (feature deprecated) */
