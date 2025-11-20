@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 260 300"
+     role="img"
+     aria-labelledby="ts-logo-title ts-logo-desc">
+  <title id="ts-logo-title">Tillerstead LLC</title>
+  <desc id="ts-logo-desc">
+    Stacked logo with tile T mark above the Tillerstead wordmark and license text.
+  </desc>
+
+  <style>
+    .ts-tile { fill: #0b162d; }
+    .ts-grout { stroke: #f1c46a; }
+    .ts-text-main { fill: #2ce6b3; }
+    .ts-text-sub  { fill: #2ce6b3; opacity: 0.9; }
+  </style>
+
+  <!-- CENTERED TILE MARK -->
+  <g transform="translate(65,20)" class="ts-grout" stroke-width="6" stroke-linejoin="miter">
+    <rect x="0"  y="0"  width="36" height="36" class="ts-tile" />
+    <rect x="44" y="0"  width="36" height="36" class="ts-tile" />
+    <rect x="88" y="0"  width="36" height="36" class="ts-tile" />
+
+    <rect x="44" y="44" width="36" height="36" class="ts-tile" />
+    <rect x="44" y="88" width="36" height="36" class="ts-tile" />
+  </g>
+
+  <!-- TEXT (centered) -->
+  <text x="130" y="190"
+        text-anchor="middle"
+        class="ts-text-main"
+        font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="32"
+        font-weight="700">
+    TILLERSTEAD
+  </text>
+
+  <text x="130" y="220"
+        text-anchor="middle"
+        class="ts-text-sub"
+        font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="14"
+        font-weight="500">
+    Tile • Remodeling • Property Maintenance
+  </text>
+
+  <text x="130" y="244"
+        text-anchor="middle"
+        class="ts-text-sub"
+        font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="12"
+        font-weight="500">
+    NJ Licensed HIC #13VH10808800
+  </text>
+</svg>
