@@ -1,19 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 240" role="img" aria-labelledby="ts-logo-title ts-logo-desc">
   <title id="ts-logo-title">Tillerstead LLC</title>
   <desc id="ts-logo-desc">Full logo with tile T mark, tagline and New Jersey HIC license number.</desc>
-  <!-- Optimized: single token-driven style block -->
   <style>
-    .t-mark{stroke:var(--color-accent,#8b6f47);stroke-width:6;stroke-linejoin:miter;fill:var(--color-dark-primary,#1a1a1a)}
+    .t-mark{fill:var(--color-dark-primary,#1a1a1a);stroke:var(--color-accent,#8b6f47);stroke-width:6;stroke-linejoin:miter}
     .word-main{fill:var(--color-primary,#00a86b);font:700 46px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.5px}
     .word-sub{fill:var(--color-primary,#00a86b);font:500 18px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;opacity:.9}
   </style>
-  <g class="t-mark" transform="translate(20,26)">
-    <rect x="0" y="0" width="40" height="40"/>
-    <rect x="50" y="0" width="40" height="40"/>
-    <rect x="100" y="0" width="40" height="40"/>
-    <rect x="50" y="50" width="40" height="40"/>
-    <rect x="50" y="100" width="40" height="40"/>
-  </g>
+  <path class="t-mark" transform="translate(20 26)" d="M0 0h40v40H0zM50 0h40v40H50zM100 0h40v40h-40zM50 50h40v40h-40zM50 100h40v40h-40z"/>
   <text x="210" y="82" class="word-main">TILLERSTEAD</text>
   <text x="210" y="122" class="word-sub">Tile • Remodeling • Property Maintenance</text>
   <text x="210" y="150" class="word-sub" font-size="16">NJ Licensed HIC #13VH10808800</text>
