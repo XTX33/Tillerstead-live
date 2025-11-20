@@ -44,35 +44,5 @@ body {
 }
 
 /* Adjust site header position when banner is present */
-.site-header {
+/* Deprecated: construction banner removed Nov 2025. Intentionally left blank. */
   top: 2.5rem; /* Position below the banner */
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .construction-banner-text {
-    font-size: 0.8125rem;
-  }
-  
-  .construction-banner-inner {
-    padding: 0.4rem 0.75rem;
-  }
-  
-  body {
-    padding-top: 2.25rem;
-  }
-  
-  .site-header {
-    top: 2.25rem;
-  }
-}
-
-/* Light mode adjustments */
-html.light .construction-banner {
-  background: linear-gradient(135deg, var(--color-accent) 0%, #f0d080 100%);
-  border-bottom-color: rgba(0, 0, 0, 0.15);
-}
-
-html.light .construction-banner-text {
-  color: #0a1628;
-}
