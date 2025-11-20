@@ -46,19 +46,24 @@
 
       {% if page.is_home %}
         <aside class="hero__panel hero__panel--brand" aria-label="Tillerstead brand promise">
-          <p class="hero__panel-eyebrow">Owner-led tile &amp; remodeling</p>
-          <div class="hero__logo-wrap" aria-hidden="true">
-            <svg class="hero__logo" viewBox="0 0 660 240" role="presentation">
-              <use href="#logo-full" />
-            </svg>
+          <div class="hero__brand-row">
+            <div class="hero__brand-mark" aria-hidden="true">
+              <svg class="hero__logo hero__logo--mark" viewBox="0 0 160 160" role="presentation">
+                <use href="#logo-mark" />
+              </svg>
+            </div>
+            <div class="hero__brand-text">
+              <p class="hero__panel-eyebrow">Owner-led tile &amp; remodeling</p>
+              <p class="hero__brand-heading">Emerald tile work with golden grout lines.</p>
+            </div>
           </div>
           <p class="hero__panel-copy">
-            Golden grout lines, waterproof assemblies, and documented scopes that keep every project calm and predictable.
+            Waterproof assemblies, photo-documented scopes, and tidy job sites from prep through punch list.
           </p>
-          <ul class="hero__badge-list">
-            <li>Licensed &amp; insured NJ contractor</li>
-            <li>Certified waterproof tile builds</li>
-            <li>Daily site photos &amp; clear change orders</li>
+          <ul class="hero__badge-list hero__badge-list--grid">
+            <li>Licensed &amp; insured in New Jersey</li>
+            <li>Certified waterproof tile systems</li>
+            <li>Daily site photos &amp; written change orders</li>
           </ul>
         </aside>
       {% endif %}
