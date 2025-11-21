@@ -178,12 +178,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  background: linear-gradient(180deg, rgba(10, 18, 36, 0.96), rgba(10, 18, 36, 0.85));
+  background: linear-gradient(180deg, rgba(13, 59, 44, 0.12), rgba(201, 154, 63, 0.12));
 }
 
 .plan-card--featured {
-  border-color: rgba(26, 200, 122, 0.45);
-  box-shadow: 0 24px 60px rgba(26, 200, 122, 0.25);
+  border-color: rgba(13, 59, 44, 0.35);
+  box-shadow: 0 24px 60px rgba(13, 59, 44, 0.22);
 }
 
 .plan-head {
@@ -231,7 +231,7 @@
   height: 0.55rem;
   border-radius: 999px;
   background: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(26, 200, 122, 0.15);
+  box-shadow: 0 0 0 4px rgba(13, 59, 44, 0.2);
 }
 
 .plan-footnote {
@@ -279,7 +279,7 @@
 
 .why-item {
   @extend %card-shell;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.75));
+  background: linear-gradient(180deg, rgba(13, 59, 44, 0.14), rgba(13, 59, 44, 0.09));
 }
 
 .scope-card {
@@ -316,8 +316,8 @@
 
 .process-step {
   @extend %card-shell;
-  background: rgba(10, 18, 36, 0.85);
-  color: var(--color-surface-elevated);
+  background: linear-gradient(180deg, rgba(13, 59, 44, 0.12), rgba(13, 59, 44, 0.06));
+  color: var(--color-text);
 }
 
 .reviews-grid {
@@ -378,7 +378,7 @@
 
 .plan-card-compact {
   @extend %card-shell;
-  background: rgba(10, 18, 36, 0.92);
+  background: linear-gradient(180deg, rgba(13, 59, 44, 0.12), rgba(13, 59, 44, 0.06));
 }
 
 .plan-card-compact ul {
@@ -387,7 +387,7 @@
   margin: 0;
   display: grid;
   gap: 0.35rem;
-  color: var(--color-surface-elevated);
+  color: var(--color-text);
 }
 
 .plans-how-it-works,
@@ -395,9 +395,9 @@
 .plans-cta,
 .services-cta {
   @extend %card-shell;
-  background: rgba(15, 23, 42, 0.9);
+  background: linear-gradient(180deg, rgba(13, 59, 44, 0.12), rgba(13, 59, 44, 0.06));
   gap: var(--space-3);
-  color: var(--color-surface-elevated);
+  color: var(--color-text);
 }
 
 .plans-note {
@@ -423,7 +423,7 @@
 .about-card,
 .about-cta {
   @extend %card-shell;
-  background: rgba(10, 18, 36, 0.95);
+  background: linear-gradient(180deg, rgba(13, 59, 44, 0.12), rgba(13, 59, 44, 0.08));
 }
 
 .about-cta {
