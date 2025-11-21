@@ -116,7 +116,7 @@
   /* Updated to light theme emerald/brass accents instead of navy */
   background: linear-gradient(135deg,
     var(--color-primary-soft) 0%,
-    rgba(0,168,107,0.18) 35%,
+    rgba(13,59,44,0.18) 35%,
     var(--color-accent-soft) 100%);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
@@ -176,7 +176,7 @@
   padding: clamp(1.75rem, 3vw, 2.4rem);
   border-radius: var(--radius-xl);
   border: 1px solid rgba(16, 35, 61, 0.14);
-  background: linear-gradient(145deg, var(--color-surface) 0%, rgba(0, 168, 107, 0.06) 100%);
+  background: linear-gradient(145deg, var(--color-surface) 0%, rgba(13, 59, 44, 0.06) 100%);
   box-shadow: var(--shadow-soft);
   display: grid;
   gap: var(--space-3);
@@ -188,8 +188,8 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 20% 20%, rgba(0, 168, 107, 0.08), transparent 35%),
-              radial-gradient(circle at 80% 0%, rgba(139, 111, 71, 0.07), transparent 30%);
+  background: radial-gradient(circle at 20% 20%, rgba(13, 59, 44, 0.08), transparent 35%),
+              radial-gradient(circle at 80% 0%, rgba(201, 154, 63, 0.07), transparent 30%);
   opacity: 0.9;
 }
 
@@ -197,7 +197,7 @@
   .service-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lift);
-    border-color: rgba(0, 168, 107, 0.4);
+    border-color: rgba(13, 59, 44, 0.32);
   }
 }
 
@@ -359,7 +359,7 @@
 .plan-card--accent {
   border-color: var(--color-primary);
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-strong) 100%);
-  box-shadow: 0 24px 48px rgba(0,168,107,0.28);
+  box-shadow: 0 24px 48px rgba(13,59,44,0.22);
   color: #ffffff;
 }
 
@@ -375,7 +375,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .plan-card--accent:hover {
     border-color: var(--color-primary-strong);
-    box-shadow: 0 30px 64px rgba(0,168,107,0.34);
+    box-shadow: 0 30px 64px rgba(13,59,44,0.28);
   }
 }
 

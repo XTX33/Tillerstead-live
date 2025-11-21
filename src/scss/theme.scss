@@ -80,10 +80,6 @@
 
 /* Color scheme preference */
 :root {
-  color-scheme: dark;
-}
-
-html.light {
   color-scheme: light;
 }
 
@@ -102,7 +98,7 @@ html.light {
 }
 
 .ts-surface {
-  background: var(--color-surface);
+  background: var(--gradient-surface);
 }
 
 /* Main content area */

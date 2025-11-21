@@ -10,52 +10,56 @@
      Dark Accents: Emerald bright + Brass/Black depth
      =========================== */
   
-  /* Brand Colors - Vibrant Emerald on Parchment */
-  --color-primary: #0bbf84;           /* Vibrant emerald - energetic with crisp contrast */
-  --color-primary-strong: #0a9d6c;    /* Deep emerald for hover/active depth */
-  --color-primary-soft: rgba(11, 191, 132, 0.14);
-  --color-accent: #f4a740;            /* Radiant brass-gold for premium cues */
-  --color-accent-soft: rgba(244, 167, 64, 0.18);
-  --color-khaki: #e7eefc;             /* Airy parchment with a cool tint */
+  /* Brand Colors - Evergreen + Brass on Parchment */
+  --color-primary: #0d3b2c;           /* Evergreen base */
+  --color-primary-strong: #0a2c21;    /* Deeper evergreen for hover/active */
+  --color-primary-soft: rgba(13, 59, 44, 0.22);
+  --color-accent: #c99a3f;            /* Brass/gold accent */
+  --color-accent-soft: rgba(201, 154, 63, 0.28);
+  --color-khaki: #f1e7d4;             /* Warm parchment */
   
-  /* Primary Background - Parchment/Khaki Light Theme */
-  --color-bg: #f4f7ff;                /* Cool, bright canvas for max readability */
-  --color-surface: #ffffff;           /* Pure white for hero + cards */
-  --color-surface-elevated: #f0f4ff;  /* Feather-light elevation tone */
-  --color-surface-muted: #e5edff;     /* Soft periwinkle section wash */
-  --color-surface-highlight: #d8e6ff; /* Highlight tone for ribbons */
+  /* Primary Background - Parchment with depth overlays */
+  --color-bg: #f4efe4;                /* Warm parchment canvas */
+  --color-surface: #fdfbf7;           /* Light surface for readability */
+  --color-surface-elevated: #f3ebdc;  /* Elevated panels */
+  --color-surface-muted: #e9dec9;     /* Section wash */
+  --color-surface-highlight: #e2d5be; /* Highlight tone */
   
-  /* Dark Accent Layer - Black/Navy for Structure and Depth */
-  --color-dark-primary: #1a1a1a;      /* Near-black for strong text/borders */
-  --color-dark-secondary: #2d2d2d;    /* Dark gray for secondary elements */
+  /* Dark Accent Layer - evergreen anchors */
+  --color-dark-primary: #152016;
+  --color-dark-secondary: #1f291d;
   
-  /* Text Colors - Dark text on light background (superior contrast) */
-  --color-heading: #0b1528;           /* Ink-dark for hero headlines */
-  --color-text: #10233d;              /* Deep navy for strong contrast */
-  --color-text-muted: #112c4d;        /* Keep muted text saturated */
-  --color-text-subtle: #1c3c63;       /* Subtle tone that still pops */
+  /* Text Colors - strong contrast on parchment */
+  --color-heading: #171f14;
+  --color-text: #2a3226;
+  --color-text-muted: #3d4637;
+  --color-text-subtle: #58614f;
 
-  /* Border Colors - Subtle on parchment */
-  --color-border: rgba(16, 35, 61, 0.12);
-  --color-border-strong: rgba(16, 35, 61, 0.18);
-  --color-divider: rgba(16, 35, 61, 0.08);
+  /* Border Colors - subtle brass/evergreen mix */
+  --color-border: rgba(23, 31, 20, 0.14);
+  --color-border-strong: rgba(23, 31, 20, 0.22);
+  --color-divider: rgba(23, 31, 20, 0.18);
 
   /* ===========================
      Gradient Definitions (Refactored)
      =========================== */
   
-  /* Primary brand gradient - Emerald on light backgrounds */
-  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-strong) 100%);
-  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, #f77f20 100%);
+  /* Primary brand gradient - Evergreen depth */
+  --gradient-primary: linear-gradient(135deg, #0f4633 0%, #0a2f23 100%);
+  --gradient-accent: linear-gradient(135deg, #c99a3f 0%, #d7b257 100%);
   
-  /* Surface gradients - subtle */
-  --gradient-surface: var(--color-bg);
-  --gradient-surface-alt: var(--color-surface-muted);
-  --gradient-section: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface-muted) 100%);
+  /* Surface gradients - subtle sacred depth */
+  --gradient-surface: radial-gradient(circle at 18% 20%, rgba(201, 154, 63, 0.08), transparent 38%),
+                      radial-gradient(circle at 82% 8%, rgba(13, 59, 44, 0.08), transparent 40%),
+                      #f4efe4;
+  --gradient-surface-alt: radial-gradient(circle at 12% 40%, rgba(13, 59, 44, 0.06), transparent 35%),
+                          radial-gradient(circle at 88% 70%, rgba(201, 154, 63, 0.06), transparent 45%),
+                          #f3ebdc;
+  --gradient-section: linear-gradient(180deg, #f4efe4 0%, #e9dec9 100%);
   
   /* Radial accents - minimal */
-  --gradient-radial-primary: radial-gradient(circle at top right, rgba(11, 191, 132, 0.12), transparent 52%);
-  --gradient-radial-accent: radial-gradient(circle at bottom left, rgba(244, 167, 64, 0.12), transparent 52%);
+  --gradient-radial-primary: radial-gradient(circle at top right, rgba(13, 59, 44, 0.12), transparent 52%);
+  --gradient-radial-accent: radial-gradient(circle at bottom left, rgba(201, 154, 63, 0.12), transparent 52%);
 
   /* ===========================
      Background Pattern Assets
@@ -153,16 +157,16 @@
   --shell-width: 1140px;
   --section-padding-y: clamp(3rem, 6vw, 5rem);
   --section-gap: clamp(1.5rem, 3vw, 2.5rem);
-  --focus-ring: 0 0 0 3px rgba(34, 197, 94, 0.45);
+  --focus-ring: 0 0 0 3px rgba(13, 59, 44, 0.35);
 
   /* ===========================
      Component-Specific Aliases
      =========================== */
   /* Header/Nav backgrounds & borders for sitewide consistency */
-  --header-bg: rgba(255, 250, 245, 0.95); /* parchment with slight translucency */
-  --header-border: rgba(0, 0, 0, 0.08);
+  --header-bg: rgba(244, 239, 228, 0.92); /* translucent parchment */
+  --header-border: rgba(23, 31, 20, 0.16);
   --nav-bg: var(--color-surface-elevated);
-  --nav-border: rgba(0, 0, 0, 0.08);
+  --nav-border: rgba(23, 31, 20, 0.14);
 }
 
 /* ===========================
@@ -171,22 +175,22 @@
 
 html.light {
   color-scheme: light;
-  --color-bg: #f4f7ff;
-  --color-surface: #ffffff;
-  --color-surface-elevated: #f0f4ff;
-  --color-surface-muted: #e5edff;
-  --color-surface-highlight: #d8e6ff;
-  --color-heading: #0b1528;
-   --color-text: #10233d;
-   --color-text-muted: #112c4d; /* unify for contrast */
-   --color-text-subtle: #1c3c63; /* retain gentle hierarchy */
-  --color-border: rgba(16, 35, 61, 0.12);
-  --color-border-strong: rgba(16, 35, 61, 0.18);
-  --color-divider: rgba(16, 35, 61, 0.08);
-  --shadow-soft: 0 8px 24px rgba(16, 35, 61, 0.08);
-  --shadow-lift: 0 16px 40px rgba(16, 35, 61, 0.12);
-  --shadow-sharp: 0 20px 48px rgba(16, 35, 61, 0.16);
-  --focus-ring: 0 0 0 3px rgba(11, 191, 132, 0.32);
+  --color-bg: #f4efe4;
+  --color-surface: #fdfbf7;
+  --color-surface-elevated: #f3ebdc;
+  --color-surface-muted: #e9dec9;
+  --color-surface-highlight: #e2d5be;
+  --color-heading: #171f14;
+  --color-text: #2a3226;
+  --color-text-muted: #3d4637; /* higher contrast */
+  --color-text-subtle: #58614f; /* retain gentle hierarchy */
+  --color-border: rgba(23, 31, 20, 0.14);
+  --color-border-strong: rgba(23, 31, 20, 0.22);
+  --color-divider: rgba(23, 31, 20, 0.18);
+  --shadow-soft: 0 8px 24px rgba(23, 31, 20, 0.08);
+  --shadow-lift: 0 16px 40px rgba(23, 31, 20, 0.12);
+  --shadow-sharp: 0 20px 48px rgba(23, 31, 20, 0.16);
+  --focus-ring: 0 0 0 3px rgba(13, 59, 44, 0.32);
   
   /* Background pattern - light mode variant */
   --bg-pattern-opacity: 0.08;

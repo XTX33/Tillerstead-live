@@ -1,12 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 240" role="img" aria-labelledby="ts-logo-title ts-logo-desc">
   <title id="ts-logo-title">Tillerstead LLC</title>
-  <desc id="ts-logo-desc">Full horizontal logo with tile T mark, tagline, and New Jersey HIC license number.</desc>
+  <desc id="ts-logo-desc">Full horizontal logo with evergreen tile T, brass grout lines, and wordmark with services.</desc>
   <style>
-    .t-mark{fill:#0d3b2c;stroke:#c99a3f;stroke-width:7;stroke-linejoin:miter;stroke-linecap:square}
-    .word-main{fill:#0d3b2c;font:700 46px 'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:1.4px}
-    .word-sub{fill:#0d3b2c;font:600 18px 'Montserrat','Helvetica Neue',Arial,sans-serif;opacity:.9}
+    .tile{fill:#0d3b2c;stroke:#c99a3f;stroke-linejoin:miter;stroke-linecap:square;stroke-width:10}
+    .word-main{fill:#0d3b2c;font:800 46px 'Inter','Manrope',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:1.4px}
+    .word-sub{fill:#0d3b2c;font:600 18px 'Inter','Manrope',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;opacity:.92}
   </style>
-  <path class="t-mark" transform="translate(20 26)" d="M0 0h40v40H0zM50 0h40v40H50zM100 0h40v40h-40zM50 50h40v40h-40zM50 100h40v40h-40z"/>
+  <g transform="translate(20 22)">
+    <rect class="tile" x="0" y="0" width="42" height="42" rx="3"/>
+    <rect class="tile" x="52" y="0" width="42" height="42" rx="3"/>
+    <rect class="tile" x="104" y="0" width="42" height="42" rx="3"/>
+    <rect class="tile" x="52" y="52" width="42" height="42" rx="3"/>
+    <rect class="tile" x="52" y="104" width="42" height="42" rx="3"/>
+  </g>
   <text x="210" y="82" class="word-main">TILLERSTEAD</text>
   <text x="210" y="122" class="word-sub">Tile - Remodeling - Property Maintenance</text>
   <text x="210" y="150" class="word-sub" font-size="16">NJ Licensed HIC #13VH10808800</text>

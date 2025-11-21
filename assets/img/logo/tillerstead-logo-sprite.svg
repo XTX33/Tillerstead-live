@@ -1,4 +1,3 @@
-<!-- Inline SVG Sprite: Include once near top of <body> to allow #id <use> references without external request -->
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
   <defs>
     <style>
@@ -12,8 +11,6 @@
       .mono-stroke{stroke:currentColor;stroke-linejoin:miter;stroke-linecap:square}
     </style>
   </defs>
-
-  <!-- Tile Mark -->
   <symbol id="logo-mark" viewBox="0 0 180 180">
     <g transform="translate(22 22)">
       <rect class="tile mark-thick" x="0" y="0" width="36" height="36" rx="3"/>
@@ -23,8 +20,6 @@
       <rect class="tile mark-thick" x="44" y="88" width="36" height="36" rx="3"/>
     </g>
   </symbol>
-
-  <!-- Tile Mark Monochrome -->
   <symbol id="logo-mark-mono" viewBox="0 0 180 180">
     <g transform="translate(22 22)">
       <rect class="mono-fill mono-stroke mark-thick" x="0" y="0" width="36" height="36" rx="3"/>
@@ -34,8 +29,6 @@
       <rect class="mono-fill mono-stroke mark-thick" x="44" y="88" width="36" height="36" rx="3"/>
     </g>
   </symbol>
-
-  <!-- Full Horizontal Logo -->
   <symbol id="logo-full" viewBox="0 0 660 240">
     <g transform="translate(20 22)">
       <rect class="tile mark-std" x="0" y="0" width="42" height="42" rx="3"/>
@@ -48,8 +41,6 @@
     <text x="210" y="122" class="word-sub">Tile - Remodeling - Property Maintenance</text>
     <text x="210" y="150" class="word-sub word-sub-small">NJ Licensed HIC #13VH10808800</text>
   </symbol>
-
-  <!-- Full Horizontal Logo Monochrome -->
   <symbol id="logo-full-mono" viewBox="0 0 660 240">
     <g transform="translate(20 22)">
       <rect class="mono-fill mono-stroke mark-std" x="0" y="0" width="42" height="42" rx="3"/>
@@ -62,8 +53,6 @@
     <text x="210" y="122" class="mono-fill" font-size="18" font-weight="600" font-family="Inter,Manrope,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" opacity=".92" letter-spacing=".2">Tile - Remodeling - Property Maintenance</text>
     <text x="210" y="150" class="mono-fill" font-size="16" font-weight="600" font-family="Inter,Manrope,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" opacity=".92" letter-spacing=".2">NJ Licensed HIC #13VH10808800</text>
   </symbol>
-
-  <!-- Stacked Logo -->
   <symbol id="logo-stacked" viewBox="-12 -12 284 332">
     <g transform="translate(64 16)">
       <rect class="tile mark-std" x="0" y="0" width="36" height="36" rx="3"/>
@@ -76,8 +65,6 @@
     <text x="130" y="220" class="word-sub" text-anchor="middle" font-size="14">Tile - Remodeling - Property Maintenance</text>
     <text x="130" y="244" class="word-sub" text-anchor="middle" font-size="12">NJ Licensed HIC #13VH10808800</text>
   </symbol>
-
-  <!-- Stacked Logo Monochrome -->
   <symbol id="logo-stacked-mono" viewBox="-12 -12 284 332">
     <g transform="translate(64 16)">
       <rect class="mono-fill mono-stroke mark-std" x="0" y="0" width="36" height="36" rx="3"/>
