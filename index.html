@@ -31,7 +31,7 @@ hero_bg_pattern: "sacred-tile"
       <div class="hero__logo" aria-label="Tillerstead LLC logo" style="border-radius: 1.5rem; box-shadow: var(--shadow-soft); background: var(--gradient-primary);">
         {% include logo-hero.html %}
       </div>
-      <p class="eyebrow text-accent">Licensed NJ Home Improvement Contractor</p>
+      <p class="eyebrow text-primary" style="color: var(--color-primary);">Licensed NJ Home Improvement Contractor</p>
       <h1 id="home-hero-title" class="heading-1 text-primary" style="text-shadow: 0 2px 8px rgba(26,200,122,0.12);">Precision Tile, Remodeling & Property Care in South Jersey</h1>
       <p class="lead text-muted">
         Tillerstead LLC delivers waterproof tile assemblies, organized remodels, and proactive maintenance for homes, rentals, and businesses in Atlantic, Ocean, and Cape May Counties. Every project is documented, transparent, and built to earn your trust.
@@ -176,18 +176,18 @@ hero_bg_pattern: "sacred-tile"
   </div>
 </section>
 
-<section class="section section--highlight" aria-labelledby="assurance-title" data-animate="reveal">
-  <div class="container assurance">
-    <div>
-      <p class="eyebrow">Owner-operated accountability</p>
-      <h2 id="assurance-title">Direct communication with the craftsman on every project</h2>
-      <p>
+<section class="section section--highlight" aria-labelledby="assurance-title" data-animate="reveal" style="border-radius: 2rem; box-shadow: var(--shadow-soft);">
+  <div class="container assurance" style="display: flex; justify-content: center;">
+    <div style="background: var(--gradient-surface-alt); border-radius: 1.5rem; box-shadow: var(--shadow-soft); padding: 2rem; text-align: center;">
+      <p class="eyebrow text-primary" style="color: var(--color-primary);">Owner-operated accountability</p>
+      <h2 id="assurance-title" class="heading-2 text-primary">Direct communication with the craftsman on every project</h2>
+      <p class="text-muted">
         No project managers, no middlemen—just transparent collaboration from consultation through final walkthrough. You get responsive answers, meticulous documentation, and the peace of mind that comes from working with a licensed professional who stands behind every detail. All work is performed and overseen by the owner for maximum accountability.
       </p>
-      <ul class="assurance__list">
-        <li>Documented scopes with waterproofing specifications & change-order terms</li>
-        <li>Daily progress photos & maintained job-site cleanliness</li>
-        <li>Licensed NJ HIC #13VH10808800, fully insured</li>
+      <ul class="assurance__list" style="background: var(--gradient-section); border-radius: 1.25rem; box-shadow: var(--shadow-soft); padding: 1rem 2rem;">
+        <li><span class="text-accent">Documented scopes</span> with waterproofing specifications & change-order terms</li>
+        <li><span class="text-accent">Daily progress photos</span> & maintained job-site cleanliness</li>
+        <li><span class="text-accent">Licensed NJ HIC #13VH10808800</span>, fully insured</li>
       </ul>
       <div class="hero__actions">
         <a class="btn btn--primary" href="{{ '/reviews/' | relative_url }}">Read client reviews</a>
