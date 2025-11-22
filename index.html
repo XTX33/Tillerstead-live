@@ -63,19 +63,20 @@ hero_bg_pattern: "sacred-tile"
             <a class="btn btn--ghost" href="{{ '/contact/' | relative_url }}">Request a quote</a>
           </div>
         </div>
-        <div class="gallery-strip__grid">
+        <div class="gallery-strip__grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; border-radius: 1.25rem; background: var(--gradient-section); box-shadow: var(--shadow-soft);">
           {% assign preview_items = gallery_strip | slice: 0, 4 %}
           {% for item in preview_items %}
-            <figure class="gallery-strip__item">
+            <figure class="gallery-strip__item" style="border-radius: 1rem; box-shadow: var(--shadow-soft); background: var(--gradient-surface-alt);">
               <img src="{{ item.file | relative_url }}"
                    alt="{{ item.alt | default: item.title | escape }} in {{ item.location | default: 'South Jersey' }}"
                    loading="lazy"
                    decoding="async"
                    width="400"
-                   height="300">
+                   height="300"
+                   style="border-radius: 0.75rem; box-shadow: var(--shadow-sharp);">
               <figcaption>
-                {% if item.title %}<strong>{{ item.title }}</strong>{% endif %}
-                {% if item.location %}<span>&bull; {{ item.location }}</span>{% endif %}
+                {% if item.title %}<strong class="text-primary">{{ item.title }}</strong>{% endif %}
+                {% if item.location %}<span class="text-accent">&bull; {{ item.location }}</span>{% endif %}
               </figcaption>
             </figure>
           {% endfor %}
