@@ -11,33 +11,44 @@ hero_summary: >
   Owner-operated tile installation, interior remodeling, and property maintenance that pairs coastal-grade materials with organized scopes, written change orders, and fast response for Atlantic, Ocean, and Cape May Counties.
 ---
 
-{% include ts-hero.html
-  eyebrow=page.hero_eyebrow
-  title=page.hero_title
-  summary=page.hero_summary %}
 
-{% include ts-services.html
-  summary="Tile assemblies, organized remodeling, and proactive property maintenance plans built for shore climates and managed directly by the owner." %}
+<div class="animate-in">
+  {% include ts-hero.html
+    eyebrow=page.hero_eyebrow
+    title=page.hero_title
+    summary=page.hero_summary %}
+</div>
 
-{% include ts-plans.html
-  summary="Choose a recurring maintenance rhythm with photo documentation, moisture checks, and minor repairs handled before they expand into costly issues." %}
+<div class="animate-in">
+  {% include ts-services.html
+    summary="Tile assemblies, organized remodeling, and proactive property maintenance plans built for shore climates and managed directly by the owner." %}
+</div>
 
-{% include ts-process.html %}
+<div class="animate-in">
+  {% include ts-plans.html
+    summary="Choose a recurring maintenance rhythm with photo documentation, moisture checks, and minor repairs handled before they expand into costly issues." %}
+</div>
 
-{% include ts-deliver.html %}
+<div class="animate-in">{% include ts-process.html %}</div>
 
-{% include ts-assurance.html %}
+<div class="animate-in">{% include ts-deliver.html %}</div>
 
-{% include portfolio-highlights.html
-  eyebrow="Recent projects"
-  title="Waterproof tile & remodels across South Jersey"
-  summary="Documented scopes, moisture management, and detailed finishes for shore homes, rentals, and small commercial spaces." %}
+<div class="animate-in">{% include ts-assurance.html %}</div>
 
-{% include reviews-highlights.html
-  limit=3
-  title="What partners and homeowners say"
-  summary="Consistent workmanship, clean jobsites, and communication you can rely on for every scope." %}
+<div class="animate-in">
+  {% include portfolio-highlights.html
+    eyebrow="Recent projects"
+    title="Waterproof tile & remodels across South Jersey"
+    summary="Documented scopes, moisture management, and detailed finishes for shore homes, rentals, and small commercial spaces." %}
+</div>
 
-{% include blog-highlights.html %}
+<div class="animate-in">
+  {% include reviews-highlights.html
+    limit=3
+    title="What partners and homeowners say"
+    summary="Consistent workmanship, clean jobsites, and communication you can rely on for every scope." %}
+</div>
 
-{% include ts-contact.html %}
+<div class="animate-in">{% include blog-highlights.html %}</div>
+
+<div class="animate-in">{% include ts-contact.html %}</div>

@@ -1,3 +1,9 @@
+/* Card Entry Animation (inherits from theme) */
+.card.animate-in {
+  opacity: 0;
+  transform: translateY(32px);
+  animation: fadeSlideIn 0.8s cubic-bezier(.22,1,.36,1) forwards;
+}
 /* ============================================
    Tillerstead Card Component System
    Minimal, structured, depth-driven animations

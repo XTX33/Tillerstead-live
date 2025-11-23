@@ -1,3 +1,34 @@
+/* Entry Animations for Homepage Sections */
+.animate-in {
+	opacity: 0;
+	transform: translateY(32px);
+	animation: fadeSlideIn 0.8s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes fadeSlideIn {
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* Staggered animation for cards */
+.cards .card {
+	opacity: 0;
+	transform: translateY(32px);
+	animation: fadeSlideIn 0.8s cubic-bezier(.22,1,.36,1) forwards;
+	animation-delay: var(--card-delay, 0s);
+}
+.cards .card:nth-child(1) { --card-delay: 0.1s; }
+.cards .card:nth-child(2) { --card-delay: 0.25s; }
+.cards .card:nth-child(3) { --card-delay: 0.4s; }
+.cards .card:nth-child(4) { --card-delay: 0.55s; }
+.cards .card:nth-child(5) { --card-delay: 0.7s; }
+
+/* Animate buttons on entry */
+.btn.animate-in {
+	animation-delay: 0.5s;
+}
 .section {
 	margin-top: 2.5rem;
 }

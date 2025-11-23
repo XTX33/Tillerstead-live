@@ -1,3 +1,29 @@
+# Tillerstead LLC Static Site
+
+## Theme Structure & Design System
+
+### CSS Architecture
+- **theme-compiled.css**: Core theme, layout, utility classes, entry animations
+- **cards.css**: Card layouts, variants, and card-specific animations
+- **tokens.css**: Design tokens for colors, spacing, typography, shadows
+
+### Animations
+- `.animate-in`: Fade and slide-up entry for sections, cards, and buttons
+- Staggered card animation via CSS variables
+
+### Accessibility & Responsiveness
+- All colors and text meet WCAG 2.1 AA/AAA contrast
+- Mobile-first grid and spacing utilities
+- Semantic HTML5 and ARIA labels in all includes
+
+### How to Update Theme
+1. Edit `src/styles/tokens.css` for global design changes
+2. Use utility classes for layout and spacing
+3. Add `.animate-in` to elements for entry animation
+4. Test with Live Server or Five Server for instant preview
+
+---
+For more details, see `THEME_QUICKSTART.md` and `CSS_ARCHITECTURE.md`.
 # 🌿 Tillerstead.com — Static Site
 
 A clean, fast, and accessible static website for **Tillerstead LLC**
