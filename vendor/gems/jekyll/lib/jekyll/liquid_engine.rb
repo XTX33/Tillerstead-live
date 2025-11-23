@@ -31,6 +31,7 @@ module Jekyll
 
     def convert(source)
       text = strip_comments(source.to_s)
+      text = convert_case_to_if(text)
       text = convert_tags(text)
       text.gsub(OUTPUT_REGEX) do
         expression = Regexp.last_match(1)
@@ -44,6 +45,33 @@ module Jekyll
       text.gsub(/\{%-?\s*comment\s*-?%\}.*?\{%-?\s*endcomment\s*-?%\}/m, '')
     end
 
+    def convert_case_to_if(text)
+      # Convert {% case var %}{% when val1 %}...{% when val2 %}...{% else %}...{% endcase %}
+      # to {% assign __case_N = var %}{% if __case_N == val1 %}...{% elsif __case_N == val2 %}...{% else %}...{% endif %}
+      case_counter = 0
+      text.gsub(/\{%-?\s*case\s+(.+?)\s*-?%\}(.*?)\{%-?\s*endcase\s*-?%\}/m) do
+        case_var = $1.strip
+        case_body = $2
+        case_counter += 1
+        temp_var = "__case_#{case_counter}"
+        
+        # Convert when statements to if/elsif
+        first_when = true
+        converted_body = case_body.gsub(/\{%-?\s*when\s+(.+?)\s*-?%\}/) do
+          values = $1.strip.split(/\s*,\s*/).map { |v| "#{temp_var} == #{v}" }.join(' or ')
+          if first_when
+            first_when = false
+            "{% if #{values} %}"
+          else
+            "{% elsif #{values} %}"
+          end
+        end
+        
+        # Build the final converted case statement
+        "{% assign #{temp_var} = #{case_var} %}#{converted_body}{% endif %}"
+      end
+    end
+
     def convert_tags(text)
       text.gsub(TAG_REGEX) do
         body = Regexp.last_match(1).strip
@@ -53,11 +81,15 @@ module Jekyll
           "<%= render_include(#{name.dump}) %>"
         when /^if\s+(.+)$/
           "<% if liquid_condition(#{Regexp.last_match(1).dump}) %>"
+        when /^unless\s+(.+)$/
+          "<% unless liquid_condition(#{Regexp.last_match(1).dump}) %>"
         when /^elsif\s+(.+)$/
           "<% elsif liquid_condition(#{Regexp.last_match(1).dump}) %>"
         when /^else$/
           '<% else %>'
         when /^endif$/
+          '<% end %>'
+        when /^endunless$/
           '<% end %>'
         when /^for\s+(\w+)\s+in\s+(.+)$/
           variable = Regexp.last_match(1)

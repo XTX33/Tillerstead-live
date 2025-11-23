@@ -47,6 +47,39 @@ hero_bg_pattern: "sacred-tile"
 
 {% assign gallery_strip = site.data.portfolio_highlights.highlights | default: site.data.portfolio_highlights %}
 {% if gallery_strip and gallery_strip.size > 0 %}
+  <section class="gallery-strip" aria-labelledby="gallery-strip-title" data-animate="reveal">
+    <div class="container">
+      <div class="gallery-strip__inner">
+        <div class="gallery-strip__copy">
+          <p class="eyebrow">Recent projects</p>
+          <h2 id="gallery-strip-title">Quality tile work & remodels across South Jersey</h2>
+          <p>Custom tile installations, waterproof showers, and precision remodeling for homes, rentals, and businesses in Atlantic, Ocean, and Cape May Counties.</p>
+          <div class="hero__actions hero__actions--center">
+            <a class="btn btn--primary" href="{{ '/portfolio/' | relative_url }}">View full portfolio</a>
+            <a class="btn btn--ghost" href="{{ '/contact/' | relative_url }}">Request a quote</a>
+          </div>
+        </div>
+        <div class="gallery-strip__grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; border-radius: 1.25rem; background: linear-gradient(135deg, #f8f6ee 0%, #ece7d9 100%); box-shadow: var(--shadow-soft);">
+          {% assign preview_items = gallery_strip | slice: 0, 4 %}
+          {% for item in preview_items %}
+            <figure class="gallery-strip__item" style="border-radius: 1rem; box-shadow: var(--shadow-soft); background: linear-gradient(135deg, #f8f6ee 0%, #ece7d9 100%);">
+              <img src="{{ item.file | relative_url }}"
+                   alt="{{ item.alt | default: item.title | escape }} in {{ item.location | default: 'South Jersey' }}"
+                   loading="lazy"
+                   decoding="async"
+                   width="400"
+                   height="300"
+                   style="border-radius: 0.75rem; box-shadow: var(--shadow-sharp);">
+              <figcaption>
+                {% if item.title %}<strong class="text-primary">{{ item.title }}</strong>{% endif %}
+                {% if item.location %}<span class="text-accent">&bull; {{ item.location }}</span>{% endif %}
+              </figcaption>
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
 <section class="ts-gallery" aria-labelledby="ts-gallery-title">
   <div class="container">
     <header class="ts-gallery__header">
