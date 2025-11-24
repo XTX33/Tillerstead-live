@@ -48,9 +48,10 @@
             {% elsif item.match and page.url contains item.match %}
               {% assign is_current = true %}
             {% endif %}
-            <li role="presentation">
+            {% capture nav_link %}
               <a href="{{ item.url | relative_url }}" class="nav-link{% if is_current %} active{% endif %}" role="menuitem"{% if is_current %} aria-current="page"{% endif %}>{{ item.title }}</a>
-            </li>
+            {% endcapture %}
+            <li role="presentation">{{ nav_link | strip }}</li>
           {% endfor %}
       <!-- All tags are now properly paired above. No duplicate closing tags needed. -->
 
