@@ -19,30 +19,47 @@
    HOMEPAGE HERO SECTION
    ============================================ */
 
-.hero {
+.page-home .hero {
   position: relative;
-  overflow: hidden;
-  padding: clamp(2.5rem, 5vw, 4rem) 0;
-  background: #f8f6ee !important;
-  box-shadow: none;
+  overflow: visible;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  background: var(--color-bg);
+  display: flex;
+  justify-content: center;
 }
 
-.hero--center {
-  border-radius: 0;
-  background: #f8f6ee !important;
-  border: none;
-  box-shadow: none;
-  padding: clamp(2.5rem, 5vw, 4rem) 0;
+.page-home .hero .hero-surface {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  border-radius: 2rem;
+  border: 1px solid rgba(13, 59, 44, 0.08);
+  box-shadow: var(--shadow-lift);
+  background: #fff;
+  padding: clamp(2rem, 4vw, 3rem);
 }
 
-.hero--center::before,
-.hero--center::after {
-  display: none;
+.page-home .hero-inner {
+  padding: 0;
 }
 
-.hero--center > .container {
-  position: relative;
-  z-index: 1;
+.page-home .hero-main {
+  max-width: none;
+  text-align: center;
+  gap: var(--space-4);
+}
+
+.page-home .hero-lead,
+.page-home .hero-note {
+  color: #1f2b1d;
+  opacity: 0.95;
+}
+
+.page-home .hero-title {
+  color: #052f20;
+}
+
+.page-home .hero-actions {
+  justify-content: center;
 }
 
 .hero__grid {
