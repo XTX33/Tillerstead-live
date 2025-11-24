@@ -96,11 +96,6 @@ hero_kpis:
   </p>
 
   <h2>9. Contact</h2>
-  <address>
-    <strong>Tillerstead LLC</strong><br>
-    325 E. Jimmie Leeds Road, Suite 7-333<br>
-    Galloway, NJ 08205<br>
-    <a href="mailto:info@tillerstead.com">info@tillerstead.com</a> • 
-    <a href="tel:+16098628808">(609) 862-8808</a>
-  </address>
+  <p>Questions about these terms? Please reach out.</p>
+  {% include legal-contact-block.html %}
 </section>

@@ -1,0 +1,17 @@
+{% if include.sections %}
+  <div class="section-grid sitemap-grid" aria-label="Sitemap links">
+    {% for section in include.sections %}
+      <section class="ts-card" aria-labelledby="sitemap-{{ section.title | slugify }}">
+        <h3 id="sitemap-{{ section.title | slugify }}">{{ section.title }}</h3>
+        <ul class="link-list">
+          {% for link in section.links %}
+            <li>
+              <a href="{{ link.url | relative_url }}">{{ link.label }}</a>
+              {% if link.note %}<span class="link-note">{{ link.note }}</span>{% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endfor %}
+  </div>
+{% endif %}
