@@ -36,6 +36,11 @@
 {% endif %}
 
 <!-- Theme / Icons -->
+<meta name="theme-color" content="#0f8a5f">
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/img/logo/tillerstead-favicon.svg' | relative_url }}" sizes="any">
+<link rel="apple-touch-icon" href="{{ '/assets/img/logo/tillerstead-logo-mark.svg' | relative_url }}">
+<link rel="manifest" href="{{ '/manifest.webmanifest' | relative_url }}">
+<link rel="mask-icon" href="{{ '/assets/img/logo/tillerstead-logo-mark.svg' | relative_url }}" color="#0b6f4c">
 <meta name="theme-color" content="#0f766e">
 <meta name="theme-color" content="#1a2b4c">
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/img/logo/tillerstead-favicon.svg' | relative_url }}" sizes="any">
@@ -106,6 +111,24 @@
 <!-- Inline critical CSS: minimal above-the-fold (header, hero, buttons, layout) -->
 <style data-critical>
   :root { color-scheme: light; }
+  body { margin:0; font-family: var(--font-body, system-ui); background: var(--color-bg,#f6edda); color: var(--color-text,#2f2a25); }
+  .site-header { position:sticky; top:0; z-index:1000; background:color-mix(in srgb, var(--color-surface,#fffaf2) 92%, transparent); backdrop-filter:blur(12px); border-bottom:1px solid var(--color-border,rgba(15,138,95,.16)); }
+  .site-header-inner { display:flex; align-items:center; justify-content:space-between; gap:.75rem; min-height:4rem; padding:.75rem clamp(.75rem,3vw,1.5rem); }
+  .site-logo-img,
+  .site-logo-svg { width:clamp(100px,14vw,148px); height:auto; display:block; }
+  .nav-toggle { display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--color-border,rgba(15,138,95,.16)); background:transparent; color:var(--color-heading,#0c4f35); font-size:.9rem; font-weight:600; min-width:44px; min-height:44px; padding:.5rem .9rem; border-radius:999px; cursor:pointer; }
+  .nav-toggle:hover { background:var(--color-primary-soft,rgba(15,138,95,.12)); border-color:var(--color-border-strong,rgba(15,138,95,.28)); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.7rem 1.4rem; font-size:.95rem; font-weight:700; line-height:1.2; border-radius:0.75rem; text-decoration:none; background:var(--gradient-primary, linear-gradient(135deg,#0f8a5f,#0b6f4c)); color:#ffffff; border:1px solid var(--color-primary-strong,#0b6f4c); box-shadow:var(--shadow-button,0 8px 20px rgba(24,178,121,.22)); transition:box-shadow .15s,transform .15s, background .15s; min-height:44px; }
+  .btn:hover { transform:translateY(-2px); box-shadow:var(--shadow-button-hover,0 12px 28px rgba(24,178,121,.3)); background:var(--gradient-accent,linear-gradient(135deg,#18b279,#0f9663)); }
+  .btn.btn-ghost { background:var(--color-surface,#fffaf2); color:var(--color-heading,#0c4f35); box-shadow:none; border:1px solid var(--color-border,rgba(15,138,95,.16)); }
+  .btn.btn-ghost:hover { background:var(--color-primary-soft,rgba(15,138,95,.14)); border-color:var(--color-border-strong,rgba(15,138,95,.3)); color:var(--color-heading,#0c4f35); }
+  .hero-title { font-family: var(--font-heading, 'Montserrat'); font-weight:800; letter-spacing:-.02em; line-height:1.1; font-size:clamp(2.2rem,3.6vw,3.2rem); margin:0 0 1rem; color:var(--color-heading,#0c4f35); }
+  .hero-lead { font-size:1.05rem; line-height:1.65; max-width:65ch; margin:0 0 1.25rem; color:var(--color-text-muted,#4a4339); }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:.75rem; }
+  .eyebrow,.hero-eyebrow { display:inline-block; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; font-weight:700; margin:0 0 .75rem; color:var(--color-heading,#0c4f35); padding:.4rem .9rem; background:var(--color-primary-soft,rgba(15,138,95,.12)); border-left:3px solid var(--color-primary-strong,#0b6f4c); border-radius:.35rem; }
+  .hero-kpis { display:grid; gap:.75rem; margin:1.25rem 0 0; padding:0; list-style:none; }
+  .hero-kpi { padding:.9rem 1rem; border:1px solid var(--color-border,rgba(15,138,95,.16)); border-left:4px solid var(--color-accent,#18b279); border-radius:1rem; background:linear-gradient(135deg,rgba(15,138,95,.06),rgba(24,178,121,.08)); }
+  .hero-kpi-label { display:block; font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; font-weight:700; margin:0 0 .25rem; color:var(--color-heading,#0c4f35); }
   body { margin:0; font-family: var(--font-body, system-ui); background: var(--color-bg,#f4ecdc); color: var(--color-text,#1f2a24); }
   .site-header { position:sticky; top:0; z-index:1000; background:rgba(255,255,255,.95); backdrop-filter:blur(12px); border-bottom:1px solid rgba(13,75,62,.14); }
   .site-header-inner { display:flex; align-items:center; justify-content:space-between; gap:.75rem; min-height:4rem; padding:.75rem clamp(.75rem,3vw,1.5rem); }

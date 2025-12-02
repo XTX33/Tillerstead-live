@@ -172,6 +172,9 @@
   --section-gap: clamp(1.5rem, 3vw, 2.5rem);
 
   /* Component aliases */
+  --header-bg: rgba(255, 250, 242, 0.92);
+  --header-border: rgba(12, 79, 53, 0.12);
+  --nav-bg: var(--color-surface-elevated);
   --header-bg: rgba(255, 255, 255, 0.94);
   --header-border: rgba(13, 75, 62, 0.14);
   --nav-bg: var(--color-surface-elevated);
