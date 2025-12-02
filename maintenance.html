@@ -1,3 +1,7 @@
+---
+layout: null
+permalink: /maintenance.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,10 +128,10 @@
       font-weight: 400;
     }
 
-    /* Construction Icon Animation */
+    /* Maintenance Icon Animation */
     .construction-icon {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       margin: 0 auto var(--space-6);
       position: relative;
       animation: fadeInScale 1s ease 0.3s backwards;
@@ -138,15 +142,34 @@
       height: 100%;
     }
 
-    /* Animated construction cone */
-    .cone {
-      animation: bounce 2s ease-in-out infinite;
-      transform-origin: center bottom;
+    .tile-group {
+      animation: float 4s ease-in-out infinite;
+      transform-origin: center;
     }
 
-    @keyframes bounce {
+    .tile-accent {
+      animation: tileGlow 3s ease-in-out infinite;
+    }
+
+    .trowel {
+      animation: sweep 3.5s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes tileGlow {
+      0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 0px rgba(26, 200, 122, 0)); }
+      50% { opacity: 1; filter: drop-shadow(0 0 12px rgba(26, 200, 122, 0.35)); }
+    }
+
+    @keyframes sweep {
+      0% { transform: translate(8px, 12px) rotate(-6deg); }
+      50% { transform: translate(-4px, -6px) rotate(6deg); }
+      100% { transform: translate(8px, 12px) rotate(-6deg); }
     }
 
     /* Main heading */
@@ -183,7 +206,7 @@
     .description {
       font-size: 1.125rem;
       color: var(--color-text-subtle);
-      max-width: 600px;
+      max-width: 640px;
       margin: 0 auto var(--space-8);
       animation: fadeInUp 1s ease 0.7s backwards;
     }
@@ -203,9 +226,6 @@
       letter-spacing: 0.1em;
     }
 
-<div class="animate-in">{% include ts-testimonials.html %}</div>
-
-<div class="animate-in">{% include blog-highlights.html %}</div>
     .progress-bar {
       width: 100%;
       height: 8px;
@@ -237,7 +257,7 @@
 
     @keyframes progressLoad {
       0% { width: 0%; }
-      100% { width: 75%; }
+      100% { width: 78%; }
     }
 
     @keyframes shimmer {
@@ -259,6 +279,17 @@
       font-weight: 600;
       color: var(--color-text);
       margin-bottom: var(--space-4);
+    }
+
+    .license-tag {
+      display: inline-block;
+      margin-bottom: var(--space-4);
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(26, 200, 122, 0.12);
+      color: var(--color-primary);
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     .contact-info {
@@ -286,6 +317,26 @@
       width: 20px;
       height: 20px;
       fill: currentColor;
+    }
+
+    /* Service notice */
+    .service-notice {
+      margin-top: 2rem;
+      background: var(--color-surface);
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-lift);
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .service-notice strong {
+      color: var(--color-primary);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
     }
 
     /* Animations */
@@ -333,8 +384,8 @@
       }
 
       .construction-icon {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
       }
 
       .heading {
@@ -368,26 +419,28 @@
     <!-- Brand -->
     <div class="brand">
       <h1 class="logo">Tillerstead</h1>
-      <p class="tagline">Property Maintenance · Remodeling · Tile</p>
+      <p class="tagline">Tile · Property Maintenance · Remodeling</p>
     </div>
 
-    <!-- Construction Icon -->
-    <div class="construction-icon" role="img" aria-label="Under construction">
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <!-- Construction Cone -->
-        <g class="cone">
-          <path d="M60 20 L80 80 L40 80 Z" fill="#d8b25a" opacity="0.9"/>
-          <path d="M60 20 L80 80 L40 80 Z" fill="none" stroke="#1ac87a" stroke-width="2"/>
-          <!-- Stripes on cone -->
-          <rect x="42" y="50" width="36" height="5" fill="#ffffff" opacity="0.3"/>
-          <rect x="44" y="65" width="32" height="5" fill="#ffffff" opacity="0.3"/>
+    <!-- Maintenance Icon -->
+    <div class="construction-icon" role="img" aria-label="Tile installation in progress">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <lineargradient id="tileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1ac87a" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#0b1224" stop-opacity="0.9" />
+          </lineargradient>
+        </defs>
+        <g class="tile-group">
+          <rect x="34" y="38" width="30" height="30" rx="4" fill="#0b253f" stroke="#1ac87a" stroke-width="2" />
+          <rect x="74" y="38" width="30" height="30" rx="4" fill="#0b253f" stroke="#1ac87a" stroke-width="2" />
+          <rect x="34" y="78" width="30" height="30" rx="4" fill="#0b253f" stroke="#1ac87a" stroke-width="2" />
+          <rect x="74" y="78" width="30" height="30" rx="4" fill="url(#tileGradient)" class="tile-accent" stroke="#1ac87a" stroke-width="2" />
         </g>
-        <!-- Base -->
-        <rect x="35" y="80" width="50" height="8" rx="4" fill="#1ac87a"/>
-        <!-- Tool (hammer) -->
-        <g transform="translate(85, 30) rotate(45)">
-          <rect x="0" y="0" width="6" height="30" rx="2" fill="#cbd5e1"/>
-          <rect x="-3" y="-8" width="12" height="10" rx="2" fill="#e2e8f0"/>
+        <g class="trowel">
+          <polygon points="52,96 88,110 68,130" fill="#d8b25a" stroke="#0a3b2b" stroke-width="2" opacity="0.95" />
+          <rect x="82" y="60" width="10" height="46" rx="5" fill="#cbd5e1" stroke="#0a3b2b" stroke-width="2" />
+          <rect x="78" y="52" width="18" height="12" rx="6" fill="#e2e8f0" stroke="#0a3b2b" stroke-width="2" />
         </g>
       </svg>
     </div>
@@ -399,14 +452,13 @@
 
     <!-- Description -->
     <p class="description">
-      We're building something special for South Jersey property owners.
-      Our new website will showcase monthly maintenance plans, remodeling services,
-      and expert tile installation. We're still taking on projects—reach out anytime.
+      We're building something special for South Jersey property owners. Expect waterproof tile work, reliable maintenance plans,
+      and remodeling that respects your schedule and budget. We're still taking on projects—reach out anytime.
     </p>
 
     <!-- Progress Bar -->
     <div class="progress-container">
-      <div class="progress-label">Building Progress</div>
+      <div class="progress-label">Maintenance portal progress</div>
       <div class="progress-bar">
         <div class="progress-fill"></div>
       </div>
@@ -415,6 +467,7 @@
     <!-- Contact Info -->
     <div class="contact">
       <h3 class="contact-heading">Need Service Now?</h3>
+      <div class="license-tag">NJ HIC #{{ site.company.hic | default: "13VH10808800" }}</div>
       <div class="contact-info">
         <a href="tel:+16098628808" class="contact-item" aria-label="Call us at 609-862-8808">
           <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -430,28 +483,16 @@
         </a>
       </div>
     </div>
-    <div class="service-notice" style="
-  margin-top: 2rem;
-  background: var(--color-surface);
-  padding: 1.5rem 2rem;
-  border-radius: 1rem;
-  box-shadow: var(--shadow-lift);
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
-">
-  <strong style="color: var(--color-primary); font-weight: 600; display: block; margin-bottom: 0.5rem;">
-    Service Notice
-  </strong>
-  Tillerstead LLC provides property maintenance, remodeling, tile work, framing, drywall, trim, paint,
-  and general finish-contracting services. We are not yet licensed as plumbers or electricians.
-  <br><br>
-  For any <strong>water, plumbing, electrical, or power-related emergency</strong>, please contact a
-  <strong>licensed New Jersey plumber or electrician</strong> immediately.
-  <br><br>
-  Power washing and lawn-care services are <strong>not yet available</strong> and will be offered
-  once equipment and insurance are in place.
-</div>
+
+    <div class="service-notice">
+      <strong>Service Notice</strong>
+      For any <strong>water, plumbing, electrical, or power-related emergency</strong>, please contact a
+      <strong>licensed New Jersey plumber or electrician</strong> immediately.
+      <br><br>
+      Tillerstead LLC provides property maintenance, remodeling, tile work, framing, drywall, trim, paint, and general finish-contracting services. We are not yet licensed as plumbers or electricians.
+      <br><br>
+      Power washing and lawn-care services to be offered <strong>soon</strong>.
+    </div>
   </div>
 
   <!-- Structured Data for SEO -->
@@ -481,7 +522,8 @@
       "Property Maintenance",
       "Remodeling",
       "Tile Installation"
-    ]
+    ],
+    "license": "NJ HIC #{{ site.company.hic | default: '13VH10808800' }}"
   }
   </script>
 </body>

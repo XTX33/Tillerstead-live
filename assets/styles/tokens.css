@@ -44,6 +44,44 @@
                 linear-gradient(225deg, rgba(19, 179, 143, 0.06) 25%, transparent 25%),
                 linear-gradient(45deg, rgba(15, 118, 110, 0.05) 25%, transparent 25%),
                 linear-gradient(315deg, rgba(19, 179, 143, 0.06) 25%, #f4ecdc 25%);
+  --color-primary: #0f8a5f;           /* Emerald for trust and stability */
+  --color-primary-strong: #0b6f4c;    /* Darker emerald for hover/active */
+  --color-primary-soft: rgba(15, 138, 95, 0.14);
+  --color-accent: #18b279;            /* Bright emerald accent for calls to action */
+  --color-accent-strong: #0f9663;
+  --color-accent-soft: rgba(24, 178, 121, 0.18);
+  --color-bg: #f6edda;                /* Parchment canvas */
+  --color-surface: #fffaf2;           /* Base surface */
+  --color-surface-elevated: #f1e7d5;  /* Elevated surface panels */
+  --color-surface-muted: #e6ddc7;     /* Section wash */
+  --color-surface-highlight: #ded3ba; /* Subtle highlight */
+  --color-dark-primary: #0c5a3c;
+  --color-dark-secondary: #0b4b32;
+
+  /* Text Colors */
+  --color-heading: #0c4f35;
+  --color-text: #2f2a25;
+  --color-text-muted: #4a4339;
+  --color-text-subtle: #5a534a;
+
+  /* Border Colors */
+  --color-border: rgba(15, 138, 95, 0.16);
+  --color-border-strong: rgba(15, 138, 95, 0.26);
+  --color-divider: rgba(15, 138, 95, 0.18);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #0f8a5f 0%, #0b6f4c 100%);
+  --gradient-accent: linear-gradient(135deg, #18b279 0%, #0f9663 100%);
+  --gradient-surface: radial-gradient(circle at 18% 22%, rgba(24, 178, 121, 0.12), transparent 38%),
+                      radial-gradient(circle at 80% 8%, rgba(12, 79, 53, 0.12), transparent 36%),
+                      #f6edda;
+  --gradient-section: linear-gradient(180deg, #fdf7ec 0%, #ecdfc6 100%);
+
+  /* Background Pattern Assets */
+  --bg-pattern: linear-gradient(135deg, rgba(12, 79, 53, 0.06) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(24, 178, 121, 0.06) 25%, transparent 25%),
+                linear-gradient(45deg, rgba(12, 79, 53, 0.05) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(24, 178, 121, 0.06) 25%, #f6edda 25%);
   --bg-pattern-size: 32px 32px;
   --bg-pattern-opacity: 0.35;
   --hero-texture: url("/assets/img/bathroom-remodel-final.webp");
@@ -112,6 +150,12 @@
   --shadow-button: 0 8px 20px rgba(19, 179, 143, 0.22);
   --shadow-button-hover: 0 12px 28px rgba(19, 179, 143, 0.3);
   --shadow-glow: 0 0 0 6px rgba(19, 179, 143, 0.16);
+  --shadow-soft: 0 10px 30px rgba(12, 79, 53, 0.12);
+  --shadow-lift: 0 16px 44px rgba(12, 79, 53, 0.16);
+  --shadow-sharp: 0 20px 56px rgba(12, 79, 53, 0.2);
+  --shadow-button: 0 8px 20px rgba(24, 178, 121, 0.22);
+  --shadow-button-hover: 0 12px 28px rgba(24, 178, 121, 0.3);
+  --shadow-glow: 0 0 0 6px rgba(24, 178, 121, 0.16);
 
   /* ===========================
      Transitions & Focus
@@ -120,6 +164,7 @@
   --transition-med: 220ms ease;
   --transition-slow: 350ms ease;
   --focus-ring: 0 0 0 3px rgba(19, 179, 143, 0.45);
+  --focus-ring: 0 0 0 3px rgba(24, 178, 121, 0.45);
 
   /* Layout */
   --shell-width: 1140px;
@@ -131,6 +176,10 @@
   --header-border: rgba(13, 75, 62, 0.14);
   --nav-bg: var(--color-surface-elevated);
   --nav-border: rgba(13, 75, 62, 0.18);
+  --header-bg: rgba(255, 250, 242, 0.92);
+  --header-border: rgba(12, 79, 53, 0.12);
+  --nav-bg: var(--color-surface-elevated);
+  --nav-border: rgba(12, 79, 53, 0.16);
 }
 
 /* Light mode */
@@ -146,4 +195,14 @@ html.light {
   --color-text-muted: #2f3a32;
   --color-text-subtle: #475347;
   --color-border: rgba(13, 75, 62, 0.2);
+  --color-bg: #f6edda;
+  --color-surface: #fffaf2;
+  --color-surface-elevated: #f1e7d5;
+  --color-surface-muted: #e6ddc7;
+  --color-surface-highlight: #ded3ba;
+  --color-heading: #0c4f35;
+  --color-text: #2f2a25;
+  --color-text-muted: #4a4339;
+  --color-text-subtle: #5a534a;
+  --color-border: rgba(15, 138, 95, 0.16);
 }
