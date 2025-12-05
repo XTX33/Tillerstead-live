@@ -73,12 +73,15 @@
         }
 
         if (!submitted) {
-          window.location.href = fallbackHref;
           showStatus(
             statusEl,
             'We’ve opened your email app with your project details. If it did not open, please email info@tillerstead.com directly.',
             'success',
           );
+          // Brief delay to allow message to display before navigation
+          setTimeout(() => {
+            window.location.href = fallbackHref;
+          }, 500);
         }
 
         submitBtn?.removeAttribute('disabled');
