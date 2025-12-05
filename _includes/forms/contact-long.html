@@ -1,0 +1,195 @@
+<form
+  name="{{ include.form_name | default: 'contact-long' }}"
+  id="{{ include.form_id | default: 'contact-form-long' }}"
+  class="contact-form contact-form--long"
+  data-contact-form
+  data-contact-email="{{ site.company.email }}"
+  data-contact-phone="{{ site.company.phone_display }}"
+  method="post"
+  action="{{ include.action | default: page.url | relative_url }}"
+  aria-describedby="{{ include.aria_describedby | default: 'form-intro' }}"
+  aria-live="polite"
+  data-netlify="true"
+  netlify-honeypot="_trap"
+>
+  <input type="hidden" name="form-name" value="{{ include.form_name | default: 'contact-long' }}">
+
+  <p class="sr-only">
+    <label for="_trap">Do not fill this field</label>
+    <input id="_trap" name="_trap" type="text" tabindex="-1" autocomplete="off">
+  </p>
+
+  <div class="form-grid">
+    <div class="form-field">
+      <label for="{{ include.prefix }}name">
+        Full name<span class="sr-only"> (required)</span><span aria-hidden="true">*</span>
+      </label>
+      <input
+        id="{{ include.prefix }}name"
+        name="name"
+        type="text"
+        required
+        aria-required="true"
+        autocomplete="name"
+        placeholder="Your name"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="{{ include.prefix }}company">
+        Company / organization
+      </label>
+      <input
+        id="{{ include.prefix }}company"
+        name="company"
+        type="text"
+        autocomplete="organization"
+        placeholder="GC, remodeling firm, or property team"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="{{ include.prefix }}email">
+        Email<span class="sr-only"> (required)</span><span aria-hidden="true">*</span>
+      </label>
+      <input
+        id="{{ include.prefix }}email"
+        name="email"
+        type="email"
+        required
+        aria-required="true"
+        autocomplete="email"
+        placeholder="you@example.com"
+        inputmode="email"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="{{ include.prefix }}phone">
+        Phone<span class="sr-only"> (required)</span><span aria-hidden="true">*</span>
+      </label>
+      <input
+        id="{{ include.prefix }}phone"
+        name="phone"
+        type="tel"
+        required
+        aria-required="true"
+        autocomplete="tel"
+        inputmode="tel"
+        placeholder="{{ site.company.phone_display | default: '(609) 862-8808' }}"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="{{ include.prefix }}city">
+        City / area<span class="sr-only"> (required)</span><span aria-hidden="true">*</span>
+      </label>
+      <input
+        id="{{ include.prefix }}city"
+        name="city"
+        type="text"
+        required
+        aria-required="true"
+        autocomplete="address-level2"
+        placeholder="e.g., Galloway, Atlantic City, Brigantine"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="{{ include.prefix }}property-type">Property type</label>
+      <select id="{{ include.prefix }}property-type" name="property_type">
+        <option value="">Select an option</option>
+        <option>Single-family home</option>
+        <option>Rental property / landlord</option>
+        <option>Multi-unit residential</option>
+        <option>Small commercial</option>
+        <option>Condo / townhouse</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="{{ include.prefix }}project-type">Project type</label>
+      <select id="{{ include.prefix }}project-type" name="project_type">
+        <option value="">Select an option</option>
+        <option>Monthly Maintenance Plan</option>
+        <option>Kitchen or Bathroom Remodel</option>
+        <option>Tile Installation (shower, floor, backsplash)</option>
+        <option>Property Repairs &amp; Maintenance</option>
+        <option>Waterproof shower rebuild</option>
+        <option>Flooring installation</option>
+        <option>Small commercial / tenant improvement</option>
+        <option>Other / not sure yet</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="{{ include.prefix }}timeline">Ideal timeline</label>
+      <select id="{{ include.prefix }}timeline" name="timeline">
+        <option value="">Select an option</option>
+        <option>ASAP / urgent</option>
+        <option>Within 30 days</option>
+        <option>1–3 months</option>
+        <option>3–6 months</option>
+        <option>Planning for future</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="{{ include.prefix }}details">
+      Project details<span class="sr-only"> (required)</span><span aria-hidden="true">*</span>
+    </label>
+    <textarea
+      id="{{ include.prefix }}details"
+      name="details"
+      rows="6"
+      required
+      aria-required="true"
+      placeholder="Share details about your property, maintenance needs, remodeling scope, or tile project. Include address/location, property type, timeline, and any specific concerns or requirements."
+    ></textarea>
+  </div>
+
+  <div class="form-field">
+    <label for="{{ include.prefix }}photos">
+      Link to plans, photos, or bid package (optional)
+    </label>
+    <input
+      id="{{ include.prefix }}photos"
+      name="photos"
+      type="url"
+      inputmode="url"
+      placeholder="Link to Google Drive, PlanGrid, Dropbox, etc."
+    >
+  </div>
+
+  <div class="form-field">
+    <label for="{{ include.prefix }}request-type">
+      Request type<span class="sr-only"> (required)</span><span aria-hidden="true">*</span>
+    </label>
+    <select
+      id="{{ include.prefix }}request-type"
+      name="request_type"
+      required
+      aria-required="true"
+    >
+      <option value="">Select a request focus</option>
+      <option>Design &amp; Tile Consultation</option>
+      <option>Site Visit / Estimate</option>
+      <option>Monthly Property Maintenance Plan</option>
+      <option>General Contractor / Trade Partner Collaboration</option>
+      <option>Subcontracting Inquiry</option>
+      <option>Other / Not Sure Yet</option>
+    </select>
+  </div>
+
+  <p class="form-note" id="{{ include.prefix }}privacy-note">
+    Your information stays with Tillerstead. It’s used only to coordinate your scope,
+    prepare documentation, and keep you updated — never sold or shared.
+  </p>
+
+  <div class="form-status sr-only" aria-live="polite" data-form-status></div>
+
+  <button type="submit" class="btn btn-primary" aria-describedby="{{ include.prefix }}privacy-note">
+    {{ include.button_label | default: 'Submit request' }}
+  </button>
+</form>
