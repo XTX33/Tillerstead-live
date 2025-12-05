@@ -1,17 +1,37 @@
 {%- comment -%}
 Breadcrumb Navigation Component
-- Modern minimal styling with emerald accent
+- Minimal, modern styling with emerald accent
 - Schema.org BreadcrumbList for SEO
-- Hidden on homepage or when disabled
-- Accessible with proper ARIA labels and semantic markup
+- Hidden on:
+  - Home page
+  - Root-level single pages (e.g. /about/, /contact.html)
+  - When `breadcrumb: false` is set in front matter
 {%- endcomment -%}
 
 {%- assign is_home_page = page.url == "/" or page.url == "/index.html" or page.is_home == true or page.layout == "home" -%}
-{%- if is_home_page or page.breadcrumb == false -%}
-  {%- comment -%}Breadcrumbs hidden on home or when disabled{%- endcomment -%}
+
+{%- comment -%}
+  Normalize path and count non-empty segments.
+  Examples:
+  - "/"             → segment_count = 0
+  - "/index.html"   → segment_count = 0
+  - "/about/"       → segment_count = 1  (root-level page → no breadcrumbs)
+  - "/contact.html" → segment_count = 1  (root-level page → no breadcrumbs)
+  - "/pages/about/" → segment_count = 2  (nested page → show breadcrumbs)
+{%- endcomment -%}
+{%- assign path = page.url | default: '' | replace: 'index.html', '' -%}
+{%- assign segments = path | split: '/' -%}
+{%- assign segment_count = 0 -%}
+{%- for segment in segments -%}
+  {%- unless segment == '' -%}
+    {%- assign segment_count = segment_count | plus: 1 -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- assign is_root_leaf = segment_count <= 1 -%}
+
+{%- if is_home_page or is_root_leaf or page.breadcrumb == false -%}
+  {%- comment -%}Breadcrumbs hidden on home, root-level pages, or when disabled{%- endcomment -%}
 {%- else -%}
-  {%- assign path = page.url | default: '' | replace: 'index.html', '' -%}
-  {%- assign segments = path | split: '/' -%}
   {%- assign clean_segments = '' | split: '' -%}
   {%- for segment in segments -%}
     {%- unless segment == '' -%}
@@ -19,21 +39,10 @@ Breadcrumb Navigation Component
     {%- endunless -%}
   {%- endfor -%}
 
-  <style data-inline-breadcrumbs>
-    .breadcrumbs{display:flex;align-items:center;font-size:.88rem;margin:0 0 1rem;color:var(--color-text-muted,#4b5563);} 
-    .breadcrumbs-list{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;list-style:none;margin:0;padding:0;}
-    .breadcrumbs-list li{display:flex;align-items:center;gap:.35rem;}
-    .breadcrumbs-list li+li::before{content:"/";opacity:.45;}
-    .breadcrumb-link{color:inherit;text-decoration:none;padding:.15rem .45rem;border-radius:.35rem;}
-    .breadcrumb-link:hover,.breadcrumb-link:focus-visible{color:var(--color-primary,#0f766e);background:rgba(13,75,62,.08);text-decoration:none;}
-    .breadcrumb-link[aria-current="page"]{color:var(--color-primary,#0f766e);font-weight:600;}
-    @media(max-width:640px){.breadcrumbs{font-size:.8rem;}}
-  </style>
-
   <nav class="breadcrumbs" aria-label="Breadcrumb" role="navigation">
     <ol class="breadcrumbs-list"
-      itemscope
-      itemtype="https://schema.org/BreadcrumbList">
+        itemscope
+        itemtype="https://schema.org/BreadcrumbList">
 
       {%- assign position = 1 -%}
 
@@ -64,25 +73,18 @@ Breadcrumb Navigation Component
           {%- assign label = segment | replace: '-', ' ' | capitalize -%}
         {%- endif -%}
 
+        {%- assign crumb_href = current_path | append: "/" | relative_url -%}
+
         <li class="breadcrumb-item"
             itemprop="itemListElement"
             itemscope
             itemtype="https://schema.org/ListItem">
-          {% assign crumb_href = current_path | append: '/' | relative_url %}
-          {% if is_last %}
-            <a itemprop="item"
-               href="{{ crumb_href }}"
-               class="breadcrumb-link"
-               aria-current="page">
-              <span itemprop="name">{{ label }}</span>
-            </a>
-          {% else %}
-            <a itemprop="item"
-               href="{{ crumb_href }}"
-               class="breadcrumb-link">
-              <span itemprop="name">{{ label }}</span>
-            </a>
-          {% endif %}
+          <a itemprop="item"
+             href="{{ crumb_href }}"
+             class="breadcrumb-link"
+             {% if is_last %}aria-current="page"{% endif %}>
+            <span itemprop="name">{{ label }}</span>
+          </a>
           <meta itemprop="position" content="{{ position }}">
         </li>
 
