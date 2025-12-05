@@ -96,12 +96,14 @@
 
 .site-logo-img {
   display: block;
-  height: 48px;
-  width: auto;
+  width: clamp(180px, 32vw, 260px);
+  height: auto;
+  max-height: 96px;
   border-radius: var(--radius-sm);
-  
+
   @media (max-width: 640px) {
-    height: 40px;
+    width: clamp(170px, 50vw, 220px);
+    max-height: 84px;
   }
 }
 

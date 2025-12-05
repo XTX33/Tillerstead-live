@@ -308,8 +308,8 @@ article figcaption {
 
 .site-logo-img,
 .site-logo-svg {
-  width: clamp(118px, 22vw, 156px);
-  max-height: 44px;
+  width: clamp(180px, 34vw, 260px);
+  max-height: 96px;
   height: auto;
   display: block;
   filter: drop-shadow(0 6px 12px rgba(12, 42, 32, 0.12));
@@ -568,7 +568,8 @@ body.nav-open {
 
   .site-logo-img,
   .site-logo-svg {
-    width: clamp(120px, 14vw, 148px);
+    width: clamp(180px, 42vw, 240px);
+    max-height: 88px;
   }
 
   .nav-toggle {
@@ -854,7 +855,7 @@ body.nav-open {
 }
 
 .site-logo-img {
-  max-height: 44px;
+  max-height: 96px;
   filter: none;
 }
 
