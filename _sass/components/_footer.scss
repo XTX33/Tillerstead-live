@@ -298,3 +298,95 @@ address {
     padding: clamp(2rem, 6vw, 3rem) clamp(1rem, 5vw, 1.5rem);
   }
 }
+/* Footer shell layout */
+.ts-footer .footer-shell {
+  padding-block: 2.5rem;
+}
+
+.ts-footer .footer-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+/* Brand block + logo placement */
+.ts-footer .footer-brand-area {
+  flex: 1 1 260px;
+}
+
+.ts-footer .footer-brand-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.ts-footer .ts-logo--footer,
+.ts-footer .footer-logo {
+  display: block;
+  max-width: 220px;
+  height: auto;
+}
+
+/* Kill any old invert/brightness hacks on the footer logo */
+.ts-footer .footer-logo,
+.ts-footer .ts-logo--footer {
+  filter: none;
+}
+@media (max-width: 768px) {
+  .ts-footer .footer-flex {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ts-footer .footer-brand-card {
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+  }
+
+  .ts-footer .footer-brand-meta,
+  .ts-footer .footer-desc,
+  .ts-footer .footer-licensing {
+    max-width: 34rem;
+  }
+}
+/* Base footer text color on navy */
+.ts-footer {
+  background-color: var(--ts-navy, #02172b);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Body text blocks in footer */
+.ts-footer .footer-desc,
+.ts-footer .footer-licensing,
+.ts-footer .footer-contact-area p,
+.ts-footer .footer-contact-area address {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Subnote + bottom copyright line: slightly softer but still accessible */
+.ts-footer .footer-subnote small,
+.ts-footer .footer-bottom p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Footer links on navy */
+.ts-footer .footer-link {
+  font-weight: 500;
+  text-decoration: none;
+  color: #63f0a0; /* bright emerald for strong contrast */
+}
+
+.ts-footer .footer-link:hover,
+.ts-footer .footer-link:focus-visible {
+  text-decoration: underline;
+}
+
+/* Footer section titles */
+.ts-footer .footer-title,
+.ts-footer .footer-tagline,
+.ts-footer .footer-license-badge {
+  color: #ffffff;
+}
