@@ -1,3 +1,11 @@
+{% assign hero_eyebrow = include.eyebrow | default: page.hero_eyebrow | default: 'Licensed NJ Home Improvement Contractor' %}
+{% assign hero_title = include.title | default: page.hero_title | default: 'Precision Tile, Remodeling & Property Care in South Jersey' %}
+{% assign hero_summary = include.summary | default: page.hero_summary | default: 'Tillerstead LLC delivers waterproof tile assemblies, organized remodels, and proactive maintenance for homes, rentals, and businesses in Atlantic, Ocean, and Cape May Counties. Every project is documented, transparent, and built to earn your trust.' %}
+{% assign hero_primary_url = include.primary_url | default: page.hero_primary_url | default: '/contact/' %}
+{% assign hero_primary_label = include.primary_label | default: page.hero_primary_label | default: 'Get Free NJ Estimate' %}
+{% assign hero_secondary_url = include.secondary_url | default: page.hero_secondary_url | default: 'tel:+16098628808' %}
+{% assign hero_secondary_label = include.secondary_label | default: page.hero_secondary_label | default: 'Call (609) 862-8808' %}
+
 <section class="ts-hero ts-hero--home" aria-labelledby="home-hero-title">
   <div class="ts-hero__inner">
     <header class="ts-hero__brand">
@@ -12,34 +20,33 @@
 
     <div class="ts-hero__badge">
       <span class="ts-hero__badge-label">
-        LICENSED NJ HOME IMPROVEMENT CONTRACTOR
+        {{ hero_eyebrow | upcase }}
       </span>
     </div>
 
     <div class="ts-hero__copy">
       <h1 id="home-hero-title" class="ts-hero__title">
-        Precision Tile, Remodeling &amp; Property Care in South Jersey
+        {{ hero_title }}
       </h1>
 
       <p class="ts-hero__lede">
-        Tillerstead LLC delivers waterproof tile assemblies, organized remodels,
-        and proactive maintenance for homes, rentals, and businesses in Atlantic,
-        Ocean, and Cape May Counties. Every project is documented, transparent,
-        and built to earn your trust.
+        {{ hero_summary }}
       </p>
 
+      {% if page.services %}
       <ul class="ts-hero__bullets">
-        <li>Tile &amp; Stone: waterproof shower builds, heated floors, and backer prep</li>
-        <li>Remodeling: clean, durable interior finishes with written change orders</li>
-        <li>Maintenance Plans: recurring checks, punch lists, and rapid responses</li>
+        {% for service in page.services %}
+        <li>{{ service.title }}: {{ service.description }}</li>
+        {% endfor %}
       </ul>
+      {% endif %}
 
       <div class="ts-hero__actions">
-        <a class="ts-btn ts-btn--primary" href="/contact/">
-          Get Free NJ Estimate
+        <a class="ts-btn ts-btn--primary" href="{{ hero_primary_url | relative_url }}">
+          {{ hero_primary_label }}
         </a>
-        <a class="ts-btn ts-btn--ghost" href="tel:+16098628808">
-          Call (609) 862-8808
+        <a class="ts-btn ts-btn--ghost" href="{{ hero_secondary_url | relative_url }}">
+          {{ hero_secondary_label }}
         </a>
       </div>
       <p class="ts-hero__trust-line">
