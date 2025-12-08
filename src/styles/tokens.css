@@ -60,6 +60,7 @@
   /* Surface gradients - Unified background */
   --gradient-surface: var(--color-bg);
   --gradient-surface-alt: var(--color-surface-elevated);
+  --gradient-surface-light: linear-gradient(135deg, #f8f6ee 0%, #ece7d9 100%);
   --gradient-section: var(--color-bg);
   
   /* Radial gradients for effects */
