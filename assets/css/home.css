@@ -32,7 +32,7 @@
   border-radius: 2rem;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-lift);
-  background: linear-gradient(135deg, #f8f6ee 0%, #ece7d9 100%);
+  background: var(--gradient-surface-light);
   padding: clamp(2rem, 4vw, 3rem);
   position: relative;
   overflow: visible;
