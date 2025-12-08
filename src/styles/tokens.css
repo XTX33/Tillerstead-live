@@ -132,6 +132,7 @@
 .bg-gradient { background: var(--gradient-primary) !important; }
 .bg-gradient-accent { background: var(--gradient-accent) !important; }
 .bg-gradient-surface { background: var(--gradient-surface) !important; }
+.bg-gradient-light { background: var(--gradient-surface-light) !important; }
 .bg-gradient-radial { background: var(--gradient-radial-primary) !important; }
 
 /* Spacing Utilities */
