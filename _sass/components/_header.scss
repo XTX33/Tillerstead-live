@@ -11,7 +11,19 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  ...
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.96) 100%
+  );
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition:
+    background var(--transition-med),
+    box-shadow var(--transition-med),
+    border-color var(--transition-med);
 }
 
 .site-header.scrolled {
@@ -27,11 +39,10 @@
   max-width: var(--shell-width);
   margin: 0 auto;
   padding: clamp(0.7rem, 2.4vw, 0.95rem) clamp(1rem, 4vw, 2rem);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ts-spacing-md);
+  gap: var(--space-3);
 }
 
 /* -----------------------------
@@ -52,10 +63,13 @@
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  border-radius: var(--ts-radius-sm);
+  border-radius: var(--radius-sm);
   outline: 2px solid transparent;
   outline-offset: 4px;
-  transition: transform var(--transition-fast), opacity var(--transition-fast), outline-color var(--transition-fast);
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast),
+    outline-color var(--transition-fast);
 
   &:hover {
     opacity: 0.96;
@@ -63,7 +77,7 @@
   }
 
   &:focus-visible {
-    outline-color: var(--ts-color-primary);
+    outline-color: var(--color-primary);
   }
 }
 
@@ -74,7 +88,9 @@
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
-  transition: filter var(--transition-fast), transform var(--transition-fast);
+  transition:
+    filter var(--transition-fast),
+    transform var(--transition-fast);
 
   &--header {
     width: clamp(150px, 28vw, 220px);
@@ -116,7 +132,7 @@
 .brand-tagline {
   font-size: clamp(0.6875rem, 1.2vw, 0.75rem);
   font-weight: 600;
-  color: var(--ts-color-primary);
+  color: var(--color-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
@@ -126,19 +142,19 @@
 
 .brand-license {
   font-size: clamp(0.625rem, 1.1vw, 0.6875rem);
-  color: var(--ts-color-text-muted);
+  color: var(--color-text-muted);
   font-weight: 500;
   white-space: nowrap;
 }
 
 /* -----------------------------
-   Header Actions (Call + Toggle)
+   Header Actions (Call + CTA)
    ----------------------------- */
 
 .site-header-actions {
   display: flex;
   align-items: center;
-  gap: var(--ts-spacing-xs);
+  gap: var(--space-2);
   flex-shrink: 0;
 }
 
@@ -178,6 +194,12 @@
   display: none;
 }
 
+/* Hide drawer-only items on desktop */
+.nav-cta--drawer,
+.nav-item--phone {
+  display: none;
+}
+
 /* Menu list */
 .site-menu {
   list-style: none;
@@ -196,33 +218,36 @@
   .nav-link {
     display: block;
     padding: 0.6rem 1rem;
-    color: var(--ts-color-text);
+    color: var(--color-text);
     font-weight: 600;
     font-size: 0.94rem;
     text-decoration: none;
-    border-radius: var(--ts-radius-md);
+    border-radius: var(--radius-md);
     position: relative;
-    transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+    transition:
+      color var(--transition-fast),
+      background var(--transition-fast),
+      transform var(--transition-fast);
 
     &:hover {
-      color: var(--ts-color-primary);
-      background: var(--ts-color-primary-soft);
+      color: var(--color-primary);
+      background: var(--color-primary-soft);
       transform: translateY(-2px);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--ts-color-primary);
+      outline: 2px solid var(--color-primary);
       outline-offset: 4px;
-      background: var(--ts-color-primary-soft);
+      background: var(--color-primary-soft);
     }
 
     &[aria-current='page'],
     &.active {
-      color: var(--ts-color-primary);
+      color: var(--color-primary);
       background: linear-gradient(
         135deg,
-        var(--ts-color-primary-soft) 0%,
-        rgba(var(--ts-color-primary-rgb), 0.16) 100%
+        var(--color-primary-soft) 0%,
+        rgba(13, 59, 44, 0.12) 100%
       );
       font-weight: 700;
 
@@ -237,8 +262,8 @@
         border-radius: 2px 2px 0 0;
         background: linear-gradient(
           90deg,
-          var(--ts-color-primary) 0%,
-          var(--ts-color-accent) 100%
+          var(--color-primary) 0%,
+          var(--color-accent) 100%
         );
       }
     }
@@ -255,19 +280,23 @@
   gap: 0.5rem;
   padding: 0.5rem 0.9rem;
   background: transparent;
-  border: 1px solid var(--ts-color-border);
-  border-radius: var(--ts-radius-sm);
-  color: var(--ts-color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
   font-weight: 600;
   font-size: 0.875rem;
   cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
 
   &:hover,
   &:focus-visible {
-    background: var(--ts-color-primary-soft);
-    border-color: var(--ts-color-primary);
-    color: var(--ts-color-primary);
+    background: var(--color-primary-soft);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 
   &:focus-visible {
@@ -276,9 +305,9 @@
   }
 
   &[aria-expanded='true'] {
-    background: var(--ts-color-primary-soft);
-    border-color: var(--ts-color-primary);
-    color: var(--ts-color-primary);
+    background: var(--color-primary-soft);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 }
 
@@ -308,7 +337,7 @@
   /* Layout: brand on left, actions on right, no inline nav */
   .site-header-inner {
     padding: 0.75rem clamp(1rem, 4vw, 1.5rem);
-    gap: var(--ts-spacing-sm);
+    gap: var(--space-2);
   }
 
   .site-nav-shell {
@@ -358,7 +387,7 @@
     box-shadow:
       -24px 0 64px rgba(0, 0, 0, 0.15),
       -8px 0 24px rgba(0, 0, 0, 0.1);
-    border-left: 2px solid var(--ts-color-border);
+    border-left: 2px solid var(--color-border);
     transform: translateX(110%);
     opacity: 0;
     pointer-events: none;
@@ -381,9 +410,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: var(--ts-spacing-md);
-    margin-bottom: var(--ts-spacing-md);
-    border-bottom: 2px solid var(--ts-color-border);
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-border);
   }
 
   .nav-drawer-label {
@@ -392,7 +421,7 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ts-color-text);
+    color: var(--color-text);
   }
 
   .nav-close {
@@ -401,23 +430,23 @@
     gap: 0.4rem;
     padding: 0.45rem 0.75rem;
     background: transparent;
-    border: 1px solid var(--ts-color-border);
-    border-radius: var(--ts-radius-md);
-    color: var(--ts-color-text-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     transition: all var(--transition-fast);
 
     &:hover {
-      background: var(--ts-color-surface-elevated);
-      border-color: var(--ts-color-primary);
-      color: var(--ts-color-primary);
+      background: var(--color-surface-elevated);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
       transform: translateX(-3px);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--ts-color-primary);
+      outline: 2px solid var(--color-primary);
       outline-offset: 2px;
     }
   }
@@ -435,7 +464,7 @@
     flex-direction: column;
     width: 100%;
     gap: 0.5rem;
-    margin-top: var(--ts-spacing-md);
+    margin-top: var(--space-3);
 
     a {
       width: 100%;
@@ -453,7 +482,7 @@
   .nav-cta,
   .nav-item--phone {
     display: block !important;
-    margin-top: var(--ts-spacing-sm);
+    margin-top: var(--space-2);
 
     a {
       width: 100%;
@@ -463,9 +492,9 @@
   }
 
   .nav-cta--drawer {
-    margin-top: var(--ts-spacing-md);
-    padding-top: var(--ts-spacing-md);
-    border-top: 1px solid var(--ts-color-border);
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
   }
 
   /* Toggle / actions */
@@ -474,7 +503,7 @@
   }
 
   .header-cta {
-    /* if you want call button hidden in header on mobile, keep this */
+    /* keep call button hidden in header on mobile; drawer handles CTAs */
     display: none;
   }
 }
