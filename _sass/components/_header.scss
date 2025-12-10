@@ -10,7 +10,7 @@
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1400;
   background: var(--header-bg);
   border-bottom: 1px solid var(--color-border);
   backdrop-filter: blur(16px) saturate(180%);
@@ -35,6 +35,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--ts-spacing-sm);
+  min-height: var(--header-height);
 }
 
 /* -----------------------------
@@ -100,6 +101,12 @@
     width: clamp(160px, 32vw, 240px);
     max-height: 56px;
     opacity: 0.95;
+  }
+
+  /* Hero/heroine logo sizing moved here so header styles stay canonical */
+  &--hero {
+    width: clamp(200px, 50vw, 300px);
+    max-height: 64px;
   }
 }
 
@@ -173,7 +180,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  z-index: 1001;
+  z-index: 1300;
 }
 
 .site-nav-backdrop {
@@ -272,13 +279,14 @@
   display: none;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0.9rem;
+  padding: 0.6rem 1rem;
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   color: var(--color-text);
   font-weight: 600;
   font-size: 0.875rem;
+  min-height: 44px;
   cursor: pointer;
   transition:
     background var(--transition-fast),
@@ -333,6 +341,10 @@
     gap: var(--space-2);
   }
 
+  .site-branding {
+    flex: 1 1 auto;
+  }
+
   /* Key: drawer lives in its own fixed layer, not as a flex column */
   .site-nav-shell {
     position: fixed;
@@ -351,6 +363,7 @@
 
   .site-header-actions {
     margin-left: auto;
+    gap: var(--ts-spacing-sm);
   }
 
   /* Backdrop */
@@ -362,7 +375,7 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-med);
-    z-index: 1100;
+    z-index: 1325;
 
     @supports (backdrop-filter: blur(4px)) {
       backdrop-filter: blur(4px) saturate(140%);
@@ -393,7 +406,7 @@
     transition:
       transform 380ms cubic-bezier(0.4, 0, 0.2, 1),
       opacity 280ms ease;
-    z-index: 1200;
+    z-index: 1450;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -503,6 +516,10 @@
 
   .header-cta {
     /* drawer handles CTAs on mobile */
+    display: none;
+  }
+
+  .call-btn {
     display: none;
   }
 }
