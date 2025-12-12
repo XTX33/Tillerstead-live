@@ -28,14 +28,11 @@
 }
 
 .site-header-inner {
-  max-width: var(--shell-width);
-  margin: 0 auto;
-  padding: clamp(0.6rem, 2vw, 0.85rem) clamp(0.9rem, 3.5vw, 1.75rem);
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--ts-spacing-xs);
-  min-height: calc(var(--header-height) - 6px);
+  gap: var(--space-3);
+  min-width: 0;
 }
 
 /* -----------------------------
@@ -192,11 +189,16 @@
 
 /* Desktop nav: inline */
 .site-nav {
-  flex: 0 1 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 5010;
+  justify-content: center;
+  min-width: 0;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
 }
 
 /* Drawer header only for mobile */
@@ -342,6 +344,8 @@
 @media (max-width: 920px) {
   /* Layout: brand on left, actions/toggle on right */
   .site-header-inner {
+    display: flex;
+    justify-content: space-between;
     padding: 0.75rem clamp(1rem, 4vw, 1.5rem);
     gap: var(--space-2);
   }
