@@ -14,7 +14,13 @@
 
 <!-- Contrast scripts removed: auto-contrast.js & contrast.js deprecated -->
 
-<!-- Main site behaviors (navigation, theme, form handling) -->
+
+<!-- Navigation logic (modular) -->
+<script defer
+  src="{{ '/assets/js/nav.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
+  crossorigin="anonymous"></script>
+
+<!-- Main site behaviors (theme, form handling, etc.) -->
 <script defer
   src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
   crossorigin="anonymous"></script>
