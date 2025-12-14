@@ -1,259 +1,169 @@
-/* main.js — Tillerstead
-   - Responsive, accessible nav (ESC, outside click, resize, touch)
-   - High contrast mode toggle with localStorage
-   - Smooth anchor scrolling (respects reduced motion)
-   - Static-host form handling (GitHub Pages) + Netlify passthrough
-   - Modern browser support with fallbacks
+/**
+* Template Name: Arsha
+* Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+* Updated: Jun 29 2024 with Bootstrap v5.3.3
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
 */
-(() => {
-  const $ = (s, c = document) => c.querySelector(s);
-  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
-<<<<<<< HEAD
-  // ...existing code...
-=======
-    /* =========================
-     NAV: mobile drawer
-  ========================= */
-  const navToggle = $(".nav-toggle");
-  const header = $(".site-header");
-  const navShell = header ? header.querySelector("[data-nav-container]") : null;
-  const nav = header ? header.querySelector("#site-nav") : null;
-  const navClose = header ? header.querySelector("[data-nav-close]") : null;
-  const navOverlay = header ? header.querySelector("[data-nav-overlay]") : null;
+(function() {
+  "use strict";
 
-  const BP_DESKTOP = 920; // matches SCSS breakpoint
-  let lastFocus = null;
+  /**
+   * Apply .scrolled class to the body as the page is scrolled down
+   */
+  function toggleScrolled() {
+    const selectBody = document.querySelector('body');
+    const selectHeader = document.querySelector('#header');
+    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
+    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
+  }
 
-  const isMobileView = () => window.innerWidth < BP_DESKTOP;
-  const isNavOpen = () =>
-    !!navShell && navShell.classList.contains("is-open");
+  document.addEventListener('scroll', toggleScrolled);
+  window.addEventListener('load', toggleScrolled);
 
-  const syncAria = (open) => {
-    const state = open ? "true" : "false";
+  /**
+   * Mobile nav toggle
+   */
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
-    if (navToggle) {
-      navToggle.setAttribute("aria-expanded", state);
-      navToggle.setAttribute(
-        "aria-label",
-        open ? "Close navigation menu" : "Open navigation menu",
-      );
-    }
-    if (nav) {
-      nav.setAttribute("aria-expanded", state);
-      nav.dataset.open = state;
-    }
-    if (navShell) navShell.dataset.open = state;
-    if (navOverlay) navOverlay.dataset.open = state;
-  };
+  function mobileNavToogle() {
+    document.querySelector('body').classList.toggle('mobile-nav-active');
+    mobileNavToggleBtn.classList.toggle('bi-list');
+    mobileNavToggleBtn.classList.toggle('bi-x');
+  }
+  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
-  const handleEsc = (e) => {
-    if (!isNavOpen()) return;
-    if (e.key === "Escape" || e.key === "Esc") {
-      e.preventDefault();
-      closeNav();
-    }
-  };
-
-  const trapFocus = (e) => {
-    if (!isNavOpen() || e.key !== "Tab" || !nav) return;
-
-    const focusables = $$(
-      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-      nav,
-    ).filter((el) => el.offsetParent !== null);
-
-    if (!focusables.length) return;
-
-    const first = focusables[0];
-    const last = focusables[focusables.length - 1];
-
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  };
-
-  const openNav = () => {
-    if (!navShell || !nav || !isMobileView()) return;
-
-    lastFocus = document.activeElement;
-
-    navShell.classList.add("is-open");
-    nav.classList.add("is-open");
-    document.body.classList.add("nav-open");
-    syncAria(true);
-
-    // Focus first actionable element in drawer
-    const first = $("button, a", nav) || nav;
-    requestAnimationFrame(() => {
-      if (first && typeof first.focus === "function") first.focus();
-    });
-
-    document.addEventListener("keydown", trapFocus);
-    document.addEventListener("keydown", handleEsc);
-  };
-
-  const closeNav = () => {
-    if (!navShell || !nav) return;
-
-    navShell.classList.remove("is-open");
-    nav.classList.remove("is-open");
-    document.body.classList.remove("nav-open");
-    syncAria(false);
-
-    document.removeEventListener("keydown", trapFocus);
-    document.removeEventListener("keydown", handleEsc);
-
-    const focusTarget = lastFocus || navToggle || document.body;
-    requestAnimationFrame(() => {
-      if (focusTarget && typeof focusTarget.focus === "function") {
-        focusTarget.focus();
+  /**
+   * Hide mobile nav on same-page/hash links
+   */
+  document.querySelectorAll('#navmenu a').forEach(navmenu => {
+    navmenu.addEventListener('click', () => {
+      if (document.querySelector('.mobile-nav-active')) {
+        mobileNavToogle();
       }
     });
-  };
 
-  // Toggle button
-  if (navToggle) {
-    navToggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-      isNavOpen() ? closeNav() : openNav();
-    });
-  }
-
-  // Close button
-  if (navClose) {
-    navClose.addEventListener("click", (e) => {
-      e.stopPropagation();
-      closeNav();
-    });
-  }
-
-  // Backdrop
-  if (navOverlay) {
-    navOverlay.addEventListener("click", (e) => {
-      e.stopPropagation();
-      closeNav();
-    });
-  }
-
-  // Close nav when a link is clicked (mobile)
-  if (nav) {
-    nav.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
-      if (!link) return;
-      if (isMobileView() && isNavOpen()) closeNav();
-    });
-  }
-
-  // On resize to desktop, force-close
-  let resizeTimer;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (!isMobileView() && isNavOpen()) {
-        closeNav();
-      }
-    }, 120);
   });
 
-  // Orientation change safety
-  if ("onorientationchange" in window) {
-    window.addEventListener("orientationchange", () => {
-      if (!isMobileView() && isNavOpen()) {
-        setTimeout(closeNav, 200);
-      }
-    });
-  }
->>>>>>> cd94431d4595c868507e3ce0fccbb2a3869edcde
-  /* =========================
-     HIGH CONTRAST MODE TOGGLE
-     - Adds html.high-contrast class
-     - Persists preference in localStorage
-     - Re-runs contrast + autoContrast for recalculation
-  ========================= */
-  const HC_KEY = "ts:high-contrast";
-  const contrastToggle = document.querySelector('[data-contrast-toggle]');
-
-  const applyHighContrast = (enabled) => {
-    document.documentElement.classList.toggle('high-contrast', !!enabled);
-    if (contrastToggle) {
-      contrastToggle.setAttribute('aria-pressed', String(!!enabled));
-      contrastToggle.setAttribute('aria-label', enabled ? 'Disable high contrast mode' : 'Enable high contrast mode');
-    }
-    if (typeof window.applyContrast === 'function') window.applyContrast(enabled ? 7 : 7); // keep AAA target
-    if (typeof window.autoContrast === 'function') window.autoContrast();
-  };
-
-  try {
-    const storedHC = localStorage.getItem(HC_KEY) === '1';
-    applyHighContrast(storedHC);
-  } catch (_) { /* ignore */ }
-
-  if (contrastToggle) {
-    contrastToggle.addEventListener('click', () => {
-      const enabled = !document.documentElement.classList.contains('high-contrast');
-      applyHighContrast(enabled);
-      try { localStorage.setItem(HC_KEY, enabled ? '1' : '0'); } catch (_) { /* ignore */ }
-    });
-  }
-
-  /* =========================
-     KEYBOARD SHORTCUTS
-     Alt+Shift+C : Toggle High Contrast
-     Alt+Shift+A : Toggle Audit Overlay (reload if enabling)
-  ========================= */
-  document.addEventListener('keydown', (e) => {
-    if (!e.altKey || !e.shiftKey) return;
-    if (e.code === 'KeyC') {
+  /**
+   * Toggle mobile nav dropdowns
+   */
+  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
+    navmenu.addEventListener('click', function(e) {
       e.preventDefault();
-      const enabled = !document.documentElement.classList.contains('high-contrast');
-      applyHighContrast(enabled);
-    try { localStorage.setItem(HC_KEY, enabled ? '1' : '0'); } catch (_) { /* ignore */ }
-    } else if (e.code === 'KeyA') {
-      e.preventDefault();
-      const hasFlag = localStorage.getItem('ts:audit') === '1';
-      if (hasFlag) {
-        localStorage.removeItem('ts:audit');
-        // Remove existing panel if present without reload
-        const panel = document.querySelector('.ts-dev-overlay');
-        if (panel) panel.remove();
-      } else {
-        localStorage.setItem('ts:audit', '1');
-        // Reload to allow dev-overlay.js to initialize
-        location.search.includes('audit=1') ? location.reload() : location.href = location.pathname + '?audit=1';
-      }
-    }
+      this.parentNode.classList.toggle('active');
+      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+      e.stopImmediatePropagation();
+    });
   });
 
-  /* =========================
-     SMOOTH SCROLL (anchors)
-     - respects reduced motion
-  ========================= */
-  const prefersReduced =
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /**
+   * Preloader
+   */
+  const preloader = document.querySelector('#preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      preloader.remove();
+    });
+  }
 
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
+  /**
+   * Scroll top button
+   */
+  let scrollTop = document.querySelector('.scroll-top');
 
-    const href = a.getAttribute("href");
-    if (!href || href === "#") return;
-
-    const id = href.slice(1);
-    const target = document.getElementById(id);
-    if (!target) return;
-
+  function toggleScrollTop() {
+    if (scrollTop) {
+      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    }
+  }
+  scrollTop.addEventListener('click', (e) => {
     e.preventDefault();
-    const behavior = prefersReduced ? "auto" : "smooth";
-    target.scrollIntoView({ behavior, block: "start" });
-    target.setAttribute("tabindex", "-1");
-    target.focus({ preventScroll: true });
-    setTimeout(() => target.removeAttribute("tabindex"), 1000);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  window.addEventListener('load', toggleScrollTop);
+  document.addEventListener('scroll', toggleScrollTop);
+
+  /**
+   * Animation on scroll function and init
+   */
+  function aosInit() {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+  }
+  window.addEventListener('load', aosInit);
+
+  /**
+   * Initiate glightbox
+   */
+  const glightbox = GLightbox({
+    selector: '.glightbox'
+  });
+
+  /**
+   * Init swiper sliders
+   */
+  function initSwiper() {
+    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+      let config = JSON.parse(
+        swiperElement.querySelector(".swiper-config").innerHTML.trim()
+      );
+
+      if (swiperElement.classList.contains("swiper-tab")) {
+        initSwiperWithCustomPagination(swiperElement, config);
+      } else {
+        new Swiper(swiperElement, config);
+      }
+    });
+  }
+
+  window.addEventListener("load", initSwiper);
+
+  /**
+   * Initiate Pure Counter
+   */
+  new PureCounter();
+
+  /**
+   * Init isotope layout and filters
+   */
+  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
+    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
+    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
+    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
+
+    let initIsotope;
+    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
+      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
+        itemSelector: '.isotope-item',
+        layoutMode: layout,
+        filter: filter,
+        sortBy: sort
+      });
+    });
+
+    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
+      filters.addEventListener('click', function() {
+        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
+        this.classList.add('filter-active');
+        initIsotope.arrange({
+          filter: this.getAttribute('data-filter')
+        });
+        if (typeof aosInit === 'function') {
+          aosInit();
+        }
+      }, false);
+    });
+
   });
 
 })();
