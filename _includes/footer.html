@@ -91,9 +91,9 @@
         </div>
 
 <nav class="footer-nav" aria-label="Footer navigation">
-  <div class="footer-nav-grid">
+  <div class="footer-nav-grid" data-accordion-group="footer-nav">
 
-    <details class="footer-acc" open>
+    <details class="footer-acc" open data-accordion>
       <summary class="footer-nav-title">Services</summary>
       <ul class="footer-list">
         <li><a href="{{ '/services/' | relative_url }}#tile" class="footer-link">Custom Tile Installation</a></li>
@@ -102,7 +102,7 @@
       </ul>
     </details>
 
-    <details class="footer-acc" open>
+    <details class="footer-acc" open data-accordion>
       <summary class="footer-nav-title">Company</summary>
       <ul class="footer-list">
         <li><a href="{{ '/portfolio/' | relative_url }}" class="footer-link">Recent Projects</a></li>
@@ -146,7 +146,7 @@
       </div>
     </details>
 
-    <details class="footer-acc" open>
+    <details class="footer-acc" open data-accordion>
       <summary class="footer-nav-title">Service Areas</summary>
       <ul class="footer-list">
         <li><a href="{{ '/atlantic-county-nj/' | relative_url }}" class="footer-link">Atlantic County, NJ</a></li>
@@ -233,4 +233,3 @@
     </div>
   </div>
 </footer>
-

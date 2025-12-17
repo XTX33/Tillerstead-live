@@ -1,44 +1,7 @@
-<!-- Dev overlay audit (loaded always; self-activates only with ?audit=1 or localStorage flag) -->
 <script defer
-  src="{{ '/assets/js/dev-overlay.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
-  crossorigin="anonymous"></script>
-{%- comment -%}
-  Global and per-page scripts with modern loading strategies
-  - defer: Non-blocking, executes in order
-  - crossorigin: CORS security
-  - Integrity: Subresource Integrity (when using CDN)
-  - Cache busting via assets_version
-
-  IMPORTANT: Each script loaded only ONCE to prevent conflicts.
-{%- endcomment -%}
-
-<!-- Contrast scripts removed: auto-contrast.js & contrast.js deprecated -->
-
-
-<!-- Navigation logic (modular) -->
-<script defer
-  src="{{ '/assets/js/nav.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
+  src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
   crossorigin="anonymous"></script>
 
-<!-- Main site behaviors (theme, form handling, etc.) -->
-<!-- Main site behaviors (navigation, theme, form handling) -->
-<script defer
-  src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
-  crossorigin="anonymous"></script>
-
-<!-- Lazy loading images for performance -->
-<script defer
-  src="{{ '/assets/js/lazy-loading.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
-  crossorigin="anonymous"></script>
-
-<!-- Contact form helper (mailto fallback for static hosts) -->
-<script defer
-  src="{{ '/assets/js/contact-form.js' | relative_url }}?v={{ site.assets_version | default: '1.0' }}"
-  crossorigin="anonymous"></script>
-
-{%- comment -%}Loading screen script removed (deprecated).{%- endcomment -%}
-
-<!-- Reduced motion detection -->
 <script>
   (function() {
     'use strict';
