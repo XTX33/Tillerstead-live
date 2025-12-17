@@ -18,6 +18,13 @@
   const isMobile = () => window.innerWidth < DESKTOP_WIDTH;
   const navIsOpen = () => navShell?.classList.contains('is-open');
 
+  const announce = (el, message, state = 'success') => {
+    if (!el) return;
+    el.textContent = message;
+    el.classList.remove('sr-only');
+    el.setAttribute('data-state', state);
+  };
+
   const syncNavState = (open) => {
     navShell?.classList.toggle('is-open', open);
     nav?.classList.toggle('is-open', open);
@@ -148,7 +155,117 @@
     });
   };
 
+  const hydrateImages = (img) => {
+    const { src, srcset } = img.dataset;
+    if (src) {
+      img.src = src;
+      img.removeAttribute('data-src');
+    }
+    if (srcset) {
+      img.srcset = srcset;
+      img.removeAttribute('data-srcset');
+    }
+  };
+
+  const initLazyImages = () => {
+    const lazyImages = Array.from(document.querySelectorAll('img[data-src], img[data-srcset]'));
+    if (!lazyImages.length) return;
+
+    lazyImages.forEach((img) => {
+      if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+    });
+
+    if ('loading' in HTMLImageElement.prototype) {
+      lazyImages.forEach(hydrateImages);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          hydrateImages(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: '120px 0px', threshold: 0.01 }
+    );
+
+    lazyImages.forEach((img) => observer.observe(img));
+  };
+
+  const buildMailto = (form, data) => {
+    const email = form.dataset.contactEmail || 'info@tillerstead.com';
+    const subject = encodeURIComponent('New Tillerstead project inquiry');
+    const body = [];
+    data.forEach((value, key) => {
+      if (key === 'form-name' || /^_/.test(key) || key === 'bot-field') return;
+      body.push(`${key}: ${String(value)}`);
+    });
+    const lines = encodeURIComponent(body.join('\r\n\r\n'));
+    return `mailto:${email}?subject=${subject}&body=${lines}`;
+  };
+
+  const initContactForms = () => {
+    const forms = Array.from(document.querySelectorAll('form[data-contact-form]'));
+    if (!forms.length) return;
+
+    forms.forEach((form) => {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const submit = form.querySelector('button[type="submit"], input[type="submit"]');
+        submit?.setAttribute('disabled', 'true');
+        const status = form.querySelector('[data-form-status]');
+        const data = new FormData(form);
+        if (!data.get('form-name') && form.name) data.append('form-name', form.name);
+        const encoded = new URLSearchParams(data).toString();
+        const action = (form.getAttribute('action') || '').trim();
+        const shouldPost = action && !action.startsWith('mailto:');
+        let posted = false;
+
+        if (shouldPost) {
+          try {
+            const response = await fetch(action, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: encoded,
+            });
+            if (!response.ok) throw new Error(`Status ${response.status}`);
+            posted = true;
+            announce(status, 'Request received. I will follow up within one business day.');
+            form.reset();
+            const redirect = data.get('_next');
+            if (redirect) {
+              setTimeout(() => {
+                window.location.href = redirect;
+              }, 250);
+            }
+          } catch (error) {
+            console.warn('Form submission failed, falling back to mailto.', error);
+          }
+        }
+
+        if (!posted) {
+          const mailto = buildMailto(form, data);
+          announce(
+            status,
+            `Opening your email app to finish the request. Or email ${form.dataset.contactEmail ||
+              'info@tillerstead.com'} directly.`,
+            'info'
+          );
+          setTimeout(() => {
+            window.location.href = mailto;
+          }, 300);
+        }
+
+        submit?.removeAttribute('disabled');
+      });
+    });
+  };
+
   initNav();
   initStickyHeader();
   initAccordions();
+  initLazyImages();
+  initContactForms();
 })();
