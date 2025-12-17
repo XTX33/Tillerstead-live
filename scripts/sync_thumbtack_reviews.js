@@ -91,6 +91,92 @@ function slugify (value) {
     .replace(/^-+|-+$/g, '')
 }
 
+function escapeHtml (value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+function toIsoDate (value) {
+  if (!value) return null
+  const parsed = new Date(value)
+  if (Number.isNaN(parsed.getTime())) return null
+  return parsed.toISOString().split('T')[0]
+}
+
+function flattenArrayDeep (value) {
+  if (!Array.isArray(value)) return [value]
+  const out = []
+  for (const item of value) out.push(...flattenArrayDeep(item))
+  return out
+}
+
+function findJsonLdReviews (html) {
+  const $ = load(html)
+  const scripts = $('script[type="application/ld+json"]')
+  if (!scripts.length) return []
+
+  const reviews = []
+
+  scripts.each((_, el) => {
+    const raw = $(el).text()
+    if (!raw) return
+
+    let parsed
+    try {
+      parsed = JSON.parse(raw)
+    } catch {
+      return
+    }
+
+    const candidates = []
+    if (Array.isArray(parsed)) candidates.push(...parsed)
+    else candidates.push(parsed)
+
+    for (const candidate of candidates) {
+      const graph = candidate && candidate['@graph']
+      const nodes = Array.isArray(graph) ? graph : [candidate]
+
+      for (const node of nodes) {
+        if (!node || typeof node !== 'object') continue
+        if (!node.review) continue
+
+        const flattened = flattenArrayDeep(node.review)
+        for (const review of flattened) {
+          if (!review || typeof review !== 'object') continue
+          const authorName =
+            (review.author && (review.author.name || review.author['@name'])) ||
+            review.authorName ||
+            'Client'
+          const description = review.description || review.reviewBody || ''
+          const date = toIsoDate(review.datePublished)
+          const ratingValue =
+            (review.reviewRating && review.reviewRating.ratingValue) ||
+            review.ratingValue ||
+            null
+          const rating = ratingValue != null ? Number(ratingValue) : null
+
+          const quote = escapeHtml(description).replace(/\n+/g, '<br>')
+          const quoteHtml = quote ? `<p>${quote}</p>` : ''
+
+          reviews.push({
+            author: String(authorName).trim() || 'Client',
+            date,
+            rating: Number.isFinite(rating) ? rating : null,
+            rating_max: 5,
+            quote_html: quoteHtml
+          })
+        }
+      }
+    }
+  })
+
+  return reviews
+}
+
 function parseDate ($, card) {
   const time = card.find('time').first()
   const datetime = time.attr('datetime')
@@ -105,6 +191,28 @@ function parseDate ($, card) {
 }
 
 function extractReviews (html) {
+  const jsonLd = findJsonLdReviews(html)
+  if (jsonLd.length) {
+    return jsonLd.map((review, index) => {
+      const baseSlug = slugify(review.author)
+      const dateSlug = review.date ? review.date : 'unknown-date'
+      return {
+        id: `thumbtack-${baseSlug || 'client'}-${dateSlug}-${index + 1}`,
+        source: 'Thumbtack',
+        platform: 'Thumbtack',
+        rating: review.rating,
+        rating_max: review.rating_max || 5,
+        quote_html: review.quote_html,
+        author: review.author,
+        location: null,
+        job_type: null,
+        date: review.date,
+        badges: [],
+        url: SERVICE_URL
+      }
+    })
+  }
+
   const $ = load(html)
 
   const reviewCards = $(
@@ -118,7 +226,7 @@ function extractReviews (html) {
   )
 
   if (!reviewCards.length) {
-    throw new Error('No review cards found. Thumbtack may have changed their markup.')
+    throw new Error('No review cards found in JSON-LD or DOM. Thumbtack may have changed their markup.')
   }
 
   return reviewCards

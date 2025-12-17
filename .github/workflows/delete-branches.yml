@@ -1,8 +1,8 @@
-name: Delete All Branches Except Master
+name: Delete All Branches Except Main
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
   workflow_dispatch:
 
@@ -25,7 +25,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Delete all branches except master
+      - name: Delete all branches except main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
@@ -35,7 +35,7 @@ jobs:
             git for-each-ref --format='%(refname:short)' \
                 refs/remotes/origin/ | \
                 grep -v '^origin/HEAD$' | \
-                grep -v '^origin/master$' | \
+                grep -v '^origin/main$' | \
                 sed 's|^origin/||' || true
           }
 
@@ -46,7 +46,7 @@ jobs:
           git fetch --all --prune
 
           echo ""
-          echo "Getting list of all remote branches except master..."
+          echo "Getting list of all remote branches except main..."
 
           # Use git for-each-ref for safer branch listing
           branches_found=false
@@ -58,7 +58,7 @@ jobs:
           done < <(get_branches_to_delete)
 
           if [ "$branches_found" = false ]; then
-            echo "✓ No branches to delete (only master exists)"
+            echo "✓ No branches to delete (only main exists)"
             exit 0
           fi
 
