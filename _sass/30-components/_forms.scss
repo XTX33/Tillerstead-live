@@ -128,15 +128,19 @@ select:disabled {
 .form-grid {
   display: grid;
   gap: var(--ts-spacing-md);
+  container-type: inline-size;
+  container-name: form-grid;
 }
 
-@media (min-width: 768px) {
+/* Container query for two-column form grid */
+@container (inline-size > 48rem) {
   .form-grid.two {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 640px) {
+/* Container query for mobile-friendly inputs */
+@container (inline-size < 30rem) {
   .form-input,
   .form-textarea,
   .form-select,
@@ -144,6 +148,6 @@ select:disabled {
   textarea,
   select {
     font-size: 1rem;
-    min-height: 44px;
+    min-block-size: 44px;
   }
 }

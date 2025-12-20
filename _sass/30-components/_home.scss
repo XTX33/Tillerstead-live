@@ -51,13 +51,21 @@
 }
 
 .page-home .ts-hero__inner {
-  max-width: var(--layout-max);
+  max-inline-size: var(--container, 1100px);
   margin-inline: auto;
-  padding: var(--section-pad-y) var(--container-gutter);
+  padding-block: var(--section-pad-y, clamp(2.5rem, 6vb, 5.25rem));
+  padding-inline: clamp(1rem, 4vi, 1.75rem);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
-  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22.5rem), 1fr));
+  gap: var(--gutter, clamp(1.5rem, 3.5vi, 2.5rem));
   align-items: start;
+}
+
+/* Container query for hero layout */
+@container (inline-size > 64rem) {
+  .page-home .ts-hero__inner {
+    grid-template-columns: 1.6fr minmax(22.5rem, 30rem);
+  }
 }
 
 /* Single column layout when no image */
@@ -280,14 +288,25 @@
   font-weight: 600;
 }
 
-/* Small mobile stability */
-@media (max-width: 640px) {
-  .page-home .ts-hero__inner {
-    padding-inline: clamp(0.75rem, 5vw, 1.25rem);
-  }
+/* Responsive refinements — Container queries + modern CSS */
+/* No breakpoints needed - grid handles everything */
 
+/* Only add specific mobile overrides where truly necessary */
+@container (inline-size < 30rem) {
   .page-home .ts-hero__actions {
     flex-direction: column;
-    align-items: stretch;
+    inline-size: 100%;
   }
+
+  .page-home .ts-hero__actions .btn,
+  .page-home .ts-hero__actions .btn--ghost {
+    inline-size: 100%;
+    text-align: center;
+  }
+}
+
+/* Performance optimization */
+.page-home .site-main > section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
 }

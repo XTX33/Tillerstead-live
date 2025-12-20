@@ -4,14 +4,16 @@
    ============================================ */
 
 .nj-statewide {
-  padding: clamp(28px, 4vw, 54px) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  padding-block: var(--section-pad-y, clamp(2.5rem, 6vb, 5.25rem));
+  padding-inline: 0;
+  border-block-start: 1px solid rgba(255, 255, 255, 0.10);
+  container-type: inline-size;
 }
 
 .nj-wrap {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 18px;
+  max-inline-size: var(--container, 1100px);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vi, 1.75rem);
 }
 
 .nj-kicker {
@@ -41,12 +43,15 @@
 
 .nj-grid {
   display: grid;
-  gap: 14px;
-  margin-top: 16px;
-  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--grid-gap, clamp(1rem, 2.5vi, 1.5rem));
+  margin-block-start: clamp(1.5rem, 3vb, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
+}
 
-  @media (max-width: 980px) {
-    grid-template-columns: 1fr;
+/* Container query for 3-column layout */
+@container (inline-size > 48rem) {
+  .nj-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

@@ -14,6 +14,8 @@
   align-items: center;
   justify-content: flex-start;
   gap: var(--social-gap);
+  container-type: inline-size;
+  container-name: social-links;
 }
 
 .social-links__list {
@@ -53,15 +55,13 @@
 
 .social-link:hover,
 .social-link:focus-visible {
-  background: var(--color-primary-soft, rgb(13, 149, 115, 0.15));
-  border-color: var(--color-primary, #0c956f);
-  color: var(--color-primary, #0c956f);
+  background: var(--ts-color-primary-soft);\n  border-color: var(--ts-color-primary);\n  color: var(--ts-color-primary);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgb(12, 149, 111, 0.18);
+  box-shadow: 0 6px 20px var(--shadow-soft);
 }
 
 .social-link:focus-visible {
-  outline: 3px solid var(--color-primary, #0c956f);
+  outline: 3px solid var(--ts-color-primary-bg);
   outline-offset: 2px;
 }
 
@@ -82,7 +82,7 @@
 .social-links--header .social-link:hover,
 .social-links--header .social-link:focus-visible {
   background: rgb(255, 255, 255, 0.2);
-  color: var(--color-primary, #0c956f);
+  color: var(--ts-color-primary);
 }
 
 /* Drawer / stacked layout */
@@ -120,11 +120,12 @@
 
 .social-links--footer .social-link:hover,
 .social-links--footer .social-link:focus-visible {
-  background: var(--ts-footer-link, #7fd1ff);
-  color: var(--footer-bg, #061a2b);
+  background: var(--ts-footer-link);
+  color: var(--footer-bg);
 }
 
-@media (max-width: 640px) {
+/* Container query for small social icons */
+@container (inline-size < 30rem) {
   .social-links {
     --social-pill-size: 2.2rem;
   }

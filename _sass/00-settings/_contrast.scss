@@ -1,0 +1,188 @@
+/* ============================================
+   WCAG 2.1 Contrast Calculation Functions
+   Modern, automated color contrast system
+   Based on: https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html
+   ============================================ */
+
+/* ===========================
+   WCAG 2.1 Standards:
+   - AA Normal Text: 4.5:1
+   - AA Large Text (18pt+): 3:1
+   - AAA Normal Text: 7:1
+   - AAA Large Text: 4.5:1
+   =========================== */
+
+// Strip units from values
+@function strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+// Convert hex to RGB decimal values (0-255)
+@function hex-to-rgb($hex) {
+  @return (
+    red: red($hex),
+    green: green($hex),
+    blue: blue($hex)
+  );
+}
+
+// Convert 8-bit RGB channel to linear RGB (0-1 scale)
+@function linearize-channel($channel) {
+  $channel: math.div($channel, 255);
+  @if $channel <= 0.03928 {
+    @return math.div($channel, 12.92);
+  }
+  @return math.pow(math.div($channel + 0.055, 1.055), 2.4);
+}
+
+// Calculate relative luminance (WCAG formula)
+// L = 0.2126 * R + 0.7152 * G + 0.0722 * B
+@function luminance($color) {
+  $rgb: hex-to-rgb($color);
+  $r: linearize-channel(map-get($rgb, red));
+  $g: linearize-channel(map-get($rgb, green));
+  $b: linearize-channel(map-get($rgb, blue));
+  
+  @return 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+}
+
+// Calculate contrast ratio between two colors
+// Returns value from 1:1 to 21:1
+@function contrast-ratio($foreground, $background) {
+  $lum1: luminance($foreground);
+  $lum2: luminance($background);
+  $lighter: math.max($lum1, $lum2);
+  $darker: math.min($lum1, $lum2);
+  
+  @return math.div($lighter + 0.05, $darker + 0.05);
+}
+
+// Check if contrast meets WCAG AA standard (4.5:1 for normal text)
+@function meets-aa-normal($foreground, $background) {
+  @return contrast-ratio($foreground, $background) >= 4.5;
+}
+
+// Check if contrast meets WCAG AA standard (3:1 for large text)
+@function meets-aa-large($foreground, $background) {
+  @return contrast-ratio($foreground, $background) >= 3;
+}
+
+// Check if contrast meets WCAG AAA standard (7:1 for normal text)
+@function meets-aaa-normal($foreground, $background) {
+  @return contrast-ratio($foreground, $background) >= 7;
+}
+
+// Automatically pick text color based on background
+// Returns either light or dark text color with best contrast
+@function auto-text-color($background, $light: #ffffff, $dark: #1c231f) {
+  $light-contrast: contrast-ratio($light, $background);
+  $dark-contrast: contrast-ratio($dark, $background);
+  
+  @if $light-contrast > $dark-contrast {
+    @return $light;
+  } @else {
+    @return $dark;
+  }
+}
+
+// Pick accessible text color with minimum contrast guarantee
+@function accessible-text-color($background, $min-contrast: 4.5, $light: #ffffff, $dark: #1c231f) {
+  $light-contrast: contrast-ratio($light, $background);
+  $dark-contrast: contrast-ratio($dark, $background);
+  
+  // Return the color that meets minimum contrast
+  @if $light-contrast >= $min-contrast {
+    @if $dark-contrast >= $min-contrast {
+      // Both meet standard, return higher contrast
+      @return if($light-contrast > $dark-contrast, $light, $dark);
+    }
+    @return $light;
+  } @else if $dark-contrast >= $min-contrast {
+    @return $dark;
+  } @else {
+    // Neither meets standard, return higher contrast with warning
+    @warn "Neither text color meets minimum contrast #{$min-contrast}:1 on background #{$background}. Light: #{$light-contrast}, Dark: #{$dark-contrast}";
+    @return if($light-contrast > $dark-contrast, $light, $dark);
+  }
+}
+
+// Lighten color until it meets minimum contrast on dark background
+@function lighten-until-contrast($color, $background, $min-contrast: 4.5, $max-iterations: 20) {
+  $result: $color;
+  $iteration: 0;
+  
+  @while contrast-ratio($result, $background) < $min-contrast and $iteration < $max-iterations {
+    $result: lighten($result, 5%);
+    $iteration: $iteration + 1;
+  }
+  
+  @if $iteration >= $max-iterations {
+    @warn "Could not achieve #{$min-contrast}:1 contrast for #{$color} on #{$background} after #{$max-iterations} iterations";
+  }
+  
+  @return $result;
+}
+
+// Darken color until it meets minimum contrast on light background
+@function darken-until-contrast($color, $background, $min-contrast: 4.5, $max-iterations: 20) {
+  $result: $color;
+  $iteration: 0;
+  
+  @while contrast-ratio($result, $background) < $min-contrast and $iteration < $max-iterations {
+    $result: darken($result, 5%);
+    $iteration: $iteration + 1;
+  }
+  
+  @if $iteration >= $max-iterations {
+    @warn "Could not achieve #{$min-contrast}:1 contrast for #{$color} on #{$background} after #{$max-iterations} iterations";
+  }
+  
+  @return $result;
+}
+
+// Ensure color meets minimum contrast, adjust automatically
+@function ensure-contrast($color, $background, $min-contrast: 4.5) {
+  $current-contrast: contrast-ratio($color, $background);
+  
+  @if $current-contrast >= $min-contrast {
+    @return $color;
+  }
+  
+  // Determine if background is light or dark
+  $bg-luminance: luminance($background);
+  
+  @if $bg-luminance > 0.5 {
+    // Light background, darken text
+    @return darken-until-contrast($color, $background, $min-contrast);
+  } @else {
+    // Dark background, lighten text
+    @return lighten-until-contrast($color, $background, $min-contrast);
+  }
+}
+
+/* ===========================
+   Usage Examples & Tests
+   =========================== */
+
+// Example 1: Auto text color
+// color: auto-text-color(#f9f5eb); // Returns #1c231f (dark) for light background
+
+// Example 2: Accessible text with AA standard
+// color: accessible-text-color(#0b6b5c, 4.5); // Returns #ffffff (white) for dark emerald
+
+// Example 3: Ensure contrast
+// color: ensure-contrast(#6b726d, #f9f5eb, 4.5); // Darkens gray until readable
+
+// Example 4: Check contrast ratio
+// $ratio: contrast-ratio(#1c231f, #f9f5eb); // Returns ~15.7:1 (excellent)
+
+/* ===========================
+   Debug Mixin - Print contrast ratios
+   =========================== */
+@mixin debug-contrast($fg, $bg) {
+  $ratio: contrast-ratio($fg, $bg);
+  @debug "Contrast: #{$fg} on #{$bg} = #{$ratio}:1";
+  @debug "AA Normal: #{meets-aa-normal($fg, $bg)}";
+  @debug "AA Large: #{meets-aa-large($fg, $bg)}";
+  @debug "AAA Normal: #{meets-aaa-normal($fg, $bg)}";
+}

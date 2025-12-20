@@ -1,6 +1,6 @@
 /* ============================================
-   Button components
-   Streamlined, accessible styles with consistent spacing
+   Button components — Modern, container-aware
+   Zero media queries, pure performance
    ============================================ */
 
 .btn,
@@ -9,7 +9,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
+  padding-block: 0.875rem;
+  padding-inline: 1.75rem;
   font-size: 1rem;
   font-weight: 600;
   font-family: var(--font-sans);
@@ -20,12 +21,16 @@
   text-decoration: none;
   position: relative;
   white-space: nowrap;
-  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
-  min-width: 2.5em;
-  min-height: 2.5em;
+  transition: background var(--transition-fast), color var(--transition-fast), 
+              border-color var(--transition-fast), transform var(--transition-fast);
+  min-inline-size: 2.5em;
+  min-block-size: 2.5em;
   user-select: none;
-  box-shadow: 0 2px 10px var(--shadow-soft);
   outline: none;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .btn:focus-visible,
@@ -49,8 +54,8 @@
 /* Variants */
 .btn-primary,
 .btn--primary {
-  background: var(--ts-color-primary);
-  color: #ffffff;
+  background: var(--ts-color-primary-bg);
+  color: var(--ts-white);
   box-shadow: 0 10px 24px var(--shadow-soft);
 }
 
@@ -58,7 +63,7 @@
 .btn-primary:focus-visible,
 .btn--primary:hover:not(:disabled),
 .btn--primary:focus-visible {
-  background: var(--ts-color-primary-strong);
+  background: var(--ts-color-primary-bg-hover);
   transform: translateY(-1px);
   box-shadow: 0 12px 28px var(--shadow-soft);
 }
@@ -67,7 +72,7 @@
 .btn--secondary {
   background: transparent;
   color: var(--ts-color-heading);
-  border: 1.5px solid var(--ts-color-primary);
+  border: 1.5px solid var(--ts-color-primary-bg);
 }
 
 .btn-secondary:hover:not(:disabled),
@@ -127,32 +132,43 @@
 .btn-text:focus-visible {
   text-decoration: underline;
   background: var(--ts-color-primary-soft);
-}
-
-/* Sizing */
-.btn-sm,
-.btn--sm {
-  padding: 0.5rem 1.25rem;
+}-block: 0.5rem;
+  padding-inline: 1.25rem;
   font-size: 0.92rem;
-  min-width: 2em;
-  min-height: 2em;
+  min-inline-size: 2em;
+  min-block-size: 2em;
 }
 
 .btn-lg,
 .btn--lg {
-  padding: 1.05rem 2rem;
+  padding-block: 1.05rem;
+  padding-inline: 2rem;
   font-size: 1.1rem;
 }
 
 .btn-xl,
 .btn--xl {
-  padding: 1.3rem 2.5rem;
+  padding-block: 1.3rem;
+  padding-inline: 2.5rem;
   font-size: 1.2rem;
 }
 
 .btn-block,
 .btn--block {
-  width: 100%;
+  inline-size: 100%;
+}
+
+/* Container query for responsive buttons */
+@container (inline-size < 30rem) {
+  .btn:not(.btn-icon-only),
+  .button:not(.btn-icon-only) {
+    inline-size: 100%;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    inline-size: 100%;
+  }
 }
 
 .btn-icon,
@@ -161,7 +177,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  padding: 0.7rem 1rem;
+  padding-block: 0.7rem;
+  padding-inline: 1rem;
 }
 
 .btn-icon-only {
@@ -171,6 +188,8 @@
 .btn-group {
   display: inline-flex;
   gap: 0.5rem;
+  container-type: inline-size;
+  container-name: btn-group;
 }
 
 .btn-group > .btn,
@@ -178,16 +197,13 @@
   flex: 1;
 }
 
-@media (max-width: 640px) {
+/* Remove legacy media query */
+
+@media (prefers-reduced-motion: reduce) {
   .btn,
   .button {
-    width: 100%;
-  }
-
-  .btn-group {
-    flex-direction: column;
-  }
-}
+    transition: none !important;
+    will-change: auto
 
 @media (prefers-reduced-motion: reduce) {
   .btn,

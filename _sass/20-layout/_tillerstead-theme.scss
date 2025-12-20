@@ -50,8 +50,9 @@ body.ts-theme {
   font-size: 0.95rem;
 }
 
-@media (max-width: 768px) {
+/* Container query for responsive section padding */
+@container (inline-size < 48rem) {
   .ts-section {
-    padding-block: clamp(2rem, 8vw, 3rem);
+    padding-block: clamp(2rem, 8vi, 3rem);
   }
 }

@@ -1,0 +1,82 @@
+/* ============================================
+   Performance Layer — Modern CSS Optimizations
+   content-visibility, contain, will-change
+   ============================================ */
+
+/* Optimize off-screen content rendering */
+.section,
+.ts-section,
+.card,
+.ts-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 400px;
+}
+
+/* Optimize images */
+img {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px 200px;
+}
+
+/* Optimize hero images specifically */
+.ts-hero__visual img,
+.ts-hero__project img {
+  contain-intrinsic-size: 600px 800px;
+}
+
+/* Layout containment for cards */
+.card,
+.ts-card,
+.service-card,
+.trade-note-card {
+  contain: layout style paint;
+}
+
+/* Animation performance */
+@media (prefers-reduced-motion: no-preference) {
+  .btn,
+  .card,
+  .ts-card {
+    will-change: transform;
+  }
+  
+  .btn:hover,
+  .card:hover,
+  .ts-card:hover {
+    will-change: auto;
+  }
+}
+
+/* Optimize large lists */
+.portfolio-grid,
+.docket-list,
+.case-list {
+  contain: layout style;
+}
+
+/* Force GPU acceleration for transforms */
+.btn,
+.slider-arrow,
+.nav-toggle {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize font rendering */
+body {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Critical content */
+.ts-hero,
+.site-header {
+  content-visibility: visible;
+}
+
+/* Lazy render footer */
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}

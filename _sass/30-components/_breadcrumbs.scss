@@ -25,7 +25,7 @@
 
 .ts-breadcrumbs__link,
 .ts-crumb-link {
-  color: var(--ts-color-primary, #0ea5e9);
+  color: var(--ts-color-primary);
   font-weight: 600;
   text-decoration: none;
   transition: color var(--transition-fast);
@@ -36,7 +36,7 @@
 .ts-crumb-link:hover,
 .ts-crumb-link:focus-visible {
   text-decoration: underline;
-  color: var(--ts-color-primary-dark, #0284c7);
+  color: var(--ts-color-primary-strong);
 }
 
 .ts-breadcrumbs__separator {
@@ -47,7 +47,7 @@
 .ts-breadcrumbs__current,
 .ts-crumb-current {
   font-weight: 600;
-  color: var(--ts-color-heading, #0f172a);
+  color: var(--ts-color-heading);
 }
 
 .ts-breadcrumbs__item {
@@ -61,9 +61,11 @@
   outline: none;
 }
 
-@media (max-width: 640px) {
+/* Container query for narrow breadcrumbs */
+@container (inline-size < 30rem) {
   .breadcrumbs-bar {
-    padding: 0.4rem 1rem;
+    padding-block: 0.4rem;
+    padding-inline: 1rem;
   }
 
   .ts-breadcrumbs {

@@ -1,47 +1,54 @@
 /* ============================================
-   Layout shell
-   Containers, sections, and structural helpers
+   Layout shell — Modern CSS, no legacy
+   Container queries, logical properties, future-ready
    ============================================ */
 
 .container,
 .ts-container {
-  width: 100%;
-  max-width: var(--layout-max, 1320px);
+  container-type: inline-size;
+  container-name: main;
+  inline-size: 100%;
+  max-inline-size: var(--container, 1100px);
   margin-inline: auto;
-  padding-inline: var(--container-gutter, 1.5rem);
-  box-sizing: border-box;
+  padding-inline: clamp(1rem, 4vi, 1.75rem);
 }
 
 .container-narrow {
-  max-width: var(--layout-narrow, 960px);
+  max-inline-size: 800px;
 }
 
 .container-wide {
-  max-width: var(--layout-wide, 1440px);
+  max-inline-size: 1400px;
 }
 
 .container-full {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-  padding-inline: var(--container-gutter, 1.5rem);
+  inline-size: 100%;
+  max-inline-size: 100%;
+  padding-inline: clamp(1rem, 4vi, 1.75rem);
+}
+
+.shell {
+  max-inline-size: var(--container, 1100px);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vi, 1.75rem);
+  inline-size: 100%;
 }
 
 .section,
 .ts-section {
-  width: 100%;
-  padding-block: var(--section-padding-y, 3rem);
+  inline-size: 100%;
+  padding-block: var(--section-pad-y, clamp(2.5rem, 6vi, 5.25rem));
 }
 
 .section-inner,
 .ts-section-inner {
-  max-width: var(--layout-max, 1320px);
+  max-inline-size: var(--container, 1100px);
   margin-inline: auto;
-  padding-inline: var(--container-gutter, 1.5rem);
-  box-sizing: border-box;
+  padding-inline: clamp(1rem, 4vi, 1.75rem);
 }
 
 .section-compact {
-  padding-block: clamp(2rem, 4vw, 3rem);
+  padding-block: clamp(2rem, 4vi, 3.5rem);
 }
 
 .section-primary {
@@ -138,8 +145,43 @@
 
 .switcher {
   display: grid;
-  gap: var(--section-gap, 2rem);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--gutter, clamp(1.5rem, 3.5vi, 2.5rem));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+/* Modern CSS Grid patterns */
+.grid-2col {
+  display: grid;
+  gap: clamp(1.5rem, 3vi, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+}
+
+.grid-3col {
+  display: grid;
+  gap: clamp(1.5rem, 3vi, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+
+.grid-4col {
+  display: grid;
+  gap: clamp(1rem, 2.5vi, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+/* Auto-responsive without breakpoints */
+.grid-auto {
+  display: grid;
+  gap: var(--grid-gap, clamp(1.5rem, 3vi, 2.5rem));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--grid-min, 18rem)), 1fr));
+}
+
+/* Container query-based responsive cards */
+@container main (inline-size > 48rem) {
+  .card-adaptive {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+  }
 }
 
 .cover {
@@ -187,16 +229,47 @@
 .max-w-5xl { max-width: 64rem !important; }
 .max-w-full { max-width: 100% !important; }
 
-@media (max-width: 640px) {
+/* Modern viewport units (vi = viewport inline, vb = viewport block) */
+@supports (padding: 1vi) {
   .container,
-  .ts-container {
-    padding-inline: clamp(0.75rem, 5vw, 1.25rem);
+  .ts-container,
+  .shell {
+    padding-inline: clamp(1rem, 4vi, 1.75rem);
   }
 
   .section,
   .ts-section {
-    padding-block: clamp(2rem, 6vw, 3rem);
+    padding-block: clamp(2.5rem, 6vb, 5.25rem);
   }
+}
+
+/* Aggressive mobile optimization — no media queries needed */
+.flow-responsive {
+  display: grid;
+  gap: clamp(1rem, 3vi, 2rem);
+}
+
+.cluster-responsive {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 2vi, 1.5rem);
+  align-items: center;
+}
+
+/* Subgrid support for nested grids */
+@supports (grid-template-columns: subgrid) {
+  .grid-parent {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gutter);
+  }
+
+  .grid-child {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+}
 
   .stack,
   .cluster {
@@ -208,7 +281,8 @@
   }
 }
 
-@media (min-width: 641px) {
+/* Container query for desktop visibility */
+@container (inline-size > 40rem) {
   .hide-desktop {
     display: none !important;
   }

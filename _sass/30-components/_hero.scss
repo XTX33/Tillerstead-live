@@ -1,17 +1,31 @@
 /* ==========================================================================
-   Hero section
-   Balanced spacing, responsive grid, CTA focus
+   Hero section — Modern CSS Grid + Container Queries
+   No breakpoints, fluid responsive, performance-first
    ========================================================================== */
 
 .ts-hero {
-  width: 100%;
-  padding: clamp(3rem, 6vw, 5.5rem) clamp(1.5rem, 5vw, 4rem);
-  background: var(--hero-bg, linear-gradient(180deg, #0f172a 0%, #0b1220 100%));
-  color: var(--hero-text, #ffffff);
+  container-type: inline-size;
+  inline-size: 100%;
+  padding-block: var(--section-pad-y, clamp(2.5rem, 6vb, 5.25rem));
+  padding-inline: clamp(1rem, 4vi, 1.75rem);
+  background: var(--hero-bg);
+  color: var(--hero-text);
+}
+
+.ts-hero__inner {
+  max-inline-size: var(--container, 1100px);
+  margin-inline: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(2rem, 4vw, 3rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: var(--gutter, clamp(1.5rem, 3.5vi, 2.5rem));
   align-items: center;
+}
+
+/* Container query: switch to sidebar layout when wide enough */
+@container (inline-size > 60rem) {
+  .ts-hero__inner {
+    grid-template-columns: 1.6fr 1fr;
+  }
 }
 
 .ts-hero__content {
@@ -38,7 +52,7 @@
 
 .ts-hero__lead {
   font-size: 1.1rem;
-  color: rgb(255, 255, 255, 0.9);
+  color: var(--hero-text-muted);
   line-height: 1.6;
 }
 
@@ -48,34 +62,27 @@
   gap: var(--ts-spacing-sm);
 }
 
+/* Modern :has() selector for dynamic layouts */
+.ts-hero:has(.ts-hero__visual) {
+  --hero-template: 1.6fr 1fr;
+}
+
+/* Performance: content-visibility for off-screen optimization */
 .ts-hero__visual {
-  width: 100%;
-  min-height: 280px;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 400px;
+  inline-size: 100%;
+  min-block-size: 280px;
   border-radius: var(--ts-radius-lg);
   overflow: hidden;
   background: var(--ts-color-surface-dark, rgb(15, 23, 42, 0.85));
-  box-shadow: var(--ts-shadow-lg);
 }
 
 .ts-hero__visual img {
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: cover;
   display: block;
 }
 
-.ts-hero__eyebrow,
-.ts-hero__lead {
-  max-width: 600px;
-}
-
-@media (max-width: 768px) {
-  .ts-hero {
-    padding: clamp(2rem, 6vw, 3.5rem);
-  }
-
-  .ts-hero__actions {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
+/* Remove legacy media queries - grid handles it */

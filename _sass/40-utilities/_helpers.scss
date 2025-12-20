@@ -62,9 +62,9 @@
 .bg-surface { background: var(--ts-color-surface) !important; }
 
 .bg-gradient {
-  background: linear-gradient(135deg, #1fbda4 0%, #0d6c5b 55%, #064238 100%) !important;
-  color: #f4fbf7;
-  border: 1px solid rgb(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, #0b6b5c 0%, #053a2e 55%, #022318 100%) !important;
+  color: var(--hero-text);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .bg-gradient .section-header {
@@ -73,16 +73,16 @@
 }
 
 .bg-gradient .section-header .eyebrow {
-  color: rgb(255, 255, 255, 0.78);
+  color: var(--hero-text-muted);
 }
 
 .bg-gradient .section-header .heading-2,
 .bg-gradient .section-header .heading-3 {
-  color: #ffffff;
+  color: var(--hero-text);
 }
 
 .bg-gradient .section-header .lead {
-  color: rgb(255, 255, 255, 0.92);
+  color: var(--hero-text-muted);
 }
 
 .bg-gradient .section-action {
@@ -90,10 +90,10 @@
 }
 
 .bg-gradient .btn--primary {
-  background: #ffffff;
-  color: var(--ts-color-primary);
+  background: var(--ts-white);
+  color: var(--ts-color-primary-bg);
   border: none;
-  box-shadow: 0 18px 34px rgb(0, 0, 0, 0.22);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
 }
 
 .bg-gradient .btn--primary:hover,
@@ -126,12 +126,12 @@
 /* ===== Overflow ===== */
 .overflow-hidden { overflow: hidden !important; }
 
-/* ===== Responsive Utilities ===== */
-@media (max-width: 640px) {
+/* ===== Responsive Utilities (container-based) ===== */
+@container (inline-size < 30rem) {
   .sm\:d-none { display: none !important; }
   .sm\:text-center { text-align: center !important; }
 }
 
-@media (min-width: 768px) {
+@container (inline-size > 48rem) {
   .md\:d-flex { display: flex !important; }
 }

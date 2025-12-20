@@ -73,8 +73,7 @@
   justify-content: center;
 }
 
-@media (max-width: 640px) {
-  .ts-plans__grid {
-    grid-template-columns: 1fr;
-  }
+/* Auto-responsive grid - no media query needed */
+.ts-plans__grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
 }
