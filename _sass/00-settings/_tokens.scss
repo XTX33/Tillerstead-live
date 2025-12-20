@@ -155,18 +155,24 @@
   --line-height-tight: 1.2;
   --line-height-relaxed: 1.85;
 
-  /* ===========================
-     Spacing (8px base)
+   /* ===========================
+     Spacing (8px base grid system)
      =========================== */
-  --ts-spacing-xs: 0.5rem;
-  --ts-spacing-sm: 0.75rem;
-  --ts-spacing-md: 1.25rem;
-  --ts-spacing-lg: 2rem;
-  --ts-spacing-xl: 3rem;
-  --ts-spacing-2xl: 4rem;
-  --ts-spacing-3xl: 5rem;
-  --hero-padding-mobile: 3rem;
-  --hero-padding-desktop: 6rem;
+  --ts-spacing-xs:  0.5rem;      /* 8px */
+  --ts-spacing-sm: 0.75rem;     /* 12px */
+  --ts-spacing-md: 1.25rem;     /* 20px */
+  --ts-spacing-lg: 2rem;        /* 32px */
+  --ts-spacing-xl: 3rem;        /* 48px */
+  --ts-spacing-2xl: 4rem;       /* 64px */
+  --ts-spacing-3xl: 5rem;       /* 80px */
+  --ts-spacing-4xl: 6rem;       /* 96px */
+  --ts-spacing-5xl: 8rem;       /* 128px */
+  
+  /* Context-specific spacing */
+  --hero-padding-mobile: clamp(3rem, 5vw, 4rem);
+  --hero-padding-desktop: clamp(4rem, 8vw, 6rem);
+  --section-spacing: clamp(3rem, 6vw, 5rem);
+  --card-spacing: clamp(1.5rem, 3vw, 2.5rem);
 
   /* ===========================
      Radius & Shadows
