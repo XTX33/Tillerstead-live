@@ -191,14 +191,53 @@
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   text-align: center;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 0.875rem;
+}
+
+.site-footer.ts-footer .footer-compliance {
+  margin-bottom: 1.5rem;
+}
+
+.site-footer.ts-footer .footer-licensing {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  
+  strong {
+    color: #ffffff;
+    font-weight: 700;
+  }
+}
+
+.site-footer.ts-footer .footer-compliance-note {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  
+  a {
+    color: #7fd1ff;
+    text-decoration: underline;
+    font-weight: 600;
+    
+    &:hover,
+    &:focus-visible {
+      color: #a8e0ff;
+      text-decoration: none;
+    }
+  }
 }
 
 .site-footer.ts-footer .footer-legal-note {
   margin: 0.5rem 0 1rem;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.88);
+  
+  small {
+    color: inherit;
+  }
 }
 
 .site-footer.ts-footer .footer-bottom p {

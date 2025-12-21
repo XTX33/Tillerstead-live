@@ -133,42 +133,95 @@
 .ts-hero__fact {
   display: flex;
   align-items: center;
-  gap: 0.875rem;
-  padding: 1rem 1.25rem;
-  background: color-mix(in srgb, var(--ts-color-surface-elevated) 95%, var(--ts-color-primary) 5%);
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--ts-color-surface-elevated) 98%, var(--ts-color-primary) 2%) 0%,
+    color-mix(in srgb, var(--ts-color-surface-elevated) 95%, var(--ts-color-primary) 5%) 100%
+  );
   border-radius: var(--ts-radius-lg);
   border: 1px solid color-mix(in srgb, var(--ts-color-border) 70%, var(--ts-color-primary) 30%);
   box-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.06),
+    0 4px 16px rgba(0, 0, 0, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+      transparent 0%, 
+      color-mix(in srgb, var(--ts-color-primary) 5%, transparent) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
   &:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 
-      0 4px 12px rgba(0, 0, 0, 0.1),
+      0 6px 16px rgba(0, 0, 0, 0.1),
+      0 8px 24px rgba(0, 0, 0, 0.08),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: color-mix(in srgb, var(--ts-color-primary) 50%, var(--ts-color-border));
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .ts-hero__fact-icon {
+      transform: scale(1.1) rotate(5deg);
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
   }
+}
 
-  .ts-hero__fact-icon {
-    font-size: 1.75rem;
-    flex-shrink: 0;
-  }
+.ts-hero__fact-icon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background: linear-gradient(135deg, 
+    var(--ts-color-primary-bg) 0%, 
+    color-mix(in srgb, var(--ts-color-primary-bg) 85%, #000) 100%
+  );
+  border-radius: var(--ts-radius-md);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
 
-  strong {
-    display: block;
-    color: var(--ts-color-heading);
-    font-weight: 700;
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
-  }
+.ts-hero__fact-content {
+  flex: 1;
+  z-index: 1;
+}
 
-  span:not(:first-child) {
-    display: block;
-    color: var(--ts-color-text);
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
+.ts-hero__fact-label {
+  display: block;
+  color: var(--ts-color-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.ts-hero__fact-text {
+  display: block;
+  color: var(--ts-color-text);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 500;
 }
 
 /* Hero Bullets/Highlights */
