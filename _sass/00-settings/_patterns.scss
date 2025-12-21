@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Sacred Geometric Pattern System
+   Subtle, tile-inspired backgrounds for Tillerstead brand
+   ========================================================================== */
+
+/* Hero section patterns - for main hero backgrounds */
+.ts-hero--pattern-tile-grid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect x='2' y='2' width='46' height='46' fill='%23000' opacity='0.03' rx='2'/%3E%3Crect x='52' y='2' width='46' height='46' fill='%23000' opacity='0.03' rx='2'/%3E%3Crect x='2' y='52' width='46' height='46' fill='%23000' opacity='0.03' rx='2'/%3E%3Crect x='52' y='52' width='46' height='46' fill='%23000' opacity='0.03' rx='2'/%3E%3Cline x1='0' y1='50' x2='100' y2='50' stroke='%23000' stroke-width='0.5' opacity='0.08'/%3E%3Cline x1='50' y1='0' x2='50' y2='100' stroke='%23000' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+.ts-hero--pattern-hexagon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='86.6' height='100'%3E%3Cpath d='M 0,50 L 25,10 L 75,10 L 100,50 L 75,90 L 25,90 Z' fill='none' stroke='%23000' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='50' cy='50' r='3' fill='%23000' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.ts-hero--pattern-flower {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ccircle cx='60' cy='60' r='20' fill='none' stroke='%23000' stroke-width='0.5' opacity='0.05'/%3E%3Ccircle cx='40' cy='60' r='20' fill='none' stroke='%23000' stroke-width='0.5' opacity='0.05'/%3E%3Ccircle cx='80' cy='60' r='20' fill='none' stroke='%23000' stroke-width='0.5' opacity='0.05'/%3E%3Ccircle cx='50' cy='43' r='20' fill='none' stroke='%23000' stroke-width='0.5' opacity='0.05'/%3E%3Ccircle cx='70' cy='43' r='20' fill='none' stroke='%23000' stroke-width='0.5' opacity='0.05'/%3E%3Ccircle cx='50' cy='77' r='20' fill='none' stroke='%23000' stroke-width='0.5' opacity='0.05'/%3E%3Ccircle cx='70' cy='77' r='20' fill='none' stroke='%23000' stroke-width='0.5' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.ts-hero--pattern-dots {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Ccircle cx='15' cy='15' r='2' fill='%23000' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+.ts-hero--pattern-moroccan {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='0' cy='0' r='25' fill='%23000' opacity='0.03'/%3E%3Ccircle cx='100' cy='0' r='25' fill='%23000' opacity='0.03'/%3E%3Ccircle cx='0' cy='100' r='25' fill='%23000' opacity='0.03'/%3E%3Ccircle cx='100' cy='100' r='25' fill='%23000' opacity='0.03'/%3E%3Ccircle cx='50' cy='50' r='15' fill='none' stroke='%23000' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+.ts-hero--pattern-subway {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Crect x='2' y='2' width='56' height='26' fill='%23000' opacity='0.03' rx='1'/%3E%3Crect x='62' y='2' width='56' height='26' fill='%23000' opacity='0.03' rx='1'/%3E%3Crect x='32' y='32' width='56' height='26' fill='%23000' opacity='0.03' rx='1'/%3E%3C/svg%3E");
+}
+
+/* Light patterns for dark backgrounds */
+.pattern-light-tile-grid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect x='2' y='2' width='46' height='46' fill='%23fff' opacity='0.08' rx='2'/%3E%3Crect x='52' y='2' width='46' height='46' fill='%23fff' opacity='0.08' rx='2'/%3E%3Crect x='2' y='52' width='46' height='46' fill='%23fff' opacity='0.08' rx='2'/%3E%3Crect x='52' y='52' width='46' height='46' fill='%23fff' opacity='0.08' rx='2'/%3E%3Cline x1='0' y1='50' x2='100' y2='50' stroke='%23fff' stroke-width='0.5' opacity='0.12'/%3E%3Cline x1='50' y1='0' x2='50' y2='100' stroke='%23fff' stroke-width='0.5' opacity='0.12'/%3E%3C/svg%3E");
+}
+
+.pattern-light-hexagon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='86.6' height='100'%3E%3Cpath d='M 0,50 L 25,10 L 75,10 L 100,50 L 75,90 L 25,90 Z' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.1'/%3E%3Ccircle cx='50' cy='50' r='3' fill='%23fff' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+.pattern-light-flower {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ccircle cx='60' cy='60' r='20' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='40' cy='60' r='20' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='80' cy='60' r='20' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='50' cy='43' r='20' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='70' cy='43' r='20' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='50' cy='77' r='20' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='70' cy='77' r='20' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+.pattern-light-dots {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Ccircle cx='15' cy='15' r='2' fill='%23fff' opacity='0.12'/%3E%3C/svg%3E");
+}
+
+.pattern-light-moroccan {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='0' cy='0' r='25' fill='%23fff' opacity='0.06'/%3E%3Ccircle cx='100' cy='0' r='25' fill='%23fff' opacity='0.06'/%3E%3Ccircle cx='0' cy='100' r='25' fill='%23fff' opacity='0.06'/%3E%3Ccircle cx='100' cy='100' r='25' fill='%23fff' opacity='0.06'/%3E%3Ccircle cx='50' cy='50' r='15' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.12'/%3E%3C/svg%3E");
+}
+
+/* Card patterns - extra subtle */
+.card--pattern-dots {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Ccircle cx='15' cy='15' r='2' fill='%23000' opacity='0.02'/%3E%3C/svg%3E");
+}
+
+/* Animated pattern (optional) */
+@keyframes pattern-float {
+  0%, 100% { background-position: 0 0; }
+  50% { background-position: 20px 20px; }
+}
+
+.pattern-animated {
+  animation: pattern-float 60s ease-in-out infinite;
+  background-size: 100px 100px;
+}
+
+/* Print safe */
+@media print {
+  [class*="pattern-"] {
+    background-image: none !important;
+  }
+}
