@@ -1,42 +1,56 @@
 {%- comment -%}
-  Testimonials section include.
-  Data fallback: include.data → site.data.home.testimonials → empty object.
-  Handles both direct reviews array and review ID references.
-  If no reviews specified, pulls from site.data.reviews.reviews automatically.
+  Testimonials section
 {%- endcomment -%}
-{% assign testimonials = include.data | default: site.data.home.testimonials | default: {} %}
+{% assign testimonials = site.data.home.testimonials %}
 
 {% if testimonials.title %}
-  {% assign section_id = include.section_id | default: 'home-testimonials' %}
-  
-  {%- comment -%} Resolve review references to actual review objects {%- endcomment -%}
-  {% assign resolved_reviews = '' | split: '' %}
-  {% if testimonials.reviews and testimonials.reviews != null %}
-    {% for item in testimonials.reviews %}
-      {% if item.id %}
-        {%- comment -%} It's a reference object with just an ID {%- endcomment -%}
-        {% for review in site.data.reviews.reviews %}
-          {% if review.id == item.id %}
-            {% assign resolved_reviews = resolved_reviews | push: review %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
-      {% else %}
-        {%- comment -%} It's a full review object {%- endcomment -%}
-        {% assign resolved_reviews = resolved_reviews | push: item %}
-      {% endif %}
-    {% endfor %}
-  {% else %}
-    {%- comment -%} No reviews specified, use default from site.data.reviews.reviews {%- endcomment -%}
-    {% assign resolved_reviews = site.data.reviews.reviews %}
-  {% endif %}
-  
-  {% include ts-testimonials.html
-    section_id=section_id
-    eyebrow=testimonials.eyebrow
-    heading=testimonials.title
-    limit=testimonials.limit
-    reviews=resolved_reviews %}
+<section class="ts-testimonials ts-section" aria-labelledby="home-testimonials-title">
+  <div class="container">
+    <header class="ts-testimonials__header section-header">
+      {% if testimonials.eyebrow %}<p class="eyebrow text-accent">{{ testimonials.eyebrow }}</p>{% endif %}
+      <h2 id="home-testimonials-title" class="heading-2">{{ testimonials.title }}</h2>
+    </header>
+
+    <div class="ts-testimonials__grid" role="list">
+      {% for review in site.data.reviews.reviews | slice: 0, 3 %}
+        <article class="ts-testimonial" role="listitem">
+          <blockquote class="ts-testimonial__quote">
+            <div class="ts-testimonial__quote-text">{{ review.quote_html }}</div>
+          </blockquote>
+          <div class="ts-testimonial__rating">
+            <div class="ts-testimonial__stars">
+              {% assign rating = review.rating | default: 5 %}
+              {% for i in (1..5) %}
+                <span class="ts-testimonial__star{% if i <= rating %} ts-testimonial__star--filled{% endif %}">{% if i <= rating %}★{% else %}☆{% endif %}</span>
+              {% endfor %}
+            </div>
+          </div>
+          <footer class="ts-testimonial__meta">
+            <p class="ts-testimonial__byline">
+              <span class="ts-testimonial__author">{{ review.author }}</span>
+              {% if review.job_type %} · <span class="ts-testimonial__job">{{ review.job_type }}</span>{% endif %}
+              {% if review.date %} · <span class="ts-testimonial__date">{{ review.date | date: "%b %Y" }}</span>{% endif %}
+            </p>
+            {% if review.badges %}
+            <ul class="ts-testimonial__badges">
+              {% for badge in review.badges %}
+                <li class="ts-testimonial__badge">{{ badge }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            {% if review.url %}
+            <a href="{{ review.url }}" class="ts-testimonial__verify" target="_blank" rel="noopener nofollow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Verified on {{ review.platform }}</span>
+            </a>
+            {% endif %}
+          </footer>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 {% endif %}
-
-

@@ -1,6 +1,6 @@
 {% assign process = site.data.home.process %}
 
-{% if process and process.title %}
+{% if process.title %}
   {% assign section_id = include.section_id | default: 'ts-process' %}
   {% assign heading_id = include.heading_id | default: section_id | append: '-title' %}
   <section class="ts-section ts-process" aria-labelledby="{{ heading_id }}">
