@@ -1,0 +1,342 @@
+/* ============================================
+   🎬 TILLERSTEAD AMERICAN CARTOON DESIGN SYSTEM
+   Classic animation aesthetic meets modern tile expertise
+   
+   Think: Looney Tunes, Hanna-Barbera, vintage Saturday morning cartoons
+   Bold primaries, clean lines, graphic punch, retro charm
+   ============================================ */
+
+@use "sass:math";
+@use "contrast" as *;
+
+:root {
+  color-scheme: light;
+
+  /* ===========================
+     🎨 CLASSIC CARTOON PALETTE
+     Bold primaries inspired by vintage American animation
+     =========================== */
+  
+  /* Primary: Cartoon Blue (Bugs Bunny sky, classic backdrop) */
+  --cartoon-blue-light: #87CEEB;    /* Sky blue */
+  --cartoon-blue: #4A90E2;          /* Primary blue */
+  --cartoon-blue-dark: #2E5C8A;     /* Deep blue */
+  --cartoon-blue-deeper: #1A3A5C;   /* Navy accent */
+  
+  /* Secondary: Fire Engine Red (Looney Tunes energy) */
+  --cartoon-red-light: #FF6B6B;     /* Light red */
+  --cartoon-red: #E63946;           /* Classic red */
+  --cartoon-red-dark: #C1292E;      /* Deep red */
+  --cartoon-red-darker: #8B1E23;    /* Burgundy */
+  
+  /* Accent: Golden Yellow (Tweety Bird, classic highlight) */
+  --cartoon-yellow-light: #FFE066;  /* Light yellow */
+  --cartoon-yellow: #FFCA28;        /* Primary yellow */
+  --cartoon-yellow-dark: #F4A400;   /* Gold */
+  --cartoon-yellow-darker: #C17900; /* Deep gold */
+  
+  /* Support: Grass Green (Fresh, classic cartoon grass) */
+  --cartoon-green-light: #90EE90;   /* Light green */
+  --cartoon-green: #4CAF50;         /* Primary green */
+  --cartoon-green-dark: #388E3C;    /* Deep green */
+  
+  /* Support: Inky Black (Outline, text, graphic punch) */
+  --cartoon-black: #1A1A1A;         /* True cartoon black */
+  --cartoon-gray-dark: #2C3E50;     /* Charcoal */
+  --cartoon-gray: #555555;          /* Medium gray */
+  --cartoon-gray-light: #95A5A6;    /* Light gray */
+  
+  /* Support: Pure White (Highlights, backgrounds) */
+  --cartoon-white: #FFFFFF;         /* Pure white */
+  --cartoon-off-white: #F8F9FA;     /* Slightly off */
+  --cartoon-cream: #FFF8DC;         /* Cream/cornsilk */
+
+  /* ===========================
+     🎭 VINTAGE TV COLORS
+     Inspired by mid-century color TV palettes
+     =========================== */
+  
+  --retro-orange: #FF6F00;          /* 60s orange */
+  --retro-teal: #00897B;            /* 70s teal */
+  --retro-purple: #7B1FA2;          /* Rare accent */
+  --retro-pink: #E91E63;            /* Rare highlight */
+
+  /* ===========================
+     📺 SURFACE SYSTEM
+     Clean, graphic, cel-animation inspired
+     =========================== */
+  
+  --surface-paper: var(--cartoon-off-white);
+  --surface-white: var(--cartoon-white);
+  --surface-cream: var(--cartoon-cream);
+  --surface-blue-tint: #E3F2FD;     /* Light blue wash */
+  --surface-yellow-tint: #FFF9C4;   /* Light yellow wash */
+  
+  /* Shadows (animation cel style) */
+  --shadow-cartoon: rgba(0, 0, 0, 0.25);
+  --shadow-cartoon-soft: rgba(0, 0, 0, 0.15);
+
+  /* ===========================
+     ✍️ TEXT & OUTLINES
+     Bold, readable, graphic
+     =========================== */
+  
+  --text-primary: var(--cartoon-black);
+  --text-secondary: var(--cartoon-gray-dark);
+  --text-muted: var(--cartoon-gray);
+  --text-on-blue: var(--cartoon-white);
+  --text-on-red: var(--cartoon-white);
+  --text-on-yellow: var(--cartoon-black);
+  
+  /* Classic thick outlines */
+  --outline-thick: 4px;
+  --outline-medium: 3px;
+  --outline-thin: 2px;
+  --outline-color: var(--cartoon-black);
+
+  /* ===========================
+     🎨 SEMANTIC MAPPING
+     American cartoon color psychology
+     =========================== */
+  
+  /* Primary Brand (Blue - trustworthy, professional) */
+  --ts-color-primary: var(--cartoon-blue);
+  --ts-color-primary-hover: var(--cartoon-blue-dark);
+  --ts-color-primary-light: var(--cartoon-blue-light);
+  --ts-color-primary-surface: var(--surface-blue-tint);
+  
+  /* Secondary Brand (Red - action, energy, urgency) */
+  --ts-color-secondary: var(--cartoon-red);
+  --ts-color-secondary-hover: var(--cartoon-red-dark);
+  --ts-color-secondary-light: var(--cartoon-red-light);
+  
+  /* Accent (Yellow - attention, highlight, value) */
+  --ts-color-accent: var(--cartoon-yellow);
+  --ts-color-accent-hover: var(--cartoon-yellow-dark);
+  --ts-color-accent-light: var(--cartoon-yellow-light);
+  --ts-color-accent-surface: var(--surface-yellow-tint);
+  
+  /* Success (Green - positive, done, fresh) */
+  --ts-color-success: var(--cartoon-green);
+  --ts-color-success-dark: var(--cartoon-green-dark);
+  --ts-color-success-light: var(--cartoon-green-light);
+  
+  /* Warning/Alert (Yellow/Orange) */
+  --ts-color-warning: var(--retro-orange);
+  --ts-color-warning-light: #FFE0B2;
+  
+  /* Error (Red) */
+  --ts-color-error: var(--cartoon-red);
+  --ts-color-error-light: #FFEBEE;
+
+  /* ===========================
+     🎪 CARTOON GRADIENTS
+     Simple, bold, graphic
+     =========================== */
+  
+  /* Sky gradient (classic cartoon backdrop) */
+  --gradient-sky: linear-gradient(
+    180deg,
+    var(--cartoon-blue-light) 0%,
+    var(--cartoon-blue) 100%
+  );
+  
+  /* Sunset gradient (dramatic, vintage) */
+  --gradient-sunset: linear-gradient(
+    180deg,
+    var(--cartoon-yellow) 0%,
+    var(--retro-orange) 100%
+  );
+  
+  /* Bold diagonal (graphic punch) */
+  --gradient-diagonal-blue: linear-gradient(
+    135deg,
+    var(--cartoon-blue-light) 0%,
+    var(--cartoon-blue-dark) 100%
+  );
+  
+  /* Bold diagonal red (energy) */
+  --gradient-diagonal-red: linear-gradient(
+    135deg,
+    var(--cartoon-red-light) 0%,
+    var(--cartoon-red-dark) 100%
+  );
+
+  /* ===========================
+     📐 CLASSIC CARTOON SHAPES
+     Clean geometry, bold outlines
+     =========================== */
+  
+  /* Border radius (rounded but not too soft) */
+  --radius-cartoon: 8px;
+  --radius-cartoon-lg: 16px;
+  --radius-cartoon-xl: 24px;
+  --radius-pill: 9999px;
+  
+  /* Speech bubble specific */
+  --radius-bubble: 16px 16px 16px 4px;
+
+  /* ===========================
+     ✨ CARTOON SHADOWS
+     Bold, offset, cel-animation style
+     =========================== */
+  
+  /* Classic offset shadow (animation cel style) */
+  --shadow-cel-sm: 3px 3px 0 var(--cartoon-black);
+  --shadow-cel-md: 5px 5px 0 var(--cartoon-black);
+  --shadow-cel-lg: 8px 8px 0 var(--cartoon-black);
+  --shadow-cel-xl: 12px 12px 0 var(--cartoon-black);
+  
+  /* Soft shadow (modern touch) */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  /* ===========================
+     ✍️ TYPOGRAPHY SYSTEM
+     Bold, readable, cartoon energy
+     =========================== */
+  
+  /* Fonts */
+  --font-display: "Bangers", "Impact", "Arial Black", sans-serif;
+  --font-cartoon: "Patrick Hand", "Comic Sans MS", cursive;
+  --font-body: "Inter", -apple-system, system-ui, sans-serif;
+  --font-mono: "Courier New", monospace;
+  
+  /* Sizes */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+  --text-6xl: 3.75rem;    /* 60px */
+  --text-7xl: 4.5rem;     /* 72px */
+  
+  /* Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-black: 900;
+
+  /* ===========================
+     🎬 ANIMATION TIMING
+     Snappy, bouncy, cartoon physics
+     =========================== */
+  
+  --ease-cartoon: cubic-bezier(0.68, -0.55, 0.265, 1.55);  /* Bounce */
+  --ease-snap: cubic-bezier(0.4, 0, 0.6, 1);               /* Snappy */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);             /* Smooth */
+  
+  --duration-snap: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  /* ===========================
+     📏 SPACING SCALE
+     Consistent rhythm
+     =========================== */
+  
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+
+  /* ===========================
+     📐 Z-INDEX SCALE
+     =========================== */
+  
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-modal: 1300;
+  --z-toast: 1500;
+
+  /* ===========================
+     📦 CONTAINER WIDTHS
+     =========================== */
+  
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container: var(--container-lg);
+}
+
+/* ===========================
+   🎨 UTILITY CLASSES
+   =========================== */
+
+/* Gradients */
+.gradient-sky { background: var(--gradient-sky); }
+.gradient-sunset { background: var(--gradient-sunset); }
+.gradient-blue { background: var(--gradient-diagonal-blue); }
+.gradient-red { background: var(--gradient-diagonal-red); }
+
+/* Shadows */
+.shadow-cel-sm { box-shadow: var(--shadow-cel-sm); }
+.shadow-cel-md { box-shadow: var(--shadow-cel-md); }
+.shadow-cel-lg { box-shadow: var(--shadow-cel-lg); }
+.shadow-cel-xl { box-shadow: var(--shadow-cel-xl); }
+
+/* Text styles */
+.text-cartoon { font-family: var(--font-display); }
+.text-outline {
+  text-shadow:
+    -2px -2px 0 var(--outline-color),
+    2px -2px 0 var(--outline-color),
+    -2px 2px 0 var(--outline-color),
+    2px 2px 0 var(--outline-color);
+}
+
+/* Borders */
+.border-cartoon { border: var(--outline-medium) solid var(--outline-color); }
+.border-cartoon-thick { border: var(--outline-thick) solid var(--outline-color); }
+
+/* ===========================
+   🎭 SPECIAL EFFECTS
+   =========================== */
+
+/* Halftone pattern (Ben-Day dots, vintage comic) */
+.halftone-pattern {
+  background-image: 
+    radial-gradient(circle, var(--cartoon-black) 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+  opacity: 0.1;
+}
+
+/* Speed lines (cartoon motion) */
+.speed-lines-horizontal {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 8px,
+    var(--cartoon-black) 8px,
+    var(--cartoon-black) 10px
+  );
+  opacity: 0.1;
+}
+
+/* Starburst background */
+.starburst-bg {
+  background-image: repeating-conic-gradient(
+    from 0deg,
+    var(--cartoon-yellow) 0deg 5deg,
+    var(--cartoon-yellow-light) 5deg 10deg
+  );
+}
+
+/* ============================================
+   🎬 END OF AMERICAN CARTOON DESIGN SYSTEM
+   ============================================ */

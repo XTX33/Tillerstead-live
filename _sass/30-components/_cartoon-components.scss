@@ -1,0 +1,509 @@
+/* ============================================
+   🎬 AMERICAN CARTOON COMPONENTS
+   Classic animation cel style meets modern tile expertise
+   Think: Looney Tunes, Hanna-Barbera, vintage Saturday morning
+   ============================================ */
+
+/* ===========================
+   💬 CLASSIC SPEECH BUBBLE
+   =========================== */
+
+.speech-bubble-cartoon {
+  position: relative;
+  background: var(--cartoon-white);
+  border: var(--outline-thick) solid var(--cartoon-black);
+  border-radius: var(--radius-bubble);
+  padding: var(--space-5) var(--space-6);
+  box-shadow: var(--shadow-cel-md);
+  font-family: var(--font-cartoon);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  max-width: 400px;
+  line-height: 1.4;
+}
+
+/* Tail */
+.speech-bubble-cartoon::after {
+  content: '';
+  position: absolute;
+  bottom: -22px;
+  left: 40px;
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 24px solid var(--cartoon-black);
+}
+
+.speech-bubble-cartoon::before {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 44px;
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 18px solid var(--cartoon-white);
+  z-index: 1;
+}
+
+/* ===========================
+   💥 ACTION WORDS (POW/WHAM/BOOM)
+   =========================== */
+
+.action-word {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: var(--font-black);
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--cartoon-white);
+  background: var(--cartoon-red);
+  border: var(--outline-thick) solid var(--cartoon-black);
+  padding: var(--space-4) var(--space-8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transform: rotate(-5deg) skew(-5deg);
+  box-shadow: var(--shadow-cel-lg);
+  position: relative;
+  
+  /* Classic comic book jagged edges */
+  clip-path: polygon(
+    2% 0%, 15% 5%, 30% 0%, 45% 3%, 60% 0%, 75% 5%, 88% 0%, 100% 5%,
+    95% 20%, 100% 35%, 95% 50%, 100% 65%, 95% 80%, 100% 95%,
+    85% 100%, 70% 95%, 55% 100%, 40% 95%, 25% 100%, 10% 95%, 0% 100%,
+    5% 85%, 0% 70%, 5% 55%, 0% 40%, 5% 25%, 0% 10%
+  );
+}
+
+.action-word.pow { background: var(--cartoon-yellow); color: var(--cartoon-black); }
+.action-word.wham { background: var(--cartoon-red); }
+.action-word.boom { background: var(--retro-orange); }
+.action-word.zap { background: var(--cartoon-blue); }
+
+/* Small action badges */
+.badge-action {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: var(--font-black);
+  font-size: var(--text-sm);
+  background: var(--cartoon-yellow);
+  color: var(--cartoon-black);
+  border: var(--outline-medium) solid var(--cartoon-black);
+  padding: var(--space-2) var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transform: rotate(-3deg);
+  box-shadow: var(--shadow-cel-sm);
+  border-radius: var(--radius-cartoon);
+}
+
+/* ===========================
+   🎪 CARTOON CARD SYSTEM
+   =========================== */
+
+.card-cartoon {
+  background: var(--cartoon-white);
+  border: var(--outline-thick) solid var(--cartoon-black);
+  border-radius: var(--radius-cartoon-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-cel-md);
+  transition: all var(--duration-normal) var(--ease-cartoon);
+  position: relative;
+}
+
+.card-cartoon:hover {
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: var(--shadow-cel-lg);
+}
+
+/* Blue variant */
+.card-cartoon-blue {
+  background: var(--gradient-diagonal-blue);
+  color: var(--text-on-blue);
+  border-color: var(--cartoon-blue-darker);
+}
+
+/* Red variant */
+.card-cartoon-red {
+  background: var(--gradient-diagonal-red);
+  color: var(--text-on-red);
+  border-color: var(--cartoon-red-darker);
+}
+
+/* Yellow variant */
+.card-cartoon-yellow {
+  background: var(--cartoon-yellow);
+  color: var(--text-on-yellow);
+  border-color: var(--cartoon-yellow-darker);
+}
+
+/* ===========================
+   🎯 BUTTON SYSTEM
+   =========================== */
+
+.btn-cartoon {
+  font-family: var(--font-display);
+  font-weight: var(--font-black);
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-4) var(--space-8);
+  background: var(--cartoon-blue);
+  color: var(--text-on-blue);
+  border: var(--outline-thick) solid var(--cartoon-black);
+  border-radius: var(--radius-cartoon);
+  box-shadow: var(--shadow-cel-sm);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all var(--duration-snap) var(--ease-snap);
+  position: relative;
+}
+
+.btn-cartoon:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-cel-md);
+}
+
+.btn-cartoon:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-cel-sm);
+}
+
+/* Button variants */
+.btn-cartoon-blue {
+  background: var(--cartoon-blue);
+  color: var(--text-on-blue);
+}
+
+.btn-cartoon-blue:hover {
+  background: var(--cartoon-blue-dark);
+}
+
+.btn-cartoon-red {
+  background: var(--cartoon-red);
+  color: var(--text-on-red);
+}
+
+.btn-cartoon-red:hover {
+  background: var(--cartoon-red-dark);
+}
+
+.btn-cartoon-yellow {
+  background: var(--cartoon-yellow);
+  color: var(--text-on-yellow);
+}
+
+.btn-cartoon-yellow:hover {
+  background: var(--cartoon-yellow-dark);
+}
+
+.btn-cartoon-green {
+  background: var(--cartoon-green);
+  color: var(--cartoon-white);
+}
+
+.btn-cartoon-green:hover {
+  background: var(--cartoon-green-dark);
+}
+
+/* Size variants */
+.btn-cartoon-lg {
+  font-size: var(--text-2xl);
+  padding: var(--space-5) var(--space-10);
+}
+
+.btn-cartoon-sm {
+  font-size: var(--text-base);
+  padding: var(--space-3) var(--space-6);
+  border-width: 3px;
+}
+
+/* ===========================
+   🎬 HERO SECTION
+   =========================== */
+
+.hero-cartoon {
+  position: relative;
+  padding: var(--space-20) var(--space-6);
+  background: var(--gradient-sky);
+  border-bottom: var(--outline-thick) solid var(--cartoon-black);
+  overflow: hidden;
+}
+
+/* Cloud decoration */
+.hero-cartoon::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 200px;
+  height: 80px;
+  background: var(--cartoon-white);
+  border: var(--outline-medium) solid var(--cartoon-black);
+  border-radius: 50%;
+  opacity: 0.6;
+  box-shadow: 
+    -100px 0 0 -20px var(--cartoon-white),
+    100px 0 0 -20px var(--cartoon-white);
+}
+
+.hero-cartoon-title {
+  font-family: var(--font-display);
+  font-weight: var(--font-black);
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  color: var(--cartoon-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: var(--space-6);
+  
+  /* Classic cartoon text outline */
+  text-shadow:
+    -3px -3px 0 var(--cartoon-black),
+    3px -3px 0 var(--cartoon-black),
+    -3px 3px 0 var(--cartoon-black),
+    3px 3px 0 var(--cartoon-black),
+    0 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.hero-cartoon-subtitle {
+  font-family: var(--font-cartoon);
+  font-size: var(--text-xl);
+  color: var(--cartoon-white);
+  font-weight: var(--font-semibold);
+  text-shadow: 2px 2px 0 var(--cartoon-black);
+  max-width: 600px;
+  margin-bottom: var(--space-8);
+  line-height: 1.4;
+}
+
+/* ===========================
+   🏷️ BADGE SYSTEM
+   =========================== */
+
+.badge-cartoon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: var(--font-black);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-2) var(--space-4);
+  background: var(--cartoon-yellow);
+  color: var(--cartoon-black);
+  border: var(--outline-medium) solid var(--cartoon-black);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-cel-sm);
+}
+
+.badge-cartoon-blue {
+  background: var(--cartoon-blue);
+  color: var(--cartoon-white);
+}
+
+.badge-cartoon-red {
+  background: var(--cartoon-red);
+  color: var(--cartoon-white);
+}
+
+.badge-cartoon-green {
+  background: var(--cartoon-green);
+  color: var(--cartoon-white);
+}
+
+/* ===========================
+   📋 SECTION HEADERS
+   =========================== */
+
+.section-cartoon {
+  padding: var(--space-16) 0;
+  position: relative;
+}
+
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-weight: var(--font-bold);
+  font-size: var(--text-base);
+  color: var(--cartoon-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: var(--font-black);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--cartoon-black);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.section-subtitle {
+  font-family: var(--font-cartoon);
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+  font-weight: var(--font-semibold);
+  max-width: 700px;
+  margin: 0 auto var(--space-8);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ===========================
+   🎨 DECORATIVE ELEMENTS
+   =========================== */
+
+/* Starburst accent */
+.starburst {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--cartoon-yellow);
+  border: var(--outline-medium) solid var(--cartoon-black);
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
+    50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+  );
+  box-shadow: var(--shadow-cel-sm);
+}
+
+/* Motion lines (cartoon speed effect) */
+.motion-lines {
+  position: absolute;
+  width: 150px;
+  height: 6px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--cartoon-black),
+    var(--cartoon-black) 15px,
+    transparent 15px,
+    transparent 25px
+  );
+  opacity: 0.3;
+}
+
+/* ===========================
+   🎪 GRID LAYOUTS
+   =========================== */
+
+.grid-cartoon {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-8);
+  margin: var(--space-12) 0;
+}
+
+/* ===========================
+   🎭 HOVER EFFECTS
+   =========================== */
+
+.hover-bounce {
+  transition: transform var(--duration-normal) var(--ease-cartoon);
+}
+
+.hover-bounce:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.hover-shake:hover {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+/* ===========================
+   📱 RESPONSIVE ADJUSTMENTS
+   =========================== */
+
+@media (max-width: 768px) {
+  .card-cartoon {
+    padding: var(--space-5);
+  }
+  
+  .btn-cartoon {
+    font-size: var(--text-base);
+    padding: var(--space-3) var(--space-6);
+  }
+  
+  .hero-cartoon {
+    padding: var(--space-16) var(--space-4);
+  }
+  
+  .action-word {
+    font-size: clamp(1.5rem, 8vw, 3rem);
+    padding: var(--space-3) var(--space-6);
+  }
+}
+
+/* ===========================
+   🎬 ANIMATION KEYFRAMES
+   =========================== */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Apply animations */
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.pop-in {
+  animation: pop-in 0.5s var(--ease-cartoon);
+}
+
+/* ===========================
+   END OF CARTOON COMPONENTS
+   =========================== */
