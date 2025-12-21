@@ -72,26 +72,43 @@
       </div>
       
       <ul class="mobile-menu">
-        {% assign mobile_nav_items = site.data.navigation.primary | where_exp: "item", "item.children == nil" %}
-        {% for item in mobile_nav_items %}
-          {% assign is_current = false %}
-          {% if item.exact %}
-            {% if page.url == item.exact %}
-              {% assign is_current = true %}
-            {% endif %}
-          {% elsif item.match %}
-            {% if page.url == item.match or page.url contains item.match and item.match != "/" %}
-              {% assign is_current = true %}
-            {% endif %}
-          {% endif %}
-          <li class="mobile-nav-item">
-            <a href="{{ item.url | relative_url }}"
-               class="mobile-nav-link{% if is_current %} active{% endif %}"
-               {% if is_current %} aria-current="page"{% endif %}>
-              {{ item.title }}
-            </a>
-          </li>
-        {% endfor %}
+        {% comment %}Mobile menu: Essential navigation items only{% endcomment %}
+        
+        <li class="mobile-nav-item">
+          <a href="/services/" class="mobile-nav-link{% if page.url contains '/services/' %} active{% endif %}">
+            Services
+          </a>
+        </li>
+        
+        <li class="mobile-nav-item">
+          <a href="/portfolio/" class="mobile-nav-link{% if page.url contains '/portfolio/' %} active{% endif %}">
+            Our Work
+          </a>
+        </li>
+        
+        <li class="mobile-nav-item">
+          <a href="/recommended-products/" class="mobile-nav-link{% if page.url contains '/recommended-products/' or page.url contains '/products/' %} active{% endif %}">
+            Products
+          </a>
+        </li>
+        
+        <li class="mobile-nav-item">
+          <a href="/reviews/" class="mobile-nav-link{% if page.url contains '/reviews/' %} active{% endif %}">
+            Reviews
+          </a>
+        </li>
+        
+        <li class="mobile-nav-item">
+          <a href="/about/" class="mobile-nav-link{% if page.url contains '/about/' %} active{% endif %}">
+            About
+          </a>
+        </li>
+        
+        <li class="mobile-nav-item">
+          <a href="/contact/" class="mobile-nav-link{% if page.url contains '/contact/' %} active{% endif %}">
+            Contact
+          </a>
+        </li>
       </ul>
 
       <div class="mobile-nav-cta">
