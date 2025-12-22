@@ -8,7 +8,7 @@
     165deg,
     var(--color-brand-teal-700) 0%,
     var(--color-brand-teal-900) 55%,
-    var(--color-brand-teal-950) 100%
+    var(--color-brand-teal-900) 100%
   );
   color: rgb(255, 255, 255, 0.9);
   position: relative;
@@ -74,7 +74,7 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.ts-logo-link--footer:hover .ts-logo--footer {
+.ts-logo-link--tiller-footer:hover .ts-logo--footer {
   transform: scale(1.05);
   opacity: 0.9;
 }

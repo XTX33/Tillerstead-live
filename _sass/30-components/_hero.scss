@@ -103,19 +103,19 @@
 .hero__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2xs);
-  padding: var(--space-2xs) var(--space-sm);
-  font-size: var(--text-xs);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-wider);
+  gap: var(--ts-spacing-xs);
+  padding: var(--ts-spacing-xs) var(--ts-spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tiller-tracking-wider);
   text-transform: uppercase;
   color: var(--ts-color-primary);
   background: rgb(13, 154, 170, 0.06);
-  border: var(--border-width-thin) solid var(--border-color-teal);
+  border: var(--color-border-width-thin) solid var(--color-border-color-teal);
   border-radius: 100px;
   width: fit-content;
   animation-delay: 0.1s;
-  transition: all var(--duration-base) var(--ease-standard);
+  transition: all var(--tiller-duration-base) var(--tiller-ease-standard);
   
   &:hover {
     background: rgb(13, 154, 170, 0.1);
@@ -129,9 +129,9 @@
 .hero__headline,
 .hero__title {
   font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-  line-height: var(--leading-tight);
-  font-weight: var(--weight-bold);
-  letter-spacing: var(--tracking-tighter);
+  line-height: var(--tiller-leading-tight);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tiller-tracking-tighter);
   color: var(--ts-color-heading);
   margin: 0;
   animation-delay: 0.2s;
@@ -158,9 +158,9 @@
 .ts-hero__lede,
 .hero__lead,
 .hero__summary {
-  font-size: clamp(var(--text-lg), 1.5vw, var(--text-xl));
-  line-height: var(--leading-relaxed);
-  font-weight: var(--weight-normal);
+  font-size: clamp(var(--font-size-lg), 1.5vw, var(--font-size-xl));
+  line-height: var(--tiller-leading-relaxed);
+  font-weight: var(--font-weight-normal);
   color: var(--ts-color-text);
   max-width: 600px;
   margin: 0;
@@ -179,9 +179,9 @@
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
+  gap: var(--ts-spacing-sm);
   animation-delay: 0.4s;
-  margin-top: var(--space-lg);
+  margin-top: var(--ts-spacing-lg);
 }
 
 .hero--full .hero__actions,

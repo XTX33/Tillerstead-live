@@ -9,13 +9,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2xs);
+  gap: var(--ts-spacing-xs);
   padding-block: clamp(0.75rem, 2vw, 0.875rem);
   padding-inline: clamp(1.25rem, 3vw, 1.75rem);
-  font-size: clamp(var(--text-sm), 2vw, var(--text-base));
-  font-weight: var(--weight-semibold);
+  font-size: clamp(var(--font-size-sm), 2vw, var(--font-size-base));
+  font-weight: var(--font-weight-semibold);
   font-family: var(--font-sans);
-  line-height: var(--leading-tight);
+  line-height: var(--tiller-leading-tight);
   border: none;
   border-radius: var(--ts-radius-lg);
   cursor: pointer;
@@ -23,11 +23,11 @@
   position: relative;
   white-space: nowrap;
   transition: 
-    background var(--duration-base) var(--ease-standard), 
-    color var(--duration-base) var(--ease-standard), 
-    border-color var(--duration-base) var(--ease-standard), 
-    transform var(--duration-quick) var(--ease-decelerate),
-    box-shadow var(--duration-base) var(--ease-standard);
+    background var(--tiller-duration-base) var(--tiller-ease-standard), 
+    color var(--tiller-duration-base) var(--tiller-ease-standard), 
+    border-color var(--tiller-duration-base) var(--tiller-ease-standard), 
+    transform var(--tiller-duration-quick) var(--tiller-ease-decelerate),
+    box-shadow var(--tiller-duration-base) var(--tiller-ease-standard);
   min-inline-size: 2.5em;
   min-block-size: 2.5em;
   user-select: none;
@@ -49,14 +49,14 @@
   
   &:active:not(:disabled) {
     transform: translateY(0);
-    transition-duration: var(--duration-instant);
+    transition-duration: var(--tiller-duration-instant);
   }
 }
 
 /* Focus ring — luxury accessible focus */
 .btn:focus-visible,
 .button:focus-visible {
-  box-shadow: var(--focus-ring);
+  box-shadow: var(--tiller-focus-ring);
   z-index: 2;
 }
 
@@ -80,7 +80,7 @@
 .btn--primary {
   background: var(--ts-color-primary-bg);
   color: var(--ts-white);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--ts-shadow-soft);
   position: relative;
   overflow: hidden;
 }
@@ -90,7 +90,7 @@
 .btn--color-primary:hover:not(:disabled),
 .btn--color-primary:focus-visible {
   background: var(--ts-color-primary-bg-hover);
-  box-shadow: var(--shadow-teal-glow);
+  box-shadow: var(--color-shadow-teal-glow);
 }
 
 /* Secondary — outlined, for less prominent actions */

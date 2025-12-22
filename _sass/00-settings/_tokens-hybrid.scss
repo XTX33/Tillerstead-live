@@ -191,13 +191,13 @@
      =========================== */
 
   /* Primary Actions & Brand */
-  --ts-color-primary: var(--tiller-brand-teal-600);
-  --ts-color-primary-hover: var(--tiller-brand-teal-700);
-  --ts-color-primary-light: var(--tiller-brand-teal-400);
-  --ts-color-primary-soft: var(--tiller-brand-teal-50);
-  --ts-color-primary-bg: var(--tiller-brand-teal-500);
-  --ts-color-primary-bg-hover: var(--tiller-brand-teal-600);
-  --ts-color-primary-strong: var(--tiller-brand-teal-900);
+  --ts-color-primary: var(--color-brand-teal-600);
+  --ts-color-primary-hover: var(--color-brand-teal-700);
+  --ts-color-primary-light: var(--color-brand-teal-400);
+  --ts-color-primary-soft: var(--color-brand-teal-50);
+  --ts-color-primary-bg: var(--color-brand-teal-500);
+  --ts-color-primary-bg-hover: var(--color-brand-teal-600);
+  --ts-color-primary-strong: var(--color-brand-teal-900);
 
   /* Secondary Actions & Warmth */
   --ts-color-secondary: var(--color-sunset-500);
@@ -206,37 +206,37 @@
   --ts-color-secondary-soft: var(--color-sunset-50);
 
   /* Accent & Special Attention */
-  --ts-color-accent: var(--tiller-golden-500);
-  --ts-color-accent-hover: var(--tiller-golden-600);
-  --ts-color-accent-light: var(--tiller-golden-400);
-  --ts-color-accent-soft: var(--tiller-golden-50);
-  --ts-color-accent-strong: var(--tiller-golden-700);
+  --ts-color-accent: var(--color-golden-500);
+  --ts-color-accent-hover: var(--color-golden-600);
+  --ts-color-accent-light: var(--color-golden-400);
+  --ts-color-accent-soft: var(--color-golden-50);
+  --ts-color-accent-strong: var(--color-golden-700);
 
   /* Success States */
-  --ts-color-success: var(--tiller-success-600);
-  --ts-color-success-bg: var(--tiller-success-50);
-  --ts-color-success-text: var(--tiller-success-700);
-  --ts-color-success-light: var(--tiller-success-500);
+  --ts-color-success: var(--color-success-600);
+  --ts-color-success-bg: var(--color-success-50);
+  --ts-color-success-text: var(--color-success-700);
+  --ts-color-success-light: var(--color-success-500);
 
   /* Warning States */
-  --ts-color-warning: var(--tiller-attention-600);
-  --ts-color-warning-bg: var(--tiller-attention-50);
+  --ts-color-warning: var(--color-attention-600);
+  --ts-color-warning-bg: var(--color-attention-50);
   --ts-color-warning-text: #92400e;
-  --ts-color-warning-light: var(--tiller-attention-500);
+  --ts-color-warning-light: var(--color-attention-500);
 
   /* Error States */
-  --ts-color-error: var(--tiller-alert-600);
-  --ts-color-error-bg: var(--tiller-alert-50);
-  --ts-color-error-text: var(--tiller-alert-700);
-  --ts-color-error-dark: var(--tiller-alert-700);
+  --ts-color-error: var(--color-alert-600);
+  --ts-color-error-bg: var(--color-alert-50);
+  --ts-color-error-text: var(--color-alert-700);
+  --ts-color-error-dark: var(--color-alert-700);
 
   /* ===========================
      📄 SURFACES & BACKGROUNDS
      =========================== */
   
-  --ts-color-bg: var(--tiller-slate-50);
+  --ts-color-bg: var(--color-slate-50);
   --ts-color-surface: var(--ts-white);
-  --ts-color-surface-muted: var(--tiller-slate-100);
+  --ts-color-surface-muted: var(--color-slate-100);
   --ts-color-surface-elevated: var(--ts-white);
   --ts-color-surface-highlight: var(--ts-white);
   --ts-color-surface-tinted-teal: rgb(13, 154, 170, 0.04);
@@ -247,26 +247,26 @@
      ✍️ TEXT COLORS
      =========================== */
   
-  --ts-color-text: var(--tiller-slate-900);
-  --ts-color-heading: var(--tiller-slate-900);
-  --ts-color-muted: var(--tiller-slate-600);
-  --ts-color-text-subtle: var(--tiller-slate-500);
+  --ts-color-text: var(--color-slate-900);
+  --ts-color-heading: var(--color-slate-900);
+  --ts-color-muted: var(--color-slate-600);
+  --ts-color-text-subtle: var(--color-slate-500);
   --ts-text-on-primary: var(--ts-white);
   --ts-text-on-secondary: var(--ts-white);
-  --ts-text-on-accent: var(--tiller-slate-900);
-  --ts-text-on-light: var(--tiller-slate-900);
+  --ts-text-on-accent: var(--color-slate-900);
+  --ts-text-on-light: var(--color-slate-900);
 
   /* ===========================
      🖌️ BORDERS & DIVIDERS
      =========================== */
   
-  --ts-color-border: var(--tiller-slate-200);
-  --ts-color-border-strong: var(--tiller-slate-300);
-  --ts-color-divider: var(--tiller-slate-200);
-  --ts-border-thin: 1px solid var(--tiller-slate-200);
-  --ts-border-medium: 2px solid var(--tiller-slate-300);
-  --ts-border-thick: 3px solid var(--tiller-slate-700);
-  --ts-border-accent: 2px solid var(--tiller-brand-teal-500);
+  --ts-color-border: var(--color-slate-200);
+  --ts-color-border-strong: var(--color-slate-300);
+  --ts-color-divider: var(--color-slate-200);
+  --ts-border-thin: 1px solid var(--color-slate-200);
+  --ts-border-medium: 2px solid var(--color-slate-300);
+  --ts-border-thick: 3px solid var(--color-slate-700);
+  --ts-border-accent: 2px solid var(--color-brand-teal-500);
 
   /* ===========================
      🌅 GRADIENT SYSTEMS
@@ -276,22 +276,22 @@
   /* Hero gradient (professional depth) */
   --color-gradient-hero: linear-gradient(
     135deg,
-    var(--tiller-brand-teal-600) 0%,
-    var(--tiller-brand-teal-700) 60%,
-    var(--tiller-slate-800) 100%
+    var(--color-brand-teal-600) 0%,
+    var(--color-brand-teal-700) 60%,
+    var(--color-slate-800) 100%
   );
 
   /* Warm accent gradient (nostalgic touch) */
   --color-gradient-warm: linear-gradient(
     135deg,
     var(--color-sunset-400) 0%,
-    var(--tiller-golden-500) 100%
+    var(--color-golden-500) 100%
   );
 
   /* Sunrise gradient (optimistic sections) */
   --color-gradient-sunrise: linear-gradient(
     90deg,
-    var(--tiller-golden-400) 0%,
+    var(--color-golden-400) 0%,
     var(--color-sunset-500) 100%
   );
 
@@ -303,9 +303,9 @@
   );
 
   /* Applied gradients */
-  --ts-gradient-primary: var(--tiller-gradient-hero);
-  --ts-gradient-accent: var(--tiller-gradient-warm);
-  --ts-gradient-section: var(--tiller-gradient-depth);
+  --ts-gradient-primary: var(--color-gradient-hero);
+  --ts-gradient-accent: var(--color-gradient-warm);
+  --ts-gradient-section: var(--color-gradient-depth);
   --ts-gradient-surface: none;
 
   /* ===========================
@@ -560,28 +560,28 @@
      Map to new teal system
      =========================== */
   
-  --color-emerald-600: var(--tiller-brand-teal-600);
-  --color-emerald-700: var(--tiller-brand-teal-700);
-  --ts-emerald: var(--tiller-brand-teal-500);
-  --ts-emerald-soft: var(--tiller-brand-teal-400);
-  --ts-emerald-deep: var(--tiller-brand-teal-700);
-  --ts-emerald-text: var(--tiller-brand-teal-900);
+  --color-emerald-600: var(--color-brand-teal-600);
+  --color-emerald-700: var(--color-brand-teal-700);
+  --ts-emerald: var(--color-brand-teal-500);
+  --ts-emerald-soft: var(--color-brand-teal-400);
+  --ts-emerald-deep: var(--color-brand-teal-700);
+  --ts-emerald-text: var(--color-brand-teal-900);
 
   /* Gold mapped to new golden system */
-  --ts-gold: var(--tiller-golden-500);
-  --ts-gold-soft: var(--tiller-golden-400);
+  --ts-gold: var(--color-golden-500);
+  --ts-gold-soft: var(--color-golden-400);
 
   /* Stone/Ink mapped to slate */
-  --color-stone-50: var(--tiller-slate-50);
-  --color-stone-100: var(--tiller-slate-100);
-  --color-stone-200: var(--tiller-slate-200);
-  --color-ink-900: var(--tiller-slate-900);
-  --color-ink-700: var(--tiller-slate-700);
-  --ts-stone: var(--tiller-slate-700);
-  --ts-stone-warm: var(--tiller-slate-600);
-  --ts-stone-cool: var(--tiller-slate-500);
-  --ts-ink: var(--tiller-slate-900);
-  --ts-white: var(--ts-white);
+  --color-stone-50: var(--color-slate-50);
+  --color-stone-100: var(--color-slate-100);
+  --color-stone-200: var(--color-slate-200);
+  --color-ink-900: var(--color-slate-900);
+  --color-ink-700: var(--color-slate-700);
+  --ts-stone: var(--color-slate-700);
+  --ts-stone-warm: var(--color-slate-600);
+  --ts-stone-cool: var(--color-slate-500);
+  --ts-ink: var(--color-slate-900);
+  --ts-white: var(--hex-white);
 
   /* Parchment mapped to warm surfaces */
   --ts-parchment: var(--tiller-slate-50);

@@ -11,14 +11,14 @@
      =========================== */
   
   --space-3xs: 0.25rem;    /* 4px - micro details */
-  --space-2xs: 0.5rem;     /* 8px - tight grouping */
-  --space-xs: 0.75rem;     /* 12px - compact */
-  --space-sm: 1rem;        /* 16px - small breathing room */
-  --space-md: 1.5rem;      /* 24px - comfortable */
-  --space-lg: 2.5rem;      /* 40px - generous */
-  --space-xl: 4rem;        /* 64px - section separation */
-  --space-2xl: 6.5rem;     /* 104px - major sections */
-  --space-3xl: 10.5rem;    /* 168px - hero spacing */
+  --ts-spacing-xs: 0.5rem;     /* 8px - tight grouping */
+  --ts-spacing-xs: 0.75rem;     /* 12px - compact */
+  --ts-spacing-sm: 1rem;        /* 16px - small breathing room */
+  --ts-spacing-md: 1.5rem;      /* 24px - comfortable */
+  --ts-spacing-lg: 2.5rem;      /* 40px - generous */
+  --ts-spacing-xl: 4rem;        /* 64px - section separation */
+  --ts-spacing-2xl: 6.5rem;     /* 104px - major sections */
+  --ts-spacing-3xl: 10.5rem;    /* 168px - hero spacing */
   
   /* ===========================
      🎯 LUXURY MOTION
@@ -46,35 +46,35 @@
   
   /* Elevation system (Material + Apple hybrid) */
   --shadow-xs: 
-    0 1px 2px 0 rgb(0 0 0 / 0.05);
+    0 1px 2px 0 rgb(0, 0, 0, 0.05);
   
-  --shadow-sm:
-    0 1px 3px 0 rgb(0 0 0 / 0.08),
-    0 1px 2px -1px rgb(0 0 0 / 0.08);
+  --ts-shadow-soft:
+    0 1px 3px 0 rgb(0, 0, 0, 0.08),
+    0 1px 2px -1px rgb(0, 0, 0, 0.08);
   
-  --shadow-md:
-    0 4px 6px -1px rgb(0 0 0 / 0.08),
-    0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --ts-shadow-soft:
+    0 4px 6px -1px rgb(0, 0, 0, 0.08),
+    0 2px 4px -2px rgb(0, 0, 0, 0.06);
   
-  --shadow-lg:
-    0 10px 15px -3px rgb(0 0 0 / 0.08),
-    0 4px 6px -4px rgb(0 0 0 / 0.06);
+  --ts-shadow-lift:
+    0 10px 15px -3px rgb(0, 0, 0, 0.08),
+    0 4px 6px -4px rgb(0, 0, 0, 0.06);
   
   --shadow-xl:
-    0 20px 25px -5px rgb(0 0 0 / 0.08),
-    0 8px 10px -6px rgb(0 0 0 / 0.06);
+    0 20px 25px -5px rgb(0, 0, 0, 0.08),
+    0 8px 10px -6px rgb(0, 0, 0, 0.06);
   
   --shadow-2xl:
-    0 25px 50px -12px rgb(0 0 0 / 0.15);
+    0 25px 50px -12px rgb(0, 0, 0, 0.15);
   
   /* Colored shadows for brand elements */
   --shadow-teal-glow:
-    0 10px 30px -5px rgb(13 154 170 / 0.2),
-    0 4px 12px -2px rgb(13 154 170 / 0.15);
+    0 10px 30px -5px rgb(13, 154, 170, 0.2),
+    0 4px 12px -2px rgb(13, 154, 170, 0.15);
   
   --shadow-warm-glow:
-    0 10px 30px -5px rgb(255 132 97 / 0.15),
-    0 4px 12px -2px rgb(255 132 97 / 0.1);
+    0 10px 30px -5px rgb(255, 132, 97, 0.15),
+    0 4px 12px -2px rgb(255, 132, 97, 0.1);
   
   /* ===========================
      📝 LUXURY TYPOGRAPHY
@@ -82,11 +82,11 @@
      =========================== */
   
   /* Major Third scale (1.250) */
-  --text-xs: 0.8rem;       /* 12.8px */
-  --text-sm: 0.875rem;     /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg: 1.125rem;     /* 18px */
-  --text-xl: 1.25rem;      /* 20px */
+  --font-size-xs: 0.8rem;       /* 12.8px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
   --text-2xl: 1.563rem;    /* 25px */
   --text-3xl: 1.953rem;    /* 31.25px */
   --text-4xl: 2.441rem;    /* 39px */
@@ -124,14 +124,14 @@
   --border-width-base: 2px;
   --border-width-thick: 3px;
   
-  --border-color-light: rgb(0 0 0 / 0.06);
-  --border-color-base: rgb(0 0 0 / 0.1);
-  --border-color-medium: rgb(0 0 0 / 0.15);
-  --border-color-strong: rgb(0 0 0 / 0.2);
+  --border-color-light: rgb(0, 0, 0, 0.06);
+  --border-color-base: rgb(0, 0, 0, 0.1);
+  --border-color-medium: rgb(0, 0, 0, 0.15);
+  --border-color-strong: rgb(0, 0, 0, 0.2);
   
   /* Brand borders */
-  --border-color-teal: rgb(13 154 170 / 0.2);
-  --border-color-warm: rgb(255 132 97 / 0.2);
+  --border-color-teal: rgb(13, 154, 170, 0.2);
+  --border-color-warm: rgb(255, 132, 97, 0.2);
   
   /* ===========================
      🎨 LUXURY OVERLAYS
@@ -143,13 +143,13 @@
   --backdrop-blur-lg: blur(16px);
   --backdrop-blur-xl: blur(24px);
   
-  --overlay-light: rgb(255 255 255 / 0.7);
-  --overlay-medium: rgb(255 255 255 / 0.85);
-  --overlay-heavy: rgb(255 255 255 / 0.95);
+  --overlay-light: rgb(255, 255, 255, 0.7);
+  --overlay-medium: rgb(255, 255, 255, 0.85);
+  --overlay-heavy: rgb(255, 255, 255, 0.95);
   
-  --overlay-dark-light: rgb(0 0 0 / 0.3);
-  --overlay-dark-medium: rgb(0 0 0 / 0.5);
-  --overlay-dark-heavy: rgb(0 0 0 / 0.7);
+  --overlay-dark-light: rgb(0, 0, 0, 0.3);
+  --overlay-dark-medium: rgb(0, 0, 0, 0.5);
+  --overlay-dark-heavy: rgb(0, 0, 0, 0.7);
   
   /* ===========================
      🎯 LUXURY FOCUS STATES
@@ -158,9 +158,9 @@
   
   --focus-ring-width: 3px;
   --focus-ring-offset: 2px;
-  --focus-ring-color: rgb(13 154 170 / 0.5);
-  --focus-ring: 0 0 0 var(--focus-ring-offset) var(--ts-white),
-                0 0 0 calc(var(--focus-ring-width) + var(--focus-ring-offset)) var(--focus-ring-color);
+  --focus-ring-color: rgb(13, 154, 170, 0.5);
+  --focus-ring: 0 0 0 var(--tiller-focus-ring-offset) var(--ts-white),
+                0 0 0 calc(var(--tiller-focus-ring-width) + var(--tiller-focus-ring-offset)) var(--tiller-focus-ring-color);
   
   /* ===========================
      📐 LUXURY LAYOUTS
@@ -173,9 +173,9 @@
   --container-ultra: 1280px;
   --container-full: 1536px;
   
-  --grid-gap-sm: var(--space-md);
-  --grid-gap-md: var(--space-lg);
-  --grid-gap-lg: var(--space-xl);
+  --grid-gap-sm: var(--ts-spacing-md);
+  --grid-gap-md: var(--ts-spacing-lg);
+  --grid-gap-lg: var(--ts-spacing-xl);
 }
 
 /* ==========================================================================
@@ -185,61 +185,61 @@
 
 /* Frosted glass effect */
 .glass-light {
-  background: var(--overlay-light);
-  backdrop-filter: var(--backdrop-blur-md);
-  -webkit-backdrop-filter: var(--backdrop-blur-md);
+  background: var(--tiller-overlay-light);
+  backdrop-filter: var(--tiller-backdrop-blur-md);
+  -webkit-backdrop-filter: var(--tiller-backdrop-blur-md);
 }
 
 .glass-medium {
-  background: var(--overlay-medium);
-  backdrop-filter: var(--backdrop-blur-lg);
-  -webkit-backdrop-filter: var(--backdrop-blur-lg);
+  background: var(--tiller-overlay-medium);
+  backdrop-filter: var(--tiller-backdrop-blur-lg);
+  -webkit-backdrop-filter: var(--tiller-backdrop-blur-lg);
 }
 
 /* Smooth hover lifts */
 .lift-sm {
-  transition: transform var(--duration-base) var(--ease-standard),
-              box-shadow var(--duration-base) var(--ease-standard);
+  transition: transform var(--tiller-duration-base) var(--tiller-ease-standard),
+              box-shadow var(--tiller-duration-base) var(--tiller-ease-standard);
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--ts-shadow-soft);
   }
 }
 
 .lift-md {
-  transition: transform var(--duration-base) var(--ease-standard),
-              box-shadow var(--duration-base) var(--ease-standard);
+  transition: transform var(--tiller-duration-base) var(--tiller-ease-standard),
+              box-shadow var(--tiller-duration-base) var(--tiller-ease-standard);
   
   &:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--ts-shadow-lift);
   }
 }
 
 .lift-lg {
-  transition: transform var(--duration-smooth) var(--ease-standard),
-              box-shadow var(--duration-smooth) var(--ease-standard);
+  transition: transform var(--tiller-duration-smooth) var(--tiller-ease-standard),
+              box-shadow var(--tiller-duration-smooth) var(--tiller-ease-standard);
   
   &:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--color-shadow-xl);
   }
 }
 
 /* Luxury focus states */
 .focus-luxury {
   outline: none;
-  transition: box-shadow var(--duration-quick) var(--ease-standard);
+  transition: box-shadow var(--tiller-duration-quick) var(--tiller-ease-standard);
   
   &:focus-visible {
-    box-shadow: var(--focus-ring);
+    box-shadow: var(--tiller-focus-ring);
   }
 }
 
 /* Smooth fade-ins */
 .fade-in {
-  animation: luxury-fade-in var(--duration-luxe) var(--ease-decelerate);
+  animation: luxury-fade-in var(--tiller-duration-luxe) var(--tiller-ease-decelerate);
 }
 
 @keyframes luxury-fade-in {
@@ -255,7 +255,7 @@
 
 /* Scale on hover */
 .scale-on-hover {
-  transition: transform var(--duration-base) var(--ease-standard);
+  transition: transform var(--tiller-duration-base) var(--tiller-ease-standard);
   
   &:hover {
     transform: scale(1.05);
@@ -264,17 +264,17 @@
 
 /* Glow on hover */
 .glow-teal-hover {
-  transition: box-shadow var(--duration-smooth) var(--ease-standard);
+  transition: box-shadow var(--tiller-duration-smooth) var(--tiller-ease-standard);
   
   &:hover {
-    box-shadow: var(--shadow-teal-glow);
+    box-shadow: var(--color-shadow-teal-glow);
   }
 }
 
 .glow-warm-hover {
-  transition: box-shadow var(--duration-smooth) var(--ease-standard);
+  transition: box-shadow var(--tiller-duration-smooth) var(--tiller-ease-standard);
   
   &:hover {
-    box-shadow: var(--shadow-warm-glow);
+    box-shadow: var(--color-shadow-warm-glow);
   }
 }
