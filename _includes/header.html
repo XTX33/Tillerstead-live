@@ -1,107 +1,113 @@
-<header class="site-header ts-header ts-theme" role="banner" itemscope itemtype="https://schema.org/Organization" data-header>
-  <meta itemprop="name" content="{{ site.title }}">
-  <meta itemprop="url" content="{{ site.url }}">
-  <meta itemprop="logo" content="{{ '/assets/img/logo/tillerstead-inverse.svg' | absolute_url }}">
-  <meta itemprop="telephone" content="+1-609-862-8808">
-  <meta itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-  <meta itemprop="addressLocality" content="New Jersey">
+<header class="site-header ts-header ts-theme" role="banner">
+  <div class="site-header-inner container">
+    <!-- Brand -->
+    <div class="ts-brand">
+      <a
+        class="site-logo"
+        href="{{ '/' | relative_url }}"
+        aria-label="{{ site.title | default: 'Tillerstead LLC' }} - Return to homepage"
+      >
+        <img
+          src="{{ '/assets/img/logo/tillerstead-logo-header.svg' | relative_url }}"
+          alt="{{ site.title | default: 'Tillerstead LLC' }}"
+          class="site-logo-img ts-logo-img"
+          width="160"
+          height="auto"
+          fetchpriority="high"
+        />
+        <!-- Accessible text fallback (not visible) -->
+        <span class="site-logo-text sr-only">
+          {{ site.title | default: 'Tillerstead LLC' }}
+        </span>
+      </a>
+    </div>
+    
+    <!-- Primary navigation -->
+    <div class="site-nav-shell" data-nav-container>
+      <div class="site-nav-backdrop" data-nav-overlay aria-hidden="true"></div>
+      <nav
+        id="site-nav"
+        class="site-nav"
+        aria-label="Primary navigation"
+        aria-expanded="false"
+      >
+        <div class="site-nav-drawer-header">
+          <p class="nav-drawer-label">Menu</p>
+          <button
+            type="button"
+            class="nav-close"
+            data-nav-close
+            aria-label="Close navigation menu"
+          >
+            <span class="nav-close-label">Close</span>
+            <span class="nav-close-icon" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </span>
+          </button>
+        </div>
+        <ul class="site-menu">
+          {% assign nav_items = site.data.navigation.primary %}
+          {% for item in nav_items %}
+            {% assign is_current = false %}
 
-  <div class="site-header-inner">
-    <!-- Left side navigation -->
-    <nav class="site-nav site-nav--left" role="navigation" aria-label="Primary navigation">
-      <ul class="site-menu site-menu--left">
-        <li class="nav-item">
-          <a href="{{ '/services/' | relative_url }}" class="nav-link">Services</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ '/portfolio/' | relative_url }}" class="nav-link">Our Work</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ '/recommended-products/' | relative_url }}" class="nav-link">Products</a>
-        </li>
-      </ul>
-    </nav>
+            {% if item.exact and page.url == item.exact %}
+              {% assign is_current = true %}
+            {% elsif item.match and page.url contains item.match %}
+              {% assign is_current = true %}
+            {% endif %}
 
-    <!-- Center logo -->
-    <div class="site-branding" data-logo>
-      {% include logo-main.html class="ts-logo-link" img_class="ts-logo" variant="inverse" %}
+            <li>
+              <a
+                href="{{ item.url | relative_url }}"
+                {% if is_current %}aria-current="page"{% endif %}
+              >
+                {{ item.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
     </div>
 
-    <!-- Right side navigation -->
-    <nav class="site-nav site-nav--right" role="navigation" aria-label="Secondary navigation">
-      <ul class="site-menu site-menu--right">
-        <li class="nav-item">
-          <a href="{{ '/reviews/' | relative_url }}" class="nav-link">Reviews</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ '/about/' | relative_url }}" class="nav-link">About</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ '/contact/' | relative_url }}" class="nav-link">Contact</a>
-        </li>
-      </ul>
-    </nav>
+    <!-- Header actions -->
+    <div class="site-header-actions">
+      <a
+        class="call-btn btn"
+        href="tel:{{ site.company.phone_link | default: '+16096659350' }}"
+        aria-label="Call Tillerstead at {{ site.company.phone_display | default: '(609) 665-9350' }}"
+      >
+        <span aria-hidden="true">{{ site.company.phone_display | default: '(609) 665-9350' }}</span>
+      </a>
 
-    <!-- Mobile menu toggle -->
-    <button type="button"
-      class="nav-toggle"
-      aria-controls="mobile-nav"
-      aria-expanded="false"
-      aria-label="Open navigation menu"
-      data-nav-toggle>
-      <span class="nav-toggle-icon">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-    </button>
-  </div>
-
-  <!-- Mobile navigation drawer -->
-  <div class="mobile-nav-shell" data-nav-container>
-    <div class="mobile-nav-backdrop" data-nav-overlay aria-hidden="true"></div>
-    <nav id="mobile-nav" class="mobile-nav" role="navigation" aria-label="Mobile navigation">
-      <div class="mobile-nav-header">
-        <span class="mobile-nav-title">Menu</span>
-        <button type="button" class="nav-close" data-nav-close aria-label="Close menu">
-          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
-            <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        type="button"
+        aria-controls="site-nav"
+        aria-expanded="false"
+        aria-label="Open navigation menu"
+      >
+        <span class="nav-toggle-label" aria-hidden="true">Menu</span>
+        <span class="nav-toggle-icon" aria-hidden="true">
+          <!-- Lightweight inline SVG hamburger icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
-        </button>
-      </div>
-      
-      <ul class="mobile-menu">
-        {% assign mobile_nav_items = site.data.navigation.primary | where_exp: "item", "item.children == nil" %}
-        {% for item in mobile_nav_items %}
-          {% assign is_current = false %}
-          {% if item.exact %}
-            {% if page.url == item.exact %}
-              {% assign is_current = true %}
-            {% endif %}
-          {% elsif item.match %}
-            {% if page.url == item.match or page.url contains item.match and item.match != "/" %}
-              {% assign is_current = true %}
-            {% endif %}
-          {% endif %}
-          <li class="mobile-nav-item">
-            <a href="{{ item.url | relative_url }}"
-               class="mobile-nav-link{% if is_current %} active{% endif %}"
-               {% if is_current %} aria-current="page"{% endif %}>
-              {{ item.title }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-
-      <div class="mobile-nav-cta">
-        <a class="btn btn-primary btn-block" href="{{ '/contact/' | relative_url }}">
-          Request Estimate
-        </a>
-        <a class="btn btn-ghost btn-block" href="tel:+16098628808">
-          Call (609) 862-8808
-        </a>
-      </div>
-    </nav>
+        </span>
+      </button>
+    </div>
   </div>
 </header>

@@ -1,0 +1,226 @@
+/* ==========================================================================
+   Complementary Pattern System
+   Cross-hatch tile pattern applied consistently across major sections
+   Ensures visual cohesion and brand consistency
+   ========================================================================== */
+
+/* ========== Pattern Mixin ========== */
+@mixin tile-crosshatch-pattern($opacity: 0.6) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/img/patterns/tile-crosshatch.svg');
+    background-size: 120px 120px;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: $opacity;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* ========== Hero Sections ========== */
+.ts-hero,
+.hero,
+.page-hero {
+  @include tile-crosshatch-pattern(0.5);
+  
+  /* Ensure content stays above pattern */
+  .ts-hero__inner,
+  .hero__inner,
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Home hero - higher opacity for light backgrounds */
+.page-home .ts-hero {
+  @include tile-crosshatch-pattern(0.4);
+}
+
+/* ========== Major Sections ========== */
+.ts-section {
+  position: relative;
+  
+  /* Apply subtle pattern to alternating sections */
+  &:nth-of-type(odd) {
+    @include tile-crosshatch-pattern(0.08);
+    
+    /* Ensure content visibility */
+    .container,
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+/* Services section - light pattern */
+.ts-services {
+  @include tile-crosshatch-pattern(0.1);
+  
+  .container,
+  .ts-services__header,
+  .ts-services__grid,
+  .ts-services__actions {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Portfolio/Work section - light pattern */
+.ts-portfolio,
+.portfolio-section {
+  @include tile-crosshatch-pattern(0.08);
+  
+  .container,
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Testimonials section - light pattern */
+.ts-testimonials {
+  @include tile-crosshatch-pattern(0.1);
+  
+  .container,
+  .ts-testimonials__header,
+  .ts-testimonials__grid {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Process/Steps section - light pattern */
+.ts-process,
+.process-section {
+  @include tile-crosshatch-pattern(0.08);
+  
+  .container,
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* CTA sections - subtle pattern */
+.ts-cta,
+.cta-section,
+.section-cta {
+  @include tile-crosshatch-pattern(0.12);
+  
+  .container,
+  .cta-content,
+  .cta__inner,
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* ========== Header Enhancement ========== */
+.site-header {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--ts-color-primary) 30%, transparent),
+      transparent
+    );
+    z-index: 1;
+  }
+}
+
+/* ========== Footer Consistency ========== */
+.site-footer {
+  /* Already styled with cross-hatch pattern in _footer.scss */
+  /* This ensures pattern sizing is consistent */
+  
+  &::before {
+    background-size: 120px 120px;
+    background-repeat: repeat;
+    background-position: center;
+  }
+}
+
+/* ========== Accessibility & Performance ========== */
+
+/* Reduce motion - disable pattern animation if present */
+@media (prefers-reduced-motion: reduce) {
+  .ts-hero::before,
+  .ts-section::before,
+  .ts-services::before,
+  .ts-portfolio::before,
+  .ts-testimonials::before,
+  .ts-process::before,
+  .ts-cta::before {
+    animation: none !important;
+  }
+}
+
+/* Reduced transparency in high contrast mode */
+@media (prefers-contrast: high) {
+  .ts-hero::before {
+    opacity: 0.8;
+  }
+  
+  .ts-services::before,
+  .ts-portfolio::before,
+  .ts-testimonials::before {
+    opacity: 0.2;
+  }
+}
+
+/* Print media - hide patterns */
+@media print {
+  .ts-hero::before,
+  .ts-section::before,
+  .ts-services::before,
+  .ts-portfolio::before,
+  .ts-testimonials::before,
+  .ts-process::before,
+  .ts-cta::before,
+  .site-footer::before {
+    display: none;
+  }
+}
+
+/* ========== Prefers Color Scheme ========== */
+@media (prefers-color-scheme: dark) {
+  /* Increase opacity in dark mode for visibility */
+  .ts-hero::before {
+    opacity: 0.7;
+  }
+  
+  .ts-services::before,
+  .ts-testimonials::before {
+    opacity: 0.15;
+  }
+}
+
+/* ========== Performance Optimization ========== */
+/* Patterns use GPU acceleration for smooth rendering */
+.ts-hero::before,
+.ts-section::before,
+.ts-services::before,
+.ts-portfolio::before,
+.ts-testimonials::before,
+.ts-cta::before,
+.site-footer::before {
+  will-change: opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
