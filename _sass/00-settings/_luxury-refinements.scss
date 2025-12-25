@@ -110,7 +110,7 @@
   /* Letter spacing */
   --tracking-tighter: -0.05em;
   --tracking-tight: -0.025em;
-  --tracking-normal: 0em;
+  --tracking-normal: 0;
   --tracking-wide: 0.025em;
   --tracking-wider: 0.05em;
   --tracking-widest: 0.1em;
@@ -187,13 +187,13 @@
 .glass-light {
   background: var(--overlay-light);
   backdrop-filter: var(--backdrop-blur-md);
-  -webkit-backdrop-filter: var(--backdrop-blur-md);
+  backdrop-filter: var(--backdrop-blur-md);
 }
 
 .glass-medium {
   background: var(--overlay-medium);
   backdrop-filter: var(--backdrop-blur-lg);
-  -webkit-backdrop-filter: var(--backdrop-blur-lg);
+  backdrop-filter: var(--backdrop-blur-lg);
 }
 
 /* Smooth hover lifts */
@@ -247,6 +247,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
