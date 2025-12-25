@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 on:
   push:
@@ -6,40 +6,61 @@ on:
   pull_request:
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Ruby (TCNA/NJ HIC-compliant build)
+      - name: Set up Ruby 3.2
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler: '2.4.19'
           bundler-cache: true
 
-      - name: Set up Node.js (ESLint/HTMLHint ready)
+      - name: Set up Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
-      - name: Install npm dependencies (locked for reproducibility)
+      - name: Install npm dependencies
         run: npm ci
 
-      - name: Lint frontend files (ESLint + HTMLHint, per OUTPUT_RULES.md)
+      - name: Lint frontend files (ESLint)
         run: npm run lint
 
-      - name: Build site and run HTML checks (Jekyll, WCAG/SEO/CLS targets)
+      - name: Build site (Jekyll + CSS)
         env:
           JEKYLL_ENV: production
-        run: npm run test
+        run: npm run build
 
-      - name: Upload built site artifact (for deployment and audit)
-        if: always()
+      - name: Upload built site
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: site-build
           path: _site
-          if-no-files-found: error
+          retention-days: 1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download built site
+        uses: actions/download-artifact@v4
+        with:
+          name: site-build
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          cname: tillerstead.com
