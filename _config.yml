@@ -6,8 +6,8 @@
 title: Tillerstead LLC
 tagline: Tile Installation & Waterproofing in South Jersey
 description: Licensed NJ tile contractor specializing in waterproof showers, tile floors, backsplashes, and bathroom remodeling. Serving Atlantic, Ocean, and Cape May Counties with TCNA-aligned installations.
-url: https://xtx33.github.io
-baseurl: "/tillerstead-sandbox"  # GitHub Pages subpath
+url: https://tillerstead.com
+baseurl: ""  # Empty for custom domain (CNAME: tillerstead.com)
 timezone: America/New_York
 
 # Global keyword focus for SEO
