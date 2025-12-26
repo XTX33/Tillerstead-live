@@ -60,16 +60,16 @@
 }
 
 .ts-logo {
-  max-width: 220px;
-  transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: clamp(140px, 20vw, 200px);
+  width: 100%;
   height: auto;
   display: block;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Logo shrinks on scroll */
 .site-header.is-scrolled .ts-logo {
-  max-width: 90px;
-  height: auto;
+  max-width: clamp(100px, 15vw, 140px);
 }
 
 .ts-logo-link:hover {
@@ -219,7 +219,7 @@
   display: none; /* Hidden by default, shown on mobile */
   position: fixed;
   inset: 0;
-  z-index: 10010; /* Above everything except the nav itself */
+  z-index: 9998; /* Above everything except the nav itself */
   pointer-events: none; /* Let clicks pass through when closed */
 }
 
@@ -251,7 +251,7 @@
   right: 0;
   bottom: 0;
   width: min(400px, 85vw);
-  background: var(--ts-color-surface, var(--ts-white));
+  background: var(--ts-color-surface);
   box-shadow: -10px 0 60px rgb(0, 0, 0, 0.3);
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);

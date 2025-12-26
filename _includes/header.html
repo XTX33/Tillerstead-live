@@ -1,7 +1,13 @@
-<header class="site-header ts-header ts-theme" role="banner" data-header>
-  <div class="site-header-inner container">
+<header class="site-header ts-header ts-theme" role="banner" itemscope itemtype="https://schema.org/Organization" data-header>
+  <meta itemprop="name" content="{{ site.title }}">
+  <meta itemprop="url" content="{{ site.url }}">
+  <meta itemprop="logo" content="{{ '/assets/img/logo/tillerstead-inverse.svg' | absolute_url }}">
+  <meta itemprop="telephone" content="+1-609-862-8808">
+  <meta itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+  <meta itemprop="addressLocality" content="New Jersey">
 
-    <!-- Left side navigation (desktop) -->
+  <div class="site-header-inner">
+    <!-- Left side navigation -->
     <nav class="site-nav site-nav--left" role="navigation" aria-label="Primary navigation">
       <ul class="site-menu site-menu--left">
         <li class="nav-item">
@@ -18,16 +24,10 @@
 
     <!-- Center logo -->
     <div class="site-branding" data-logo>
-      <a class="site-logo ts-logo-link" href="{{ '/' | relative_url }}" aria-label="{{ site.title | default: 'Tillerstead LLC' }} - Home">
-        <img src="{{ '/assets/img/logo/tillerstead-logo-header.svg' | relative_url }}"
-          alt="Tillerstead" class="site-logo-img ts-logo ts-logo--header" width="220" height="auto" fetchpriority="high" />
-        <span class="site-logo-text sr-only">
-          {{ site.title | default: 'Tillerstead LLC' }}
-        </span>
-      </a>
+      {% include logo-main.html class="ts-logo-link" img_class="ts-logo" variant="inverse" %}
     </div>
 
-    <!-- Right side navigation (desktop) -->
+    <!-- Right side navigation -->
     <nav class="site-nav site-nav--right" role="navigation" aria-label="Secondary navigation">
       <ul class="site-menu site-menu--right">
         <li class="nav-item">
@@ -49,17 +49,12 @@
       aria-expanded="false"
       aria-label="Open navigation menu"
       data-nav-toggle>
-      <span class="nav-toggle-label" aria-hidden="true">Menu</span>
-      <span class="nav-toggle-icon" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
+      <span class="nav-toggle-icon">
+        <span></span>
+        <span></span>
+        <span></span>
       </span>
     </button>
-
   </div>
 
   <!-- Mobile navigation drawer -->
@@ -77,38 +72,40 @@
       </div>
       
       <ul class="mobile-menu">
+        {% comment %}Mobile menu: Essential navigation items only{% endcomment %}
+        
         <li class="mobile-nav-item">
-          <a href="{{ '/services/' | relative_url }}" class="mobile-nav-link{% if page.url contains '/services/' %} active{% endif %}">
+          <a href="/services/" class="mobile-nav-link{% if page.url contains '/services/' %} active{% endif %}">
             Services
           </a>
         </li>
         
         <li class="mobile-nav-item">
-          <a href="{{ '/portfolio/' | relative_url }}" class="mobile-nav-link{% if page.url contains '/portfolio/' %} active{% endif %}">
+          <a href="/portfolio/" class="mobile-nav-link{% if page.url contains '/portfolio/' %} active{% endif %}">
             Our Work
           </a>
         </li>
         
         <li class="mobile-nav-item">
-          <a href="{{ '/recommended-products/' | relative_url }}" class="mobile-nav-link{% if page.url contains '/recommended-products/' or page.url contains '/products/' %} active{% endif %}">
+          <a href="/recommended-products/" class="mobile-nav-link{% if page.url contains '/recommended-products/' or page.url contains '/products/' %} active{% endif %}">
             Products
           </a>
         </li>
         
         <li class="mobile-nav-item">
-          <a href="{{ '/reviews/' | relative_url }}" class="mobile-nav-link{% if page.url contains '/reviews/' %} active{% endif %}">
+          <a href="/reviews/" class="mobile-nav-link{% if page.url contains '/reviews/' %} active{% endif %}">
             Reviews
           </a>
         </li>
         
         <li class="mobile-nav-item">
-          <a href="{{ '/about/' | relative_url }}" class="mobile-nav-link{% if page.url contains '/about/' %} active{% endif %}">
+          <a href="/about/" class="mobile-nav-link{% if page.url contains '/about/' %} active{% endif %}">
             About
           </a>
         </li>
         
         <li class="mobile-nav-item">
-          <a href="{{ '/contact/' | relative_url }}" class="mobile-nav-link{% if page.url contains '/contact/' %} active{% endif %}">
+          <a href="/contact/" class="mobile-nav-link{% if page.url contains '/contact/' %} active{% endif %}">
             Contact
           </a>
         </li>
@@ -118,8 +115,8 @@
         <a class="btn btn--primary btn--block" href="{{ '/contact/' | relative_url }}">
           Request Estimate
         </a>
-        <a class="btn btn--ghost btn--block" href="tel:{{ site.company.phone_link | default: '+16096659350' }}">
-          Call {{ site.company.phone_display | default: '(609) 665-9350' }}
+        <a class="btn btn--ghost btn--block" href="tel:+16098628808">
+          Call (609) 862-8808
         </a>
       </div>
     </nav>
