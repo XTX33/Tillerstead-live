@@ -1,4 +1,4 @@
-<header class="site-header ts-header ts-theme">
+<header class="site-header ts-header ts-theme" data-header>
   <div class="site-header-inner container">
 
     <!-- Brand -->
@@ -13,10 +13,10 @@
     </div>
 
     <!-- Primary navigation -->
-    <div class="site-nav-shell" data-nav-container>
-      <div class="site-nav-backdrop" data-nav-overlay aria-hidden="true"></div>
+    <div class="site-nav-shell mobile-nav-shell" data-nav-container>
+      <div class="site-nav-backdrop mobile-nav-backdrop" data-nav-overlay aria-hidden="true"></div>
 
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <nav id="mobile-nav" class="site-nav mobile-nav" aria-label="Primary navigation">
         <div class="site-nav-drawer-header">
           <p class="nav-drawer-label">Menu</p>
 
@@ -57,7 +57,7 @@
         <span aria-hidden="true">{{ site.company.phone_display | default: '(609) 665-9350' }}</span>
       </a>
 
-      <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false"
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false"
         aria-label="Open navigation menu">
         <span class="nav-toggle-label" aria-hidden="true">Menu</span>
         <span class="nav-toggle-icon" aria-hidden="true">
