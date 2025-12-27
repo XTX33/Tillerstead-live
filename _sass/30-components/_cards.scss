@@ -526,7 +526,7 @@
     
     /* Prevent content overflow */
     overflow-wrap: break-word;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     hyphens: auto;
   }
   
@@ -563,6 +563,6 @@
   .card,
   .ts-card {
     border-width: 2px;
-    border-color: currentColor;
+    border-color: currentcolor;
   }
 }
