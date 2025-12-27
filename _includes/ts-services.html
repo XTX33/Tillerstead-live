@@ -33,10 +33,10 @@
             {%- assign service_title      = parts[1] | strip -%}
             {%- assign service_description= parts[2] | strip -%}
             {%- assign service_url        = parts[3] | strip -%}
-            {%- if parts.size > 4 -%}
+            {%- if parts.size &gt; 4 -%}
               {%- assign service_tagline = parts[4] | strip -%}
             {%- endif -%}
-            {%- if parts.size > 5 -%}
+            {%- if parts.size &gt; 5 -%}
               {%- assign service_details = parts[5] | strip -%}
             {%- endif -%}
           {%- else -%}

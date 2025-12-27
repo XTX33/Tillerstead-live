@@ -110,12 +110,15 @@ small {
 .kicker {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--ts-color-primary);
+  text-align: center;
+  width: 100%;
 }
 
 /* Dark eyebrow variant with high contrast background */
