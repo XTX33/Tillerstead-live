@@ -78,7 +78,7 @@ hero_kpis:
     <strong>Tillerstead LLC</strong><br>
     325 E. Jimmie Leeds Road, Suite 7-333<br>
     Galloway, NJ 08205<br>
-    <span aria-label="NJ Home Improvement Contractor License Number">NJ HIC #13VH12345600</span><br>
+    <span aria-label="NJ Home Improvement Contractor License Number">NJ HIC #13VH10808800</span><br>
     <a href="mailto:info@tillerstead.com">info@tillerstead.com</a> &bull; 
     <a href="tel:+16098628808">(609) 862-8808</a>
   </address>

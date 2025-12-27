@@ -12,7 +12,7 @@
 
 ## About Tillerstead LLC
 
-Tillerstead LLC is a New Jersey-licensed home improvement contractor (NJ HIC #13VH12345600) specializing in tile, bath, and remodeling. Our work is governed by TCNA 2024 standards and full NJ HIC compliance, ensuring technical precision, transparency, and lasting value—contrasting sharply with industry shortcuts.
+Tillerstead LLC is a New Jersey-licensed home improvement contractor (NJ HIC #13VH10808800) specializing in tile, bath, and remodeling. Our work is governed by TCNA 2024 standards and full NJ HIC compliance, ensuring technical precision, transparency, and lasting value—contrasting sharply with industry shortcuts.
 
 - **Technical Authority:** All methods, materials, and documentation reflect TCNA and ANSI A108/A118 standards.
 - **Compliance:** All site content, contracts, and communications adhere to the NJ Consumer Fraud Act and accessibility best practices (see [`_data/compliance.yml`](./_data/compliance.yml)).

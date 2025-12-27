@@ -17,7 +17,7 @@ echo "🎨 Compiling SCSS to CSS (per TCNA Section 16, ANSI A108.01)..."
 npm run build:css
 
 echo ""
-echo "🏗️  Building Jekyll static site (NJ HIC#13VH12345600, ADA/WCAG 2.1 compliance)..."
+echo "🏗️  Building Jekyll static site (NJ HIC#13VH10808800, ADA/WCAG 2.1 compliance)..."
 ./scripts/run-jekyll.sh build
 
 echo ""
