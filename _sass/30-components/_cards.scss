@@ -26,7 +26,7 @@
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
 }
 
-/* Base Card - Luxury refinement */
+/* Base Card - Luxury refinement with mobile optimization */
 .card,
 .ts-card {
   display: flex;
@@ -43,6 +43,9 @@
     border-color var(--tiller-duration-base) var(--tiller-ease-standard);
   position: relative;
   min-width: 0;
+  max-width: 100%; /* Prevent overflow on mobile */
+  width: 100%;
+  box-sizing: border-box;
   overflow: hidden;
   
   /* Center standalone cards */
@@ -70,20 +73,32 @@
     opacity: 1;
   }
 
-  /* Luxury hover lift */
-  &:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow:
-      0 8px 12px rgb(0, 0, 0, 0.1),
-      0 20px 40px rgb(0, 0, 0, 0.15),
-      0 1px 3px color-mix(in srgb, var(--ts-color-primary) 30%, transparent),
-      inset 0 1px 0 rgb(255, 255, 255, 0.15);
-    border-color: color-mix(in srgb, var(--ts-color-primary) 70%, var(--ts-color-border));
+  /* Luxury hover lift - desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow:
+        0 8px 12px rgb(0, 0, 0, 0.1),
+        0 20px 40px rgb(0, 0, 0, 0.15),
+        0 1px 3px color-mix(in srgb, var(--ts-color-primary) 30%, transparent),
+        inset 0 1px 0 rgb(255, 255, 255, 0.15);
+      border-color: color-mix(in srgb, var(--ts-color-primary) 70%, var(--ts-color-border));
+    }
+  }
+
+  /* Touch-friendly active state for mobile */
+  @media (hover: none) and (pointer: coarse) {
+    &:active {
+      transform: scale(0.98);
+      box-shadow: var(--ts-shadow-soft);
+    }
   }
 
   /* Accessible focus */
   &:focus-within {
     box-shadow: var(--tiller-focus-ring);
+    outline: 3px solid var(--ts-color-primary);
+    outline-offset: 2px;
   }
 }
 
@@ -461,5 +476,93 @@
       gap: 0.75rem;
       color: color-mix(in srgb, var(--ts-color-primary) 80%, var(--ts-color-text));
     }
+  }
+}
+
+/* ============================================
+   Mobile Enhancements - High-End Web Dev Standards
+   ============================================ */
+
+/* Tablet breakpoint (641px - 768px) */
+@media (max-width: 768px) and (min-width: 641px) {
+  .cards {
+    gap: 1.25rem;
+  }
+  
+  .card,
+  .ts-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile breakpoint (481px - 640px) */
+@media (max-width: 640px) {
+  .card,
+  .ts-card {
+    padding: clamp(1.25rem, 4vw, 1.5rem);
+    gap: var(--ts-spacing-sm);
+  }
+  
+  /* Ensure touch targets are minimum 44px */
+  .card a,
+  .card button,
+  .ts-card a,
+  .ts-card button {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* iPhone breakpoint (320px - 480px) */
+@media (max-width: 480px) {
+  .card,
+  .ts-card {
+    padding: 1.25rem;
+    gap: 1rem;
+    border-radius: var(--ts-radius-md);
+    
+    /* Prevent content overflow */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Smaller text on mobile for better fit */
+  .card-title,
+  .ts-card h3 {
+    font-size: clamp(1.125rem, 4vw, 1.25rem);
+  }
+  
+  /* Optimize images in cards for mobile */
+  .card img,
+  .ts-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .ts-card {
+    transition: none;
+    
+    &:hover,
+    &:active {
+      transform: none !important;
+    }
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card,
+  .ts-card {
+    border-width: 2px;
+    border-color: currentColor;
   }
 }
