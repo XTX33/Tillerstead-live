@@ -1,0 +1,301 @@
+/* ============================================
+   🌙 DARK THEME EXPERIMENT
+   Stone Mountain Dark Mode
+   ============================================ */
+
+:root {
+  /* Dark background system - stone/slate inspired */
+  --ts-color-bg: #0f0f0f;
+  --ts-color-surface: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #1e1e1e 100%);
+  --ts-color-surface-muted: linear-gradient(135deg, #252525 0%, #2f2f2f 50%, #282828 100%);
+  --ts-color-surface-elevated: linear-gradient(135deg, #2a2a2a 0%, #353535 50%, #2d2d2d 100%);
+  --ts-color-surface-highlight: linear-gradient(135deg, #303030 0%, #3a3a3a 50%, #333333 100%);
+  
+  /* Solid fallbacks */
+  --ts-color-surface-solid: #1e1e1e;
+  --ts-color-surface-muted-solid: #282828;
+  --ts-color-surface-elevated-solid: #2d2d2d;
+  
+  /* Tinted surfaces */
+  --ts-color-surface-tinted-teal: rgba(7, 137, 48, 0.08);
+  --ts-color-surface-tinted-warm: rgba(252, 221, 9, 0.06);
+  --ts-color-surface-tinted-gold: rgba(252, 221, 9, 0.06);
+  
+  /* Text colors */
+  --ts-color-text: #e8e8e8;
+  --ts-color-heading: #ffffff;
+  --ts-color-muted: #9a9a9a;
+  --ts-color-text-subtle: #787878;
+  
+  /* Brand colors - brighter for dark mode */
+  --ts-color-primary: #0a9f3a;
+  --ts-color-primary-hover: #0eb844;
+  --ts-color-primary-light: #1cd45f;
+  --ts-color-primary-soft: rgba(10, 159, 58, 0.15);
+  
+  --ts-color-accent: #fde74c;
+  --ts-color-accent-hover: #fff176;
+  --ts-color-accent-strong: #d4b507;
+  
+  --ts-color-secondary: #ff9d7d;
+  --ts-color-secondary-soft: rgba(255, 157, 125, 0.12);
+  
+  /* Borders */
+  --ts-color-border: rgba(255, 255, 255, 0.08);
+  --ts-color-border-strong: rgba(255, 255, 255, 0.15);
+  --ts-color-divider: rgba(255, 255, 255, 0.05);
+  
+  --ts-border-thin: 1px solid rgba(255, 255, 255, 0.08);
+  --ts-border-medium: 2px solid rgba(255, 255, 255, 0.15);
+  --ts-border-thick: 3px solid rgba(255, 255, 255, 0.25);
+  
+  /* Shadows */
+  --ts-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  --ts-shadow-lift: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --ts-shadow-header: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --ts-shadow-header-scrolled: 0 4px 16px rgba(0, 0, 0, 0.6);
+  
+  /* State colors */
+  --ts-color-success: #1fbf7a;
+  --ts-color-success-bg: rgba(31, 191, 122, 0.12);
+  --ts-color-success-text: #4ade80;
+  
+  --ts-color-warning: #fbbf24;
+  --ts-color-warning-bg: rgba(251, 191, 36, 0.12);
+  --ts-color-warning-text: #fde047;
+  
+  --ts-color-error: #ff5757;
+  --ts-color-error-bg: rgba(255, 87, 87, 0.12);
+  --ts-color-error-text: #ff8787;
+  
+  /* Text on colored backgrounds */
+  --ts-text-on-primary: #ffffff;
+  --ts-text-on-secondary: #ffffff;
+  --ts-text-on-accent: #1a1a1a;
+  
+  /* Gradients - stone mountain aesthetic */
+  --color-gradient-hero: linear-gradient(
+    165deg,
+    #0a9f3a 0%,
+    #065a24 30%,
+    #1a1a1a 60%,
+    #0f0f0f 100%
+  );
+  
+  --color-gradient-warm: linear-gradient(
+    135deg,
+    #2a2a2a 0%,
+    #353535 50%,
+    #2d2d2d 100%
+  );
+  
+  /* Header - darker stone with blend */
+  --tiller-header-bg: linear-gradient(180deg, rgba(15, 15, 15, 0.98) 0%, rgba(20, 20, 20, 0.95) 100%);
+  --tiller-header-border: rgba(255, 255, 255, 0.08);
+  
+  /* Footer - blend to dark green */
+  --tiller-footer-bg: linear-gradient(180deg, #0a0a0a 0%, #065a24 100%);
+  --tiller-footer-text: #e8e8e8;
+  --tiller-footer-text-muted: #9a9a9a;
+  --tiller-footer-link: #fde74c;
+  --tiller-footer-link-hover: #fff176;
+  --tiller-footer-border: rgba(255, 255, 255, 0.06);
+}
+
+/* ===========================
+   CARDS - ROUNDED STONE
+   =========================== */
+.card,
+.ts-card,
+.service-card,
+.trade-note-card,
+.ts-plan-card,
+.ts-testimonial,
+.ts-process__step,
+.ts-deliver__card,
+.ts-deliver__intro {
+  background: linear-gradient(135deg, #1e1e1e 0%, #282828 50%, #242424 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+.card:hover,
+.ts-card:hover,
+.service-card:hover,
+.trade-note-card:hover,
+.ts-testimonial:hover,
+.ts-process__step:hover {
+  background: linear-gradient(135deg, #252525 0%, #2f2f2f 50%, #282828 100%) !important;
+  border-color: rgba(10, 159, 58, 0.3) !important;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(10, 159, 58, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   SECTION HEADERS - EYEBROW
+   =========================== */
+.section-header,
+.ts-hero__content,
+.ts-section__header,
+.ts-testimonials__header,
+.ts-services__header,
+.eyebrow,
+.kicker,
+.section-eyebrow {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(40, 40, 40, 0.4) 100%) !important;
+  padding: 1rem 2rem !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+  color: #fde74c !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* ===========================
+   HERO - MOUNTAIN GRADIENT
+   =========================== */
+.ts-hero,
+.hero,
+.page-hero {
+  background: linear-gradient(165deg, #0a9f3a 0%, #065a24 30%, #1a1a1a 60%, #0f0f0f 100%) !important;
+  position: relative;
+  border-radius: 0 0 24px 24px !important;
+  overflow: hidden;
+}
+
+.ts-hero::before,
+.hero::before {
+  opacity: 0.08 !important;
+}
+
+.ts-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(180deg, transparent 0%, #0f0f0f 100%);
+  pointer-events: none;
+}
+
+/* ===========================
+   HEADER - DARK STONE
+   =========================== */
+.header,
+.ts-header,
+.site-header {
+  background: linear-gradient(180deg, rgba(15, 15, 15, 0.98) 0%, rgba(20, 20, 20, 0.95) 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.nav-link,
+.ts-nav__link,
+.header-nav a {
+  color: #e8e8e8 !important;
+}
+
+.nav-link:hover,
+.ts-nav__link:hover,
+.header-nav a:hover {
+  color: #fde74c !important;
+}
+
+/* ===========================
+   FOOTER - BLEND TO GREEN
+   =========================== */
+.footer,
+.ts-footer,
+.site-footer {
+  background: linear-gradient(180deg, #0f0f0f 0%, #065a24 100%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  position: relative;
+}
+
+.footer::before,
+.ts-footer::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(180deg, transparent 0%, rgba(6, 90, 36, 0.3) 100%);
+  pointer-events: none;
+}
+
+/* ===========================
+   CTA SECTION - SMOOTH BLEND
+   =========================== */
+.cta-section,
+.ts-cta,
+.cta-estimate {
+  background: linear-gradient(165deg, #0a9f3a 0%, #078930 50%, #065a24 100%) !important;
+  border-radius: 24px 24px 0 0 !important;
+  margin-top: 4rem;
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(180deg, #0f0f0f 0%, rgba(10, 159, 58, 0.2) 100%);
+}
+
+/* ===========================
+   TYPOGRAPHY - WHITE ON DARK
+   =========================== */
+.card-title,
+.ts-card h3,
+.ts-card h4,
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+}
+
+.card-desc,
+.card-description,
+.ts-card p,
+p,
+.ts-card li {
+  color: #e8e8e8 !important;
+}
+
+.card-eyebrow,
+.eyebrow,
+.kicker {
+  color: #fde74c !important;
+}
+
+/* ===========================
+   BREADCRUMBS - HIDE ON HOME
+   =========================== */
+body.page-home .ts-breadcrumbs,
+body.page-home .breadcrumbs {
+  display: none !important;
+}
+
+/* ===========================
+   ELEVATED SURFACES
+   =========================== */
+.ts-hero__fact,
+.card-featured,
+.card--primary {
+  background: linear-gradient(135deg, #2a2a2a 0%, #353535 50%, #2d2d2d 100%) !important;
+  border: 1px solid rgba(10, 159, 58, 0.2) !important;
+  border-radius: 12px !important;
+}
